@@ -1,12 +1,12 @@
-import styled from 'styled-components'
-import { BackGroundImg } from '../../styles/common'
-import Background from '../../assets/Img/backgroundImg/myPage.png'
+import styled from 'styled-components';
+import { BackGroundImg } from '../../styles/common';
+import Background from '../../assets/Img/backgroundImg/myPage.png';
 
 function MyPagePage() {
-	return <BackImg>MyPagePage</BackImg>
+  return <BackImg>MyPagePage</BackImg>;
 }
 //pr test
-export default MyPagePage
+export default MyPagePage;
 const BackImg = styled.div`
-	${BackGroundImg(Background)}
-`
+  ${BackGroundImg(Background)}
+`;
