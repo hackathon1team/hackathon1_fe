@@ -7,7 +7,7 @@ const myPageItem = () => {
       <img src="src\assets\Img\myPageImg\hamsterlogo.png" alt="hamsterlogo" />
       <LogoutBoxDetail>
         <Name>메코메코</Name>
-        <LogDetail>메코와 메일을 함께하는,<br/> 하루하루</LogDetail>
+        <LogDetail>메코와 메일을<br/> 함께하는,<br/> 하루하루</LogDetail>
         <LogoutButton>로그아웃</LogoutButton>
       </LogoutBoxDetail>
     </LogoutBox>
@@ -27,26 +27,31 @@ export default myPageItem
 
 const MyPageBox = styled.div`
   margin-top: 60px;
+  margin: 60px 50px 0px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  border-radius: 30px;
 `
 
 const LogoutBox = styled.div`
   display: flex;
   justify-content: center;
-  margin: 30px 0px;
+  padding: 10px 0px;
+  margin-bottom: 30px;
+
+  img {
+    width: 125px;
+    height: 145px;
+  }
 `;
 
 const LogoutBoxDetail = styled.div`
-  padding-left: 20px;
-  margin-top: 15px;
+  padding-left: 30px;
+  margin-top: 10px;
   text-align: left;
 `;
 
 const Name = styled.div`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
   color: #5A639C;
   margin-bottom: 5px;
@@ -55,17 +60,18 @@ const Name = styled.div`
 const LogDetail = styled.div`
   font-size: 14px;
   font-weight: 600;
-  color: #5A639C;
-  margin-bottom: 15px;
+  color: #5a639cb2;
+  margin-bottom: 10px;
 `;
 
 const LogoutButton = styled.button`
   border: none;
   border-radius: 30px;
-  padding: 10px 20px;
+  padding: 8px 17px;
   cursor: pointer;
-  font-size: 14px;
-  color: #5A639C;
+  font-size: 12px;
+  color: #5f6bbacb;
+  font-weight: 700;
 
   &:hover {
     background-color: #4b578e;
@@ -75,29 +81,35 @@ const LogoutButton = styled.button`
 const DeleteAccountBox = styled.div`
   display: flex;
   justify-content: center;
+  text-align: center;
+  padding: 10px 0px;
+
+  img {
+    width: 135px;
+    height: 120px;
+  }
 `;
 
 const DeleteAccountBoxDetail = styled.div`
-  padding-right: 20px;
-  margin-top: 15px;
-  text-align: right;
+  padding-right: 10px;
 `;
 
 const DelDetail = styled.div`
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 900;
-  margin-bottom: 5px;
-  color: #5A639C;
-  margin-bottom: 15px;
+  color: #5a639cb2;
+  margin-bottom: 10px;
+  text-align: right;
 `;
 
 const DeleteAccountButton = styled.button`
   border: none;
   border-radius: 30px;
-  padding: 10px 20px;
+  padding: 5px 10px;
   cursor: pointer;
-  font-size: 14px;
-  color: #5A639C;
+  font-size: 9px;
+  color: #5f6bbacb;
+  font-weight: 700;
 
   &:hover {
     background-color: #4b578e;
