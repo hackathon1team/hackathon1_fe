@@ -19,6 +19,7 @@ export default MyPagePage
 
 const BackImg = styled.div`
 	${BackGroundImg(Background)}
+	padding: 300px 0px;
 `
 const MyPageMainLine = styled.div`
 	display: flex;
