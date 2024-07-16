@@ -1,8 +1,15 @@
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
-import TimeCalendarPage from './pages/timeCalendar/timeCalendarPage'
+import router from './Routes/router'
 
 function App() {
-	return <></>
+	const RouterObject = createBrowserRouter(router)
+
+	return (
+		<>
+			<RouterProvider router={RouterObject} />
+		</>
+	)
 }
 
 export default App
