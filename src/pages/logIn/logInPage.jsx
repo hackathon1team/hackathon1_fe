@@ -5,6 +5,7 @@ import Background from '../../assets/Img/backgroundImg/logInStatistics.png'
 function LogInPage() {
 	return <BackImg>LogInPage
 		예 !
+    test합니다
 	</BackImg>
 }
 export default LogInPage
