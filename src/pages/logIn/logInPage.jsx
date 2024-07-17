@@ -1,3 +1,4 @@
+
 import styled from 'styled-components'
 import { BackGroundImg } from '../../styles/common'
 import Background from '../../assets/Img/backgroundImg/logInStatistics.png'
@@ -21,9 +22,10 @@ function LogInPage() {
 <LogInBt  type="Button" value="가입하러 가기"/>
 </BottomBox>
 		</Box>
+
 	</BackImg>
 }
-export default LogInPage
+export default LogInPage;
 
 const BackImg = styled.div`
 	${BackGroundImg(Background)}
@@ -106,3 +108,4 @@ const LogInBt = styled.input`
 	padding-top:3px;
     cursor: pointer;
 `
+
