@@ -1,9 +1,14 @@
 import styled from 'styled-components'
 import Background from '../../assets/Img/backgroundImg/signUp_1.png'
 import { BackGroundImg } from '../../styles/common'
+import MetaAbout from './components/MetaAbout'
 
 function SignUpPage() {
-	return <BackImg>SignUpPage</BackImg>
+	return (
+		<BackImg>
+			<MetaAbout/>
+		</BackImg>
+	)
 }
 export default SignUpPage
 

@@ -11,6 +11,8 @@ module.exports = {
 	  ecmaVersion: 13,
 	},
 	rules: {
+		'react/jsx-no-target-blank': 'off',
+		'react-refresh/only-export-components': 'off'
 	  semi: ["error", "always"],
 	  quotes: ["error", "double"],
 	  "no-unused-vars": ["off"],
