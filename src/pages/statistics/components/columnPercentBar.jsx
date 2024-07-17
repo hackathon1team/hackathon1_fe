@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useMountObsever } from '../../../hooks/useMountObsever';
-function PercentBar(props) {
+function ColumnPercentBar(props) {
     const { ratio, category, count, unit = '회' } = props;
 
     const ref = useRef(null);
@@ -29,7 +29,7 @@ function PercentBar(props) {
         </Wrapper>
     );
 }
-export default PercentBar;
+export default ColumnPercentBar;
 
 const Wrapper = styled.div`
     width: 80%;

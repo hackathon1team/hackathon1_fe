@@ -21,16 +21,16 @@ function ComparisonWithLastMonth({ data }) {
                 />
                 <PercentWrapper>
                     <PercentBar
-                        heigth={'bold'}
                         ratio={ratio}
                         category={data.previousCategory}
                         count={data.previousHours}
+                        unit={'시간'}
                     />
                     <PercentBar
-                        height={'bold'}
                         ratio={ratio}
                         category={data.currentCategory}
                         count={data.currentHours}
+                        unit={'시간'}
                     />
                 </PercentWrapper>
             </GlassmorphismModal>

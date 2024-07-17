@@ -1,11 +1,11 @@
 import styled from 'styled-components';
+import PercentBar from './percentBar';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import TitleBox from './titleBox';
 import { BackGroundImg } from '../../../styles/common';
 import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
-import ColumnPercentBar from './columnPercentBar';
 
-function EmotionsSummary({ data }) {
+function NeutralEmotions({ data }) {
     const maxObjArr = data.reduce((prev, value) => {
         return prev.count >= value.count ? prev : value;
     });
@@ -15,10 +15,10 @@ function EmotionsSummary({ data }) {
     return (
         <BackImg>
             <GlassmorphismModal margin={'100px'}>
-                <TitleBox text={'부정적 감정'} />
+                <TitleBox text={'중립적 감정'} />
                 <PercentWrapper>
                     {data.map((val, idx) => (
-                        <ColumnPercentBar
+                        <PercentBar
                             key={idx}
                             ratio={ratio}
                             category={val.type}
@@ -30,24 +30,20 @@ function EmotionsSummary({ data }) {
         </BackImg>
     );
 }
-export default EmotionsSummary;
-
+export default NeutralEmotions;
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}/* display: flex;
-    flex-direction: column;
-    align-items: center; */
-`;
-const PercentWrapper = styled.div`
-    //     display: flex;
-    //     align-items: center;
-    //     flex-direction: column;
-    //     justify-content: center;
-    //     width: 100%;
-    //     & > * {
-    //         margin-top: 15px;
-    //     }
-    background-color: red;
-    min-height: 400px;
+    ${BackGroundImg(Background)}
     display: flex;
     flex-direction: column;
+    align-items: center;
+`;
+const PercentWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    & > * {
+        margin-top: 15px;
+    }
 `;
