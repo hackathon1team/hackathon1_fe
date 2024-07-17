@@ -29,3 +29,4 @@ const MyPageMainLine = styled.div`
 	font-weight: 700;
 	margin-bottom: 20px;
 `
+
