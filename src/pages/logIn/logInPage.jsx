@@ -3,7 +3,9 @@ import { BackGroundImg } from '../../styles/common'
 import Background from '../../assets/Img/backgroundImg/logInStatistics.png'
 
 function LogInPage() {
-	return <BackImg>LogInPage</BackImg>
+	return <BackImg>LogInPage
+		예 !
+	</BackImg>
 }
 export default LogInPage
 
