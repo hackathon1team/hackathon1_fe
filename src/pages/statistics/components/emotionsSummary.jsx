@@ -15,7 +15,9 @@ function EmotionsSummary({ data }) {
     return (
         <BackImg>
             <GlassmorphismModal margin={'100px'}>
-                <TitleBox text={'부정적 감정'} />
+                <TitleBox
+                    text={'이번 달, 내가 가장 많이\n느낀 감정을 확인해 볼까요?'}
+                />
                 <PercentWrapper>
                     {data.map((val, idx) => (
                         <ColumnPercentBar

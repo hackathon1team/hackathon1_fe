@@ -15,16 +15,15 @@ function ColumnPercentBar(props) {
                     width={ratio * count}
                     ref={ref}
                     className={isInViewport ? 'animation' : ''}
-                >
-                    {ratio * count === 0 ? (
-                        ''
-                    ) : (
-                        <div>
-                            {count}
-                            {unit}
-                        </div>
-                    )}
-                </Bar>
+                />
+                {ratio * count === 0 ? (
+                    ''
+                ) : (
+                    <div>
+                        {count}
+                        {unit}
+                    </div>
+                )}
             </BarWrapper>
         </Wrapper>
     );
@@ -45,6 +44,8 @@ const Title = styled.div`
 `;
 const BarWrapper = styled.div`
     width: 80%;
+    display: flex;
+    flex-direction: column;
 `;
 
 const slide = (width) => keyframes`
