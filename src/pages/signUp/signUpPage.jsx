@@ -1,17 +1,21 @@
-import styled from 'styled-components'
-import Background from '../../assets/Img/backgroundImg/signUp_1.png'
-import { BackGroundImg } from '../../styles/common'
-import MetaAbout from './components/MetaAbout'
+import styled from 'styled-components';
+import Background from '../../assets/Img/backgroundImg/signUp_1.png';
+import { BackGroundImg } from '../../styles/common';
+import MetaAbout from './components/MetaAbout';
+import MetaQuestion from './components/MetaQuestion';
 
 function SignUpPage() {
-	return (
-		<BackImg>
-			<MetaAbout/>
-		</BackImg>
-	)
+    return (
+        <>
+            <BackImg>
+                <MetaAbout />
+            </BackImg>
+            <MetaQuestion />
+        </>
+    );
 }
-export default SignUpPage
+export default SignUpPage;
 
 const BackImg = styled.div`
-	${BackGroundImg(Background)}
-`
+    ${BackGroundImg(Background)}
+`;
