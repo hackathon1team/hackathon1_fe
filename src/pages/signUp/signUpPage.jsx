@@ -8,6 +8,7 @@ function SignUpPage() {
         <>
             <BackImg></BackImg>
             <BackImg1></BackImg1>
+            <BackImg1></BackImg1>
         </>
     );
 }
