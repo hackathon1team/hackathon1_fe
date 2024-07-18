@@ -24,12 +24,14 @@ function ComparisonWithLastMonth({ data }) {
                 <PercentWrapper>
                     <PercentBar
                         ratio={ratio}
+                        heigth={'bold'}
                         category={data.previousCategory}
                         count={data.previousHours}
                         unit={'시간'}
                     />
                     <PercentBar
                         ratio={ratio}
+                        heigth={'bold'}
                         category={data.currentCategory}
                         count={data.currentHours}
                         unit={'시간'}
@@ -55,6 +57,7 @@ const PercentWrapper = styled.div`
     justify-content: center;
     width: 100%;
     & > * {
-        margin-top: 80px;
+        margin-top: 50px;
+        height: 100px;
     }
 `;

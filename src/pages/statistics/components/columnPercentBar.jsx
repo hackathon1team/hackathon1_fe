@@ -9,22 +9,23 @@ function ColumnPercentBar(props) {
 
     return (
         <Wrapper>
-            <Title>{category}</Title>
             <BarWrapper>
                 <Bar
-                    width={ratio * count}
+                    height={ratio * count}
                     ref={ref}
                     className={isInViewport ? 'animation' : ''}
-                />
-                {ratio * count === 0 ? (
-                    ''
-                ) : (
-                    <div>
-                        {count}
-                        {unit}
-                    </div>
-                )}
+                >
+                    {ratio * count === 0 ? (
+                        ''
+                    ) : (
+                        <div>
+                            {count}
+                            {unit}
+                        </div>
+                    )}
+                </Bar>
             </BarWrapper>
+            <Title>{category}</Title>
         </Wrapper>
     );
 }
@@ -33,40 +34,45 @@ export default ColumnPercentBar;
 const Wrapper = styled.div`
     width: 80%;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: end;
 `;
 const Title = styled.div`
     font-size: 15px;
-    margin-right: 10px;
-    color: #ffffff;
-    min-width: 20%;
-    max-width: 20%;
+    padding: 15px 0;
+    text-align: center;
+    color: white;
+    font-weight: bold;
 `;
 const BarWrapper = styled.div`
-    width: 80%;
+    width: 50px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 330px;
+    justify-content: end;
 `;
 
-const slide = (width) => keyframes`
+const slide = (height) => keyframes`
   from {
-    width: 20%;
+    height: 0px;
   }
   to {
-    width: ${width};
+    height: ${height};
   }
 `;
 
 const Bar = styled.div`
     background-color: #ffe4a2;
-    width: ${({ width }) => (width ? width : 1)}%;
-    height: 37px;
-    border-radius: 0 30px 30px 0;
+    min-width: 50px;
+    min-height: ${({ height }) => (height ? height : 1)}%;
+    border-radius: 30px 30px 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
     &.animation {
-        animation: ${(width) => slide(width)} 1s ease-out;
+        animation: ${(height) => slide(height)} 2s ease-out;
     }
 `;

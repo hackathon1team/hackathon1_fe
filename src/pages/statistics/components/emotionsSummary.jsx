@@ -43,11 +43,12 @@ const BackImg = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
 `;
 const PercentWrapper = styled.div`
-    min-width: 370px;
     margin-top: 20px;
-    min-height: 340px;
+    height: 60%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 100%;
 `;
