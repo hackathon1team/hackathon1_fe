@@ -56,7 +56,7 @@ const BarWrapper = styled.div`
 
 const slide = (height) => keyframes`
   from {
-    height: 0px;
+    height: 0;
   }
   to {
     height: ${height};
