@@ -4,6 +4,7 @@ import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorp
 import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import { BackGroundImg } from '../../../styles/common';
 import TitleBox from './titleBox';
+import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 
 function ComparisonWithLastMonth({ data }) {
     let ratio = (
@@ -15,7 +16,8 @@ function ComparisonWithLastMonth({ data }) {
 
     return (
         <BackImg>
-            <GlassmorphismModal margin={'100px'}>
+            <UpArrowIcon />
+            <GlassmorphismModal>
                 <TitleBox
                     text={'지난 달과 비교하여\n 시간을 한 눈에 확인해 볼까요?'}
                 />
@@ -34,6 +36,7 @@ function ComparisonWithLastMonth({ data }) {
                     />
                 </PercentWrapper>
             </GlassmorphismModal>
+            <ArrowIcon />
         </BackImg>
     );
 }
@@ -43,6 +46,7 @@ const BackImg = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 `;
 const PercentWrapper = styled.div`
     display: flex;
