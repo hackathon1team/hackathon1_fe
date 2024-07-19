@@ -7,8 +7,6 @@ import { ArrowIcon } from '../../../components/icons/icons';
 import PieChartComponent from './pieChartComponent';
 
 function TimeSpent({ data }) {
-    console.log(data);
-
     return (
         <BackImg>
             <GlassmorphismModal>

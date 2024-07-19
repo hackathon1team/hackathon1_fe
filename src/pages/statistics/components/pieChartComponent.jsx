@@ -11,7 +11,6 @@ import {
 function PieChartComponent({ apiData }) {
     let data = [];
 
-    console.log(data);
     apiData.map((el) =>
         data.push({ name: el.category, value: Number(el.hours) }),
     );
