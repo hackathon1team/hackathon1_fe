@@ -1,49 +1,61 @@
 import styled from 'styled-components';
+import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 
 const myPageItem = () => {
     return (
-        <MyPageBox>
-            <LogoutBox>
-                <img
-                    src="src\assets\Img\myPageImg\hamsterlogo.png"
-                    alt="hamsterlogo"
-                />
-                <LogoutBoxDetail>
-                    <Name>메코메코</Name>
-                    <LogDetail>
-                        메코와 메일을
-                        <br /> 함께하는,
-                        <br /> 하루하루
-                    </LogDetail>
-                    <LogoutButton>로그아웃</LogoutButton>
-                </LogoutBoxDetail>
-            </LogoutBox>
+        <Wrapper>
+            {' '}
+            <MyPageBox>
+                <GlassmorphismModal>
+                    <LogoutBox>
+                        <img
+                            src="src\assets\Img\myPageImg\hamsterlogo.png"
+                            alt="hamsterlogo"
+                        />
+                        <LogoutBoxDetail>
+                            <Name>메코메코</Name>
+                            <LogDetail>
+                                메코와 메일을
+                                <br /> 함께하는,
+                                <br /> 하루하루
+                            </LogDetail>
+                            <LogoutButton>로그아웃</LogoutButton>
+                        </LogoutBoxDetail>
+                    </LogoutBox>
 
-            <DeleteAccountBox>
-                <DeleteAccountBoxDetail>
-                    <DelDetail>
-                        너 자신을 알라.
-                        <br />
-                        -소크라테스
-                    </DelDetail>
-                    <DeleteAccountButton>회원탈퇴</DeleteAccountButton>
-                </DeleteAccountBoxDetail>
-                <img
-                    src="src\assets\Img\myPageImg\starcloud.png"
-                    alt="starcloud"
-                />
-            </DeleteAccountBox>
-        </MyPageBox>
+                    <DeleteAccountBox>
+                        <DeleteAccountBoxDetail>
+                            <DelDetail>
+                                너 자신을 알라.
+                                <br />
+                                -소크라테스
+                            </DelDetail>
+                            <DeleteAccountButton>회원탈퇴</DeleteAccountButton>
+                        </DeleteAccountBoxDetail>
+                        <img
+                            src="src\assets\Img\myPageImg\starcloud.png"
+                            alt="starcloud"
+                        />
+                    </DeleteAccountBox>
+                </GlassmorphismModal>
+            </MyPageBox>
+        </Wrapper>
     );
 };
 
 export default myPageItem;
 
-const MyPageBox = styled.div`
-    margin-top: 60px;
-    margin: 60px 50px 0px;
+const Wrapper = styled.div`
+    width: 100%;
+    margin-top: 30px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+`;
+const MyPageBox = styled.div`
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const LogoutBox = styled.div`

@@ -19,14 +19,18 @@ function MyPagePage() {
 export default MyPagePage;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg(Background)}/* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
 `;
 const MyPageMainLine = styled.div`
+    margin-top: 40px;
     display: flex;
     justify-content: center;
     text-align: center;
     color: #5a639c;
-    font-size: 23px;
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: 20px;
 `;
