@@ -1,26 +1,33 @@
 import styled from 'styled-components';
+import { BackGroundImg } from '../../../styles/common';
+import Background from '../../../assets/Img/backgroundImg/meta.png';
 
 const MetaAbout = () => {
     return (
-        <AboutMetaCog>
-            <AboutMetaWord>
-                <h1>메타인지란?</h1>
-                <MetaWord1>자기인식</MetaWord1>
-                <MetaWord2>자기평가</MetaWord2>
-                <MetaWord3>계획</MetaWord3>
-            </AboutMetaWord>
-            <AboutMetaDes>
-                <span>메타인지</span>는 자기 자신의 사고 과정에 대해 <br />
-                생각하는 능력을 의미합니다. <br />
-                즉, 자신의 생각, 학습, 이해, 기억 등을 <br />
-                인식하고 조절하는 능력입니다.
-            </AboutMetaDes>
-            <MetaButton>질문 대답 하러가기</MetaButton>
-        </AboutMetaCog>
+        <BackImg>
+            <AboutMetaCog>
+                <AboutMetaWord>
+                    <h1>메타인지란?</h1>
+                    <MetaWord1>자기인식</MetaWord1>
+                    <MetaWord2>자기평가</MetaWord2>
+                    <MetaWord3>계획</MetaWord3>
+                </AboutMetaWord>
+                <AboutMetaDes>
+                    <span>메타인지</span>는 자기 자신의 사고 과정에 대해 <br />
+                    생각하는 능력을 의미합니다. <br />
+                    즉, 자신의 생각, 학습, 이해, 기억 등을 <br />
+                    인식하고 조절하는 능력입니다.
+                </AboutMetaDes>
+                <MetaButton>질문 대답 하러가기</MetaButton>
+            </AboutMetaCog>
+        </BackImg>
     );
 };
 
 export default MetaAbout;
+const BackImg = styled.div`
+    ${BackGroundImg(Background)}
+`;
 
 const AboutMetaCog = styled.div`
     padding-top: 18%;

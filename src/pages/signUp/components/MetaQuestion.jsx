@@ -33,39 +33,35 @@ export default MetaQuestion;
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
     padding-top: 50%;
+    padding: 50% 40px 0 40px;
 `;
 
 const MainQuestion = styled.div`
-    padding-left: 7%;
-    font-size: 23px;
+    font-size: 25px;
     font-weight: 700;
     color: white;
     padding-bottom: 20px;
 `;
 
 const MiniQuestion = styled.div`
-    padding-left: 7%;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: #edececd7;
     padding-bottom: 20px;
 `;
 
 const Progressbar = styled.div`
-    padding-left: 7%;
     padding-bottom: 20px;
 `;
 
 const MainAnswer = styled.div`
-    display: flex;
-    justify-content: center;
     textarea {
         font-size: 16px;
-        width: 330px;
         height: 180px;
         resize: none;
         outline: none;
         border-radius: 10px;
+        width: 100%;
         background-color: #00000046;
         ::placeholder {
             color: white;
@@ -80,7 +76,7 @@ const MainAnswer = styled.div`
 const MQButton = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 5% 10%;
+    padding: 5% 0;
 `;
 
 const MQPrevButton = styled.button`

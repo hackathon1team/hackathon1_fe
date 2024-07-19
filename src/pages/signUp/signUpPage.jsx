@@ -7,9 +7,8 @@ import MetaQuestion from './components/MetaQuestion';
 function SignUpPage() {
     return (
         <>
-            <BackImg>
-                <MetaAbout />
-            </BackImg>
+            <MetaAbout />
+
             <MetaQuestion />
         </>
     );
