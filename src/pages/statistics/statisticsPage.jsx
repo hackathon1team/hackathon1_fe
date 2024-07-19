@@ -1,15 +1,42 @@
-import styled from 'styled-components';
-import { BackGroundImg } from '../../styles/common';
 import ComparisonWithLastMonth from './components/comparisonWithLastMonth';
-import Background from '../../assets/Img/backgroundImg/logInStatistics.png';
 import TimeSpent from './components/timeSpent';
 import PositiveEmotions from '../statistics/components/positiveEmotions';
 import NegativeEmotions from './components/negativeEmotions';
 import NeutralEmotions from './components/neutralEmotions';
 import EmotionsSummary from './components/emotionsSummary';
+import styled from 'styled-components';
+// import useScrollFullPage from '../../hooks/useScrollFullPage';
 
 function StatisticsPage() {
     const testData = {
+        timeSpent: [
+            // 상위5개 + 0시간인 거 빼고
+            {
+                category: '우울',
+                hours: '5',
+                percentage: '~',
+            },
+            {
+                category: '즐거움',
+                hours: '13',
+                percentage: '~',
+            },
+            {
+                category: '화남',
+                hours: '10',
+                percentage: '~',
+            },
+            {
+                category: '소심',
+                hours: '9',
+                percentage: '~',
+            },
+            {
+                category: '분노',
+                hours: '20',
+                percentage: '~',
+            },
+        ],
         comparisonWithLastMonth: {
             previousCategory: '알바',
             previousMonth: '7',
@@ -23,14 +50,14 @@ function StatisticsPage() {
                 type: '긍정',
                 count: '18',
             },
-            // {
-            //     type: '중립',
-            //     count: '18',
-            // },
-            // {
-            //     type: '부정',
-            //     count: '18',
-            // },
+            {
+                type: '중립',
+                count: '10',
+            },
+            {
+                type: '부정',
+                count: '3',
+            },
         ],
         positiveEmotions: [
             {
@@ -132,15 +159,24 @@ function StatisticsPage() {
         ],
     };
 
+    // scroll event hook fn
+    // useScrollFullPage();
+
     return (
-        <>
-            <TimeSpent />
+        <Wrapper>
+            <TimeSpent data={testData.timeSpent} />
             <ComparisonWithLastMonth data={testData.comparisonWithLastMonth} />
             <EmotionsSummary data={testData.emotionsSummary} />
             <PositiveEmotions data={testData.positiveEmotions} />
             <NeutralEmotions data={testData.neutralEmotions} />
             <NegativeEmotions data={testData.negativeEmotions} />
-        </>
+        </Wrapper>
     );
 }
 export default StatisticsPage;
+
+const Wrapper = styled.div`
+    /* overflow: hidden; */
+    height: 100vh;
+    width: 100%;
+`;

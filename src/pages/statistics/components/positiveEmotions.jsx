@@ -4,6 +4,7 @@ import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import TitleBox from './titleBox';
 import PercentBar from './percentBar';
+import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 
 function PositiveEmotions({ data }) {
     const maxObjArr = data.reduce((prev, value) => {
@@ -14,7 +15,8 @@ function PositiveEmotions({ data }) {
 
     return (
         <BackImg>
-            <GlassmorphismModal margin={'100px'}>
+            <UpArrowIcon />
+            <GlassmorphismModal>
                 <TitleBox text={'긍정적 감정'} />
                 <PercentWrapper>
                     {data.map((val, idx) => (
@@ -27,6 +29,7 @@ function PositiveEmotions({ data }) {
                     ))}
                 </PercentWrapper>
             </GlassmorphismModal>
+            <ArrowIcon />
         </BackImg>
     );
 }
@@ -37,6 +40,7 @@ const BackImg = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 `;
 const PercentWrapper = styled.div`
     display: flex;

@@ -1,4 +1,3 @@
-
 import styled from 'styled-components'
 import { BackGroundImg } from '../../styles/common'
 import Background from '../../assets/Img/backgroundImg/logInStatistics.png'
@@ -28,7 +27,7 @@ function LogInPage() {
 export default LogInPage;
 
 const BackImg = styled.div`
-	${BackGroundImg(Background)}
+  ${BackGroundImg(Background)}
 	display: flex;
 	justify-content: center;
 `
@@ -108,4 +107,3 @@ const LogInBt = styled.input`
 	padding-top:3px;
     cursor: pointer;
 `
-

@@ -14,13 +14,14 @@ export default TitleBox;
 const Wrapper = styled.div`
     background-color: #ffffff;
     min-width: 250px;
-    min-height: 60px;
-    padding: 12px 60px;
+    max-width: fit-conten;
+    min-height: 30px;
+    padding: 12px 30px;
     border-radius: 30px;
     white-space: pre-line;
     color: #5a639c;
     font-weight: bold;
-    margin-top: 30px;
+    margin-top: 10px;
     position: relative;
     display: flex;
     align-items: center;

@@ -4,6 +4,7 @@ import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorp
 import TitleBox from './titleBox';
 import { BackGroundImg } from '../../../styles/common';
 import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
+import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 
 function NeutralEmotions({ data }) {
     const maxObjArr = data.reduce((prev, value) => {
@@ -14,7 +15,8 @@ function NeutralEmotions({ data }) {
 
     return (
         <BackImg>
-            <GlassmorphismModal margin={'100px'}>
+            <UpArrowIcon />
+            <GlassmorphismModal>
                 <TitleBox text={'중립적 감정'} />
                 <PercentWrapper>
                     {data.map((val, idx) => (
@@ -27,6 +29,7 @@ function NeutralEmotions({ data }) {
                     ))}
                 </PercentWrapper>
             </GlassmorphismModal>
+            <ArrowIcon />
         </BackImg>
     );
 }
@@ -36,6 +39,7 @@ const BackImg = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 `;
 const PercentWrapper = styled.div`
     display: flex;
