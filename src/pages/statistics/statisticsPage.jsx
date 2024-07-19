@@ -9,6 +9,34 @@ import styled from 'styled-components';
 
 function StatisticsPage() {
     const testData = {
+        timeSpent: [
+            // 상위5개 + 0시간인 거 빼고
+            {
+                category: '우울',
+                hours: '5',
+                percentage: '~',
+            },
+            {
+                category: '즐거움',
+                hours: '13',
+                percentage: '~',
+            },
+            {
+                category: '화남',
+                hours: '10',
+                percentage: '~',
+            },
+            {
+                category: '소심',
+                hours: '9',
+                percentage: '~',
+            },
+            {
+                category: '분노',
+                hours: '20',
+                percentage: '~',
+            },
+        ],
         comparisonWithLastMonth: {
             previousCategory: '알바',
             previousMonth: '7',
@@ -136,7 +164,7 @@ function StatisticsPage() {
 
     return (
         <Wrapper>
-            <TimeSpent />
+            <TimeSpent data={testData.timeSpent} />
             <ComparisonWithLastMonth data={testData.comparisonWithLastMonth} />
             <EmotionsSummary data={testData.emotionsSummary} />
             <PositiveEmotions data={testData.positiveEmotions} />

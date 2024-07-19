@@ -4,14 +4,18 @@ import TitleBox from './titleBox';
 import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import { ArrowIcon } from '../../../components/icons/icons';
+import PieChartComponent from './pieChartComponent';
 
-function TimeSpent() {
+function TimeSpent({ data }) {
+    console.log(data);
+
     return (
         <BackImg>
             <GlassmorphismModal>
                 <TitleBox
                     text={'이번 달 내가 가장 많이\n쓴 시간을 살펴볼까요?'}
                 />
+                <PieChartComponent apiData={data} />
             </GlassmorphismModal>
             <ArrowIcon />
         </BackImg>
