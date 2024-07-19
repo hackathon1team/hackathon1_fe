@@ -16,8 +16,6 @@ function SignUpPage() {
                         <StarImg src={Star} alt="" />
                     </TopBox>
                     <BottomBox>메코와 함께 자기 자신을 알아볼까요?</BottomBox>
-
-                    <SignUpButton>회원가입 하러가기</SignUpButton>
                 </Box>
             </BackImg>
             <BackImg1>
@@ -28,6 +26,7 @@ function SignUpPage() {
                     </NameBox0>
                 </Container>
             </BackImg1>
+            <BackImg1></BackImg1>
         </>
     );
 }
@@ -41,7 +40,7 @@ const BackImg = styled.div`
 
 const Box = styled.div`
     margin-top: 200px;
-    width: 80%;
+    width: 100%;
     height: 260px;
     display: flex;
     flex-direction: column;
@@ -75,17 +74,6 @@ const BackImg1 = styled.div`
     justify-content: center;
 `;
 
-const SignUpButton = styled.button`
-    border: none;
-    border-radius: 20px;
-    width: 180px;
-    font-size: 15px;
-    color: #5a639c;
-    padding: 10px 20px;
-    font-weight: 700;
-    margin-left: 300px;
-`;
-
 const CompleteLine = styled.div`
     width: 80%;
     height: 7px;
@@ -95,7 +83,7 @@ const CompleteLine = styled.div`
 
 const Container = styled.div`
     margin-top: 200px;
-    width: 80%;
+    width: 100%;
     height: 300px;
     display: flex;
     flex-direction: column;
