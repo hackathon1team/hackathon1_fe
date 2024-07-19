@@ -16,7 +16,7 @@ function EmotionsSummary({ data }) {
     return (
         <BackImg>
             <UpArrowIcon />
-            <GlassmorphismModal>
+            <GlassmorphismModal height={'70%'}>
                 <TitleBox
                     text={'이번 달, 내가 가장 많이\n느낀 감정을 확인해 볼까요?'}
                 />
