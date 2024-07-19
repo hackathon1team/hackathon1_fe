@@ -3,7 +3,12 @@ import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
 
 function QuestionPage() {
-    return <BackImg>QuestionPage</BackImg>;
+    return (
+        <>
+            <BackImg>시간 가계부 없을때</BackImg>
+            <BackImg>메코의 질문 정리</BackImg>
+        </>
+    );
 }
 export default QuestionPage;
 
