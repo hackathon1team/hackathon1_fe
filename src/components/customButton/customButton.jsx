@@ -1,4 +1,4 @@
 function CustomButton() {
-	return <>CustomButton</>
+    return <>CustomButton</>;
 }
-export default CustomButton
+export default CustomButton;

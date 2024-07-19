@@ -1,4 +1,4 @@
 function CustomModal() {
-	return <>CustomModal</>
+    return <>CustomModal</>;
 }
-export default CustomModal
+export default CustomModal;
