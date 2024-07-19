@@ -32,8 +32,7 @@ export default MetaQuestion;
 
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
-    padding-top: 50%;
-    padding: 50% 40px 0 40px;
+    padding: 50% 30px 0 30px;
 `;
 
 const MainQuestion = styled.div`

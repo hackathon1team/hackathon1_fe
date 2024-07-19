@@ -9,4 +9,5 @@ export default QuestionPage;
 
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
+    padding: 72px 30px 0 30px;
 `;

@@ -8,7 +8,6 @@ function SignUpPage() {
     return (
         <>
             <MetaAbout />
-
             <MetaQuestion />
         </>
     );
