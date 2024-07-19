@@ -17,3 +17,5 @@ export const UpArrowIcon = () => (
         style={{ marginBottom: 15, cursor: 'pointer' }}
     />
 );
+
+
