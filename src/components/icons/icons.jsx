@@ -10,6 +10,8 @@ import { TbDeviceIpadHorizontalQuestion } from 'react-icons/tb';
 import { VscGraph } from 'react-icons/vsc';
 import { BsPersonFill } from 'react-icons/bs';
 import { IoIosLogOut } from 'react-icons/io';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { RiCalendar2Line } from 'react-icons/ri';
 
 export const HamburgerIcon = ({ onClick }) => (
     <RxHamburgerMenu
@@ -41,6 +43,24 @@ export const CancelIcon = ({ onClick }) => (
         color="white"
         onClick={onClick}
         style={{ cursor: 'pointer' }}
+    />
+);
+
+export const PlusIcon = ({ onClick }) => (
+    <AiOutlinePlusCircle
+        size={45}
+        color="white"
+        onClick={onClick}
+        style={{ marginLeft: 280, marginTop: 60, cursor: 'pointer ' }}
+    />
+);
+
+export const CalendarIcon = ({ onClick }) => (
+    <RiCalendar2Line
+        size={45}
+        color="lightpink"
+        onClick={onClick}
+        style={{ marginLeft: 280, cursor: 'pointer ' }}
     />
 );
 
