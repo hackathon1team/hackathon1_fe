@@ -13,7 +13,7 @@ function GlassmorphismModal(props) {
 export default GlassmorphismModal;
 
 const Box = styled.div`
-    width: 89%;
+    width: 100%;
     padding: 30px 0;
     /* background: rgba(255, 255, 255, 0.1); */
     background: linear-gradient(

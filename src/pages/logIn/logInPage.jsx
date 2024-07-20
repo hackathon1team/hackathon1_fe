@@ -46,7 +46,7 @@ const BackImg = styled.div`
 
 const Box = styled.div`
     margin-top: 50px;
-    width: 80%;
+    width: 100%;
     height: 500px;
     display: flex;
     flex-direction: column;
