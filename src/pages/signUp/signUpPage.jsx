@@ -3,6 +3,10 @@ import Background from '../../assets/Img/backgroundImg/signUp_1.png';
 import Background1 from '../../assets/Img/backgroundImg/signUp_2.png';
 import { BackGroundImg } from '../../styles/common';
 import Star from '../../assets/Img/signUpImg/star.png';
+import { BackGroundImg } from '../../styles/common';
+import MetaAbout from './components/MetaAbout';
+import MetaQuestion from './components/MetaQuestion';
+
 
 function SignUpPage() {
     return (
@@ -74,6 +78,8 @@ function SignUpPage() {
                     </ButtonWrap2>
                 </Wrapper>
             </BackImg1>
+            <MetaAbout />
+            <MetaQuestion />
         </>
     );
 }

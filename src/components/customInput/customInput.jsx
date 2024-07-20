@@ -1,4 +1,4 @@
 function CustomInput() {
-	return <>CustomInput</>
+    return <>CustomInput</>;
 }
-export default CustomInput
+export default CustomInput;
