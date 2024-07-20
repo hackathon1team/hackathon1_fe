@@ -12,7 +12,7 @@ const NoneCalendarPage = () => {
                     먼저 시간가계부를 작성하러 갈까요?
                     <CButtonWrapper>
                         <TimeCalendarButton>
-                            시간 가계부 가기
+                            <div>시간 가계부 가기</div>
                         </TimeCalendarButton>
                     </CButtonWrapper>
                     <ImgWrapper>
@@ -31,11 +31,12 @@ export default NoneCalendarPage;
 
 const Title = styled.div`
     padding-top: 40%;
-    color: white;
+    color: #c7c5cd;
     font-size: 18px;
 
     span {
         font-weight: 700;
+        color: white;
     }
 `;
 
@@ -49,9 +50,8 @@ const GotoTimeCalendar = styled.div`
     font-weight: 600;
     color: #5a639c;
     text-align: center;
-    padding-top: 7%;
     margin-top: 50%;
-    width: 280px;
+    padding: 7% 10px 0 10px;
     height: 100px;
     border: none;
     border-radius: 30px;
@@ -75,6 +75,8 @@ const TimeCalendarButton = styled.button`
 `;
 const ImgWrapper = styled.div`
     margin-top: 5%;
-    display: flex;
-    justify-content: end;
+    text-align: end;
+    & > img {
+        width: 90px;
+    }
 `;
