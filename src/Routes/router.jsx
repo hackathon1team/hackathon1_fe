@@ -1,6 +1,9 @@
 import Error404Page from '../components/error/error404';
 import Header from '../components/header/Header';
 import LogInPage from '../pages/logIn/logInPage';
+import MetaQuestion from '../pages/metaTutorial/MetaQuestion';
+import MetaAbout from '../pages/metaTutorial/metaAbout';
+import MetaTutorial from '../pages/metaTutorial/metaAbout';
 import MyPagePage from '../pages/myPage/myPage';
 import QuestionPage from '../pages/question/questionPage';
 import SignUpPage from '../pages/signUp/signUpPage';
@@ -23,6 +26,16 @@ const router = [
             {
                 path: '/signUp',
                 element: <SignUpPage />,
+            },
+            ,
+            {
+                path: '/metaAbout',
+                element: <MetaAbout />,
+            },
+            ,
+            {
+                path: '/metaQuestion',
+                element: <MetaQuestion />,
             },
             {
                 path: '/statistics',

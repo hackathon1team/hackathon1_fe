@@ -2,11 +2,14 @@ import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorp
 import CustomModal from '../../../components/customModal/customModal';
 import styled from 'styled-components';
 import SuccessImg from '../../../assets/Img/signUpImg/success.png';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpMadal({ setIsModalView }) {
+    const navigate = useNavigate();
     const handleStart = () => {
         setIsModalView(false);
-        alert('회원가입 서비스는 준비중입니다 :)');
+        alert('임시로 회원가입 성공! 튜토리얼 시작합니다');
+        navigate('/metaAbout');
     };
     return (
         <CustomModal>

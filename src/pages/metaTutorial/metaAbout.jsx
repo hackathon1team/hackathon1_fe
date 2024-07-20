@@ -1,9 +1,15 @@
-import styled from 'styled-components';
-import { BackGroundImg } from '../../../styles/common';
-import Background from '../../../assets/Img/backgroundImg/meta.png';
-import CustomButton from '../../../components/customButton/customButton';
+import styled, { keyframes } from 'styled-components';
+
+import Background from '../../assets/Img/backgroundImg/meta.png';
+import { BackGroundImg } from '../../styles/common';
+import CustomButton from '../../components/customButton/customButton';
+import { useNavigate } from 'react-router-dom';
 
 const MetaAbout = () => {
+    const navigate = useNavigate();
+    const handleQuestion = () => {
+        navigate('/metaQuestion');
+    };
     return (
         <BackImg>
             <AboutMetaCog>
@@ -24,7 +30,9 @@ const MetaAbout = () => {
                 </DesWrapper>
                 <BtnWrapper>
                     {/* <MetaButton>질문 대답 하러가기</MetaButton> */}
-                    <CustomButton icon={'right'}>다음질문</CustomButton>
+                    <CustomButton icon={'right'} onClick={handleQuestion}>
+                        다음질문
+                    </CustomButton>
                 </BtnWrapper>
             </AboutMetaCog>
         </BackImg>
@@ -34,6 +42,14 @@ const MetaAbout = () => {
 export default MetaAbout;
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
+`;
+const aniMation = keyframes`
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 `;
 
 const AboutMetaCog = styled.div`
@@ -45,6 +61,7 @@ const AboutMetaWord = styled.div`
         font-size: 32px;
         color: white;
         text-align: center;
+        animation: ${aniMation} 2s ease 0s;
     }
 `;
 
@@ -54,6 +71,7 @@ const MetaWord1 = styled.div`
     color: #ffffffc7;
     padding-top: 25%;
     padding-left: 15%;
+    animation: ${aniMation} 4s ease 0s;
 `;
 
 const MetaWord2 = styled.div`
@@ -62,6 +80,7 @@ const MetaWord2 = styled.div`
     color: #ffffffc7;
     padding-top: 8%;
     padding-left: 60%;
+    animation: ${aniMation} 4.5s ease 0s;
 `;
 
 const MetaWord3 = styled.div`
@@ -70,11 +89,13 @@ const MetaWord3 = styled.div`
     color: #ffffffc7;
     padding-top: 8%;
     padding-left: 25%;
+    animation: ${aniMation} 5.5s ease 0s;
 `;
 const DesWrapper = styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 5%;
+    animation: ${aniMation} 6s ease 0s;
 `;
 const AboutMetaDes = styled.div`
     text-align: left;
@@ -91,4 +112,5 @@ const BtnWrapper = styled.div`
     margin: 0 30px;
     display: flex;
     justify-content: end;
+    animation: ${aniMation} 6s ease 0s;
 `;

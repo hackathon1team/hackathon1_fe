@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { BackGroundImg } from '../../../styles/common';
-import Background from '../../../assets/Img/backgroundImg/meta_1.png';
-import CustomButton from '../../../components/customButton/customButton';
+import { BackGroundImg } from '../../styles/common';
+import Background from '../../assets/Img/backgroundImg/meta_1.png';
+import CustomButton from '../../components/customButton/customButton';
 
 function MetaQuestion() {
     return (
@@ -77,14 +77,4 @@ const MQButton = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 5% 0;
-`;
-
-const MQNextButton = styled.button`
-    border: none;
-    border-radius: 30px;
-    font-size: 15px;
-    color: #5a639c;
-    padding: 10px 20px;
-    font-weight: 700;
-    cursor: pointer;
 `;

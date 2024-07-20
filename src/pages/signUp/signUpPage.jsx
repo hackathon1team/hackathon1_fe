@@ -1,5 +1,3 @@
-import MetaAbout from './components/MetaAbout';
-import MetaQuestion from './components/MetaQuestion';
 import SignUpName from './components/signUpName';
 import SignUpId from './components/signUpId';
 import SignUpIntro from './components/signUpIntro';
@@ -11,7 +9,6 @@ import Background1 from '../../assets/Img/backgroundImg/signUp_2.png';
 import Star from '../../assets/Img/signUpImg/star.png';
 import CustomButton from '../../components/customButton/customButton';
 import SignUpMadal from './components/SignUpModal';
-import ModalPortal from '../../components/customModal/modalPortal';
 
 function SignUpPage() {
     const [currentPageNum, SetCurrentPageNum] = useState(0);
@@ -27,42 +24,47 @@ function SignUpPage() {
         // alert('회원가입 기능은 준비중입니다 :)');
         setIsModalView(true);
     };
-    console.log(currentPageNum);
+
     return (
         <>
-            {currentPageNum === 0 && <SignUpIntro upCount={upCount} />}
-            <BackImg1>
-                <Wrapper>
-                    <Container>
-                        <CompleteLineWrap>
-                            <CompleteLine width={currentPageNum * 33}>
-                                <StarImg2 src={Star} alt="" />
-                            </CompleteLine>
-                            {currentPageNum === 1 && <SignUpName />}
-                            {currentPageNum === 2 && <SignUpId />}
-                            {currentPageNum === 3 && <SignUpPassword />}
-                        </CompleteLineWrap>
-                    </Container>
-                    <ButtonWrap2>
-                        <CustomButton icon={'left'} onClick={downCount}>
-                            이전 질문
-                        </CustomButton>
-                        {currentPageNum === 3 ? (
-                            <CustomButton icon={'right'} onClick={handleSignUp}>
-                                회원가입 하기
+            {currentPageNum === 0 ? (
+                <SignUpIntro upCount={upCount} />
+            ) : (
+                <BackImg1>
+                    <Wrapper>
+                        <Container>
+                            <CompleteLineWrap>
+                                <CompleteLine width={currentPageNum * 33}>
+                                    <StarImg2 src={Star} alt="" />
+                                </CompleteLine>
+                                {currentPageNum === 1 && <SignUpName />}
+                                {currentPageNum === 2 && <SignUpId />}
+                                {currentPageNum === 3 && <SignUpPassword />}
+                            </CompleteLineWrap>
+                        </Container>
+                        <ButtonWrap2>
+                            <CustomButton icon={'left'} onClick={downCount}>
+                                이전 질문
                             </CustomButton>
-                        ) : (
-                            <CustomButton icon={'right'} onClick={upCount}>
-                                다음 질문
-                            </CustomButton>
-                        )}
-                    </ButtonWrap2>
-                </Wrapper>
-                {isModalView && <SignUpMadal setIsModalView={setIsModalView} />}
-            </BackImg1>
-
-            {/* <MetaAbout />
-            <MetaQuestion /> */}
+                            {currentPageNum === 3 ? (
+                                <CustomButton
+                                    icon={'right'}
+                                    onClick={handleSignUp}
+                                >
+                                    회원가입 하기
+                                </CustomButton>
+                            ) : (
+                                <CustomButton icon={'right'} onClick={upCount}>
+                                    다음 질문
+                                </CustomButton>
+                            )}
+                        </ButtonWrap2>
+                    </Wrapper>
+                    {isModalView && (
+                        <SignUpMadal setIsModalView={setIsModalView} />
+                    )}
+                </BackImg1>
+            )}
         </>
     );
 }
