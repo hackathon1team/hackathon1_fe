@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
+import NoneCalendarPage from './components/NoneCalendarPage';
 
 function QuestionPage() {
     return (
         <>
-            <BackImg>시간 가계부 없을때</BackImg>
+            <BackImg>
+                <NoneCalendarPage />
+            </BackImg>
             <BackImg>메코의 질문 정리</BackImg>
         </>
     );
