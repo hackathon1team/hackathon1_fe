@@ -3,7 +3,6 @@ import { ArrowLeftIcon, ArrowRightIcon } from '../icons/icons';
 
 function CustomButton(props) {
     const { icon, children } = props;
-    console.log(icon);
     return (
         <MetaButton>
             {icon === 'left' && <ArrowLeftIcon />}
