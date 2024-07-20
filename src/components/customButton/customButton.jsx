@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { ArrowLeftIcon, ArrowRightIcon } from '../icons/icons';
 
 function CustomButton(props) {
-    const { icon, children } = props;
+    const { icon, onClick, children } = props;
     return (
-        <MetaButton>
+        <MetaButton onClick={onClick}>
             {icon === 'left' && <ArrowLeftIcon />}
             <div>{children}</div>
             {icon === 'right' && <ArrowRightIcon />}

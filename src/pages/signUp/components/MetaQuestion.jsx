@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { BackGroundImg } from '../../../styles/common';
 import Background from '../../../assets/Img/backgroundImg/meta_1.png';
 import CustomButton from '../../../components/customButton/customButton';
-import { ArrowLeftIcon, ArrowRightIcon } from '../../../components/icons/icons';
 
 function MetaQuestion() {
     return (
