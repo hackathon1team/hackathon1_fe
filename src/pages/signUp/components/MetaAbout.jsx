@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { BackGroundImg } from '../../../styles/common';
 import Background from '../../../assets/Img/backgroundImg/meta.png';
 import CustomButton from '../../../components/customButton/customButton';
-import { ArrowRightIcon } from '../../../components/icons/icons';
 
 const MetaAbout = () => {
     return (

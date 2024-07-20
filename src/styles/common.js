@@ -6,5 +6,5 @@ export const BackGroundImg = (Background) => css`
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-top: 72px;
+    padding: 72px 30px 0px 30px;
 `;
