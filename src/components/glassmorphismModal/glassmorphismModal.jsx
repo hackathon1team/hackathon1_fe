@@ -15,12 +15,23 @@ export default GlassmorphismModal;
 const Box = styled.div`
     width: 89%;
     padding: 30px 0;
-    background: rgba(149, 142, 173, 0.42);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(4.8px);
-    -webkit-backdrop-filter: blur(4.8px);
-    border: 1px solid rgba(149, 142, 173, 0.4);
+    /* background: rgba(255, 255, 255, 0.1); */
+    background: linear-gradient(
+        to bottom right,
+        #928ac45c,
+        #9c95c593,
+        #9892c3b0,
+        #8e87b6d5
+    );
+
+    border-radius: 40px;
+    /* box-shadow: 20px 25px rgba(0, 0, 0, 0.1); */
+    box-shadow:
+        0 19px 38px rgba(0, 0, 0, 0.3),
+        0 15px 12px rgba(0, 0, 0, 0.22);
+    /* backdrop-filter: blur(5.1px); */
+    /* -webkit-backdrop-filter: blur(5.1px); */
+    border: 1px solid rgba(255, 255, 255, 0.14);
     display: flex;
     flex-direction: column;
     align-items: center;

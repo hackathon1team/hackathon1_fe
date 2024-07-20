@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { BackGroundImg } from '../../../styles/common';
 import Background from '../../../assets/Img/backgroundImg/meta.png';
+import CustomButton from '../../../components/customButton/customButton';
+import { ArrowRightIcon } from '../../../components/icons/icons';
 
 const MetaAbout = () => {
     return (
@@ -12,13 +14,19 @@ const MetaAbout = () => {
                     <MetaWord2>자기평가</MetaWord2>
                     <MetaWord3>계획</MetaWord3>
                 </AboutMetaWord>
-                <AboutMetaDes>
-                    <span>메타인지</span>는 자기 자신의 사고 과정에 대해 <br />
-                    생각하는 능력을 의미합니다. <br />
-                    즉, 자신의 생각, 학습, 이해, 기억 등을 <br />
-                    인식하고 조절하는 능력입니다.
-                </AboutMetaDes>
-                <MetaButton>질문 대답 하러가기</MetaButton>
+                <DesWrapper>
+                    <AboutMetaDes>
+                        <span>메타인지</span>는 자기 자신의 사고 과정에 대해{' '}
+                        <br />
+                        생각하는 능력을 의미합니다. <br />
+                        즉, 자신의 생각, 학습, 이해, 기억 등을 <br />
+                        인식하고 조절하는 능력입니다.
+                    </AboutMetaDes>
+                </DesWrapper>
+                <BtnWrapper>
+                    {/* <MetaButton>질문 대답 하러가기</MetaButton> */}
+                    <CustomButton icon={'right'}>다음질문</CustomButton>
+                </BtnWrapper>
             </AboutMetaCog>
         </BackImg>
     );
@@ -64,26 +72,24 @@ const MetaWord3 = styled.div`
     padding-top: 8%;
     padding-left: 25%;
 `;
-
+const DesWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+`;
 const AboutMetaDes = styled.div`
     text-align: left;
     font-size: 16px;
     font-weight: 600;
     color: #ffffffc7;
-    padding: 15% 0 5% 10%;
-
+    padding: 15% 0 5% 0;
     span {
         font-size: 16px;
         color: #444b77;
     }
 `;
-
-const MetaButton = styled.button`
-    border: none;
-    border-radius: 20px;
-    font-size: 13px;
-    color: #5a639c;
-    padding: 8px 12px;
-    font-weight: 700;
-    margin-left: 55%;
+const BtnWrapper = styled.div`
+    margin: 0 30px;
+    display: flex;
+    justify-content: end;
 `;
