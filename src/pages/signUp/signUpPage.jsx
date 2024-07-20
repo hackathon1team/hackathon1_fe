@@ -30,7 +30,7 @@ function SignUpPage() {
                     <Container>
                         <CompleteLineWrap>
                             <CompleteLine>
-                                <StarImg src={Star} alt="" />
+                                <StarImg2 src={Star} alt="" />
                             </CompleteLine>
                         </CompleteLineWrap>
                         <NameBox0>
@@ -53,7 +53,7 @@ function SignUpPage() {
                     <Container>
                         <CompleteLineWrap>
                             <CompleteLine2>
-                                <StarImg src={Star} alt="" />
+                                <StarImg2 src={Star} alt="" />
                             </CompleteLine2>
                         </CompleteLineWrap>
                         <NameBox0>
@@ -101,7 +101,7 @@ const TopBox = styled.div`
     color: white;
 `;
 
-const StarImg = styled.img`
+const StarImg2 = styled.img`
     width: 17px;
     height: 16px;
     margin-bottom: 12px;
@@ -109,6 +109,13 @@ const StarImg = styled.img`
     position: absolute;
     right: -10px;
     top: -4px;
+`;
+
+const StarImg = styled.img`
+    width: 17px;
+    height: 16px;
+    margin-bottom: 12px;
+    margin-left: 5px;
 `;
 const BottomBox = styled.div`
     width: 100%;
