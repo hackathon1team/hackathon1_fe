@@ -15,7 +15,7 @@ function MecoQuestion() {
         thirdAnswer: '',
     });
     const [inputVal, setInputVal] = useState('');
-    console.log(inputVal);
+
     const handleAnswer = () => {
         setInputVal('');
         if (userAnswerList.firstAnswer.length === 0)
