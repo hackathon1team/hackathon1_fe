@@ -16,18 +16,20 @@ function QuestionPage() {
             </BackImg>
             <BackImg>
                 <Wrapper>
-                    <TopBox>
-                        오늘, 가장 인상깊었던 <br />
-                        사건은 무엇인가요?
-                        <StarImg1 src={Star1} alt="" />
-                        <StarImg2 src={Star2} alt="" />
-                    </TopBox>
-                    <MiddleBox>
-                        <HamHam src={Hami} alt="" />
-                        <CategoryBox>
-                            <Category>친구 만나기</Category>
-                        </CategoryBox>
-                    </MiddleBox>
+                    <TopWrapper>
+                        <TopBox>
+                            오늘, 가장 인상깊었던 <br />
+                            사건은 무엇인가요?
+                            <StarImg1 src={Star1} alt="" />
+                            <StarImg2 src={Star2} alt="" />
+                        </TopBox>
+                        <MiddleBox>
+                            <HamHam src={Hami} alt="" />
+                            <CategoryBox>
+                                <Category>친구 만나기</Category>
+                            </CategoryBox>
+                        </MiddleBox>
+                    </TopWrapper>
                     <BottomBox>
                         <CustomButton icon={'right'}>대화하러</CustomButton>
                         <CustomButton icon={'right'}>
@@ -49,6 +51,10 @@ const BackImg = styled.div`
 
 const Wrapper = styled.div`
     width: 100%;
+    height: 70vh;
+`;
+const TopWrapper = styled.div`
+    height: 100%;
 `;
 const TopBox = styled.div`
     margin-top: 20px;
@@ -94,7 +100,7 @@ const CategoryBox = styled.div`
 const HamHam = styled.img`
     width: 125px;
     height: 143px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 `;
 
 const Category = styled.div`
@@ -108,5 +114,10 @@ const Category = styled.div`
 `;
 
 const BottomBox = styled.div`
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    & > * {
+        margin-bottom: 14px;
+    }
 `;
