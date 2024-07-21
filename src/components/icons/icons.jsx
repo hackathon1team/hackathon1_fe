@@ -37,10 +37,10 @@ export const UpArrowIcon = () => (
         style={{ marginBottom: 15, cursor: 'pointer' }}
     />
 );
-export const CancelIcon = ({ onClick }) => (
+export const CancelIcon = ({ onClick, color }) => (
     <RxCross1
         size={24}
-        color="white"
+        color={color ? color : 'white'}
         onClick={onClick}
         style={{ cursor: 'pointer' }}
     />
@@ -48,19 +48,19 @@ export const CancelIcon = ({ onClick }) => (
 
 export const PlusIcon = ({ onClick }) => (
     <AiOutlinePlusCircle
-        size={45}
+        size={50}
         color="white"
         onClick={onClick}
-        style={{ marginLeft: 280, marginTop: 60, cursor: 'pointer ' }}
+        style={{ cursor: 'pointer ' }}
     />
 );
 
 export const CalendarIcon = ({ onClick }) => (
     <RiCalendar2Line
-        size={45}
-        color="lightpink"
+        size={30}
+        color="#FFE9E9"
         onClick={onClick}
-        style={{ marginLeft: 280, cursor: 'pointer ' }}
+        style={{ cursor: 'pointer ' }}
     />
 );
 
