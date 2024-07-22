@@ -3,17 +3,22 @@ import Star1 from '../../../assets/Img/questionImg/star.png';
 
 function ChattingMecoBox({ text }) {
     return (
-        <ChattingBox>
-            <Box>
-                {text}
-                <Star src={Star1} />
-            </Box>
-        </ChattingBox>
+        <>
+            <ChattingBox>
+                <Box>
+                    {text}
+                    <Star src={Star1} />
+                </Box>
+            </ChattingBox>
+        </>
     );
 }
 export default ChattingMecoBox;
 const fadeIn = keyframes`
   0%{
+    opacity: 0;
+  }
+  80% {    
     opacity: 0;
   }
   100% {    

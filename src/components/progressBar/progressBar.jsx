@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Star from '../../assets/Img/signUpImg/star.png';
 
 function ProgressBar({ currentPageNum, limit }) {
-    console.log(currentPageNum);
     return (
         <CompleteLineWrap>
             <CompleteLine width={currentPageNum * (100 / limit)}>
