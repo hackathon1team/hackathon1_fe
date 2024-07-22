@@ -147,6 +147,6 @@ const EndBox = styled.div`
     height: 20vh;
     display: flex;
     align-items: end;
-    animation: ${fadeIn} 2.2s ease-in-out;
+    animation: ${fadeIn} 1s ease-in-out;
     justify-content: end;
 `;

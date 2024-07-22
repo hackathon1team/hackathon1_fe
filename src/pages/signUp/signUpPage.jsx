@@ -6,7 +6,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
 import Background1 from '../../assets/Img/backgroundImg/signUp_2.png';
-import Star from '../../assets/Img/signUpImg/star.png';
 import CustomButton from '../../components/customButton/customButton';
 import SignUpMadal from './components/SignUpModal';
 import ProgressBar from '../../components/progressBar/progressBar';

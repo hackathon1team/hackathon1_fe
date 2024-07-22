@@ -28,7 +28,7 @@ const fadeIn = keyframes`
 const ChattingBox = styled.div`
     display: flex;
     margin: 20px 0;
-    animation: ${fadeIn} 2.2s ease-in-out;
+    animation: ${fadeIn} 2s ease-in-out;
 `;
 const Box = styled.div`
     background-color: #e1e2ed;
