@@ -3,8 +3,17 @@ import CustomButton from '../../../components/customButton/customButton';
 import Star1 from '../../../assets/Img/questionImg/star1.png';
 import Star2 from '../../../assets/Img/questionImg/star.png';
 import Hami from '../../../assets/Img/questionImg/hamham.png';
+import { useState } from 'react';
 
 function SelectDate() {
+    const testData = ['공부함', '바보', '싸움'];
+    const [val, setVal] = useState('');
+    const [isView, setIsView] = useState(false);
+
+    const handleClickCategory = (el) => {
+        setVal(el);
+        setIsView(false);
+    };
     return (
         <Wrapper>
             <TopWrapper>
@@ -16,9 +25,28 @@ function SelectDate() {
                 </TopBox>
                 <MiddleBox>
                     <HamHam src={Hami} alt="" />
-                    <CategoryBox>
-                        <Category>친구 만나기</Category>
+
+                    <CategoryBox
+                        isView={isView}
+                        onClick={() => setIsView((prev) => !prev)}
+                    >
+                        <Category val={val}>
+                            {val ? val : '사건을 선택해주세요.'}
+                        </Category>
                     </CategoryBox>
+                    {isView && (
+                        <CategoryWrapper>
+                            {testData.map((el) => (
+                                <CategoryBox>
+                                    <Category
+                                        onClick={() => handleClickCategory(el)}
+                                    >
+                                        {el}
+                                    </Category>
+                                </CategoryBox>
+                            ))}
+                        </CategoryWrapper>
+                    )}
                 </MiddleBox>
             </TopWrapper>
             <BottomBox>
@@ -75,7 +103,21 @@ const CategoryBox = styled.div`
     width: 100%;
     height: 48px;
     background-color: #5e5b88c8;
+    border-radius: ${({ isView }) => (isView ? '10px 10px 0 0 ' : '10px')};
+    cursor: pointer;
+`;
+
+const CategoryWrapper = styled.div`
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    & > div {
+        border-radius: 0;
+    }
+    & > div:last-child {
+        border-radius: 0 0 10px 10px;
+    }
 `;
 const HamHam = styled.img`
     width: 125px;
@@ -84,14 +126,15 @@ const HamHam = styled.img`
 `;
 
 const Category = styled.div`
-    color: #cccccc;
     font-size: 16px;
     margin-top: 14px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-left: 16px;
+    color: ${({ val }) => (val ? 'white' : '#cccccc')};
 `;
+const CategoryList = styled.div``;
 
 const BottomBox = styled.div`
     display: flex;
