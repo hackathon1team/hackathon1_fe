@@ -22,7 +22,6 @@ const NameBox1 = styled.div`
 const NameBox0 = styled.div`
     width: 100%;
     height: 130px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
