@@ -12,6 +12,14 @@ import TimeCalendarPage from '../pages/timeCalendar/timeCalendarPage';
 
 const router = [
     {
+        path: '/login',
+        element: <LogInPage />,
+    },
+    {
+        path: '/signUp',
+        element: <SignUpPage />,
+    },
+    {
         path: '/',
         element: <Header />,
         children: [
@@ -19,15 +27,6 @@ const router = [
                 path: '/',
                 element: <TimeCalendarPage />,
             },
-            {
-                path: '/login',
-                element: <LogInPage />,
-            },
-            {
-                path: '/signUp',
-                element: <SignUpPage />,
-            },
-            ,
             {
                 path: '/metaAbout',
                 element: <MetaAbout />,

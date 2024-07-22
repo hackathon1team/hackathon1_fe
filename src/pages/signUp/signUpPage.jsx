@@ -9,6 +9,7 @@ import Background1 from '../../assets/Img/backgroundImg/signUp_2.png';
 import Star from '../../assets/Img/signUpImg/star.png';
 import CustomButton from '../../components/customButton/customButton';
 import SignUpMadal from './components/SignUpModal';
+import ProgressBar from '../../components/progressBar/progressBar';
 
 function SignUpPage() {
     const [currentPageNum, SetCurrentPageNum] = useState(0);
@@ -33,14 +34,13 @@ function SignUpPage() {
                 <BackImg1>
                     <Wrapper>
                         <Container>
-                            <CompleteLineWrap>
-                                <CompleteLine width={currentPageNum * 33}>
-                                    <StarImg2 src={Star} alt="" />
-                                </CompleteLine>
-                                {currentPageNum === 1 && <SignUpName />}
-                                {currentPageNum === 2 && <SignUpId />}
-                                {currentPageNum === 3 && <SignUpPassword />}
-                            </CompleteLineWrap>
+                            <ProgressBar
+                                currentPageNum={currentPageNum}
+                                limit={3}
+                            />
+                            {currentPageNum === 1 && <SignUpName />}
+                            {currentPageNum === 2 && <SignUpId />}
+                            {currentPageNum === 3 && <SignUpPassword />}
                         </Container>
                         <ButtonWrap2>
                             <CustomButton icon={'left'} onClick={downCount}>
