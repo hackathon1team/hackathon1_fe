@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
 import Background from '../../assets/Img/backgroundImg/logInStatistics.png';
-import Meco from '../../assets/Img/LogInImg/Meco.png';
+import Meco from '../../assets/Img/meco.png';
 import GlassmorphismModal from '../../components/glassmorphismModal/glassmorphismModal';
 
 function LogInPage() {
@@ -62,7 +62,6 @@ const TopBox = styled.div`
     align-items: center;
 `;
 const MecoImg = styled.img`
-    width: 56px;
     height: 103px;
 `;
 const LogoBox = styled.div`

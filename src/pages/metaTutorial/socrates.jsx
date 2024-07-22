@@ -3,7 +3,7 @@ import { BackGroundImg } from '../../styles/common';
 import Background from '../../assets/Img/backgroundImg/meta_1.png';
 import CustomButton from '../../components/customButton/customButton';
 
-function MetaQuestion() {
+function Socrates() {
     return (
         <BackImg>
             <MainQuestion>
@@ -29,7 +29,7 @@ function MetaQuestion() {
         </BackImg>
     );
 }
-export default MetaQuestion;
+export default Socrates;
 
 const BackImg = styled.div`
     ${BackGroundImg(Background)}

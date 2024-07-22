@@ -1,13 +1,10 @@
 import styled from 'styled-components';
-
+import meco from '../../../assets/Img//questionImg/happy.png';
 const QuestionSum = () => {
     return (
         <>
             <QuestionSumImg>
-                <img
-                    src="src\assets\Img\questionImg\QuestionSumImg.png"
-                    alt="QuestionSumImg"
-                />
+                <img src={meco} alt="QuestionSumImg" />
             </QuestionSumImg>
             <QuestionAnswer>
                 <Question1>오늘의 인상깊은 사건은 무엇인가요?</Question1>

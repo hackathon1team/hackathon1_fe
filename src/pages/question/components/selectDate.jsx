@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CustomButton from '../../../components/customButton/customButton';
 import Star1 from '../../../assets/Img/questionImg/star1.png';
 import Star2 from '../../../assets/Img/questionImg/star.png';
-import Hami from '../../../assets/Img/questionImg/hamham.png';
+import Meco from '../../../assets/Img/meco.png';
 
 function SelectDate() {
     return (
@@ -15,7 +15,7 @@ function SelectDate() {
                     <StarImg2 src={Star2} alt="" />
                 </TopBox>
                 <MiddleBox>
-                    <HamHam src={Hami} alt="" />
+                    <HamHam src={Meco} alt="" />
                     <CategoryBox>
                         <Category>친구 만나기</Category>
                     </CategoryBox>
@@ -78,8 +78,7 @@ const CategoryBox = styled.div`
     border-radius: 10px;
 `;
 const HamHam = styled.img`
-    width: 125px;
-    height: 143px;
+    width: 170px;
     margin-bottom: 30px;
 `;
 

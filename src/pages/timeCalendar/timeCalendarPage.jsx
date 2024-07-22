@@ -76,8 +76,7 @@ function TimeCalendarPage() {
 export default TimeCalendarPage;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
-    position: relative;
+    ${BackGroundImg(Background)}/* position: relative; */
 `;
 const Title = styled.div`
     font-size: 21px;

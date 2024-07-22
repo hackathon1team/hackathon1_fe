@@ -31,7 +31,7 @@ const MetaAbout = () => {
                 <BtnWrapper>
                     {/* <MetaButton>질문 대답 하러가기</MetaButton> */}
                     <CustomButton icon={'right'} onClick={handleQuestion}>
-                        다음질문
+                        질문 대답 하러가기
                     </CustomButton>
                 </BtnWrapper>
             </AboutMetaCog>
@@ -45,6 +45,9 @@ const BackImg = styled.div`
 `;
 const aniMation = keyframes`
     0% {
+        opacity: 0;
+    }
+    70% {
         opacity: 0;
     }
     100% {
@@ -61,7 +64,7 @@ const AboutMetaWord = styled.div`
         font-size: 32px;
         color: white;
         text-align: center;
-        animation: ${aniMation} 2s ease 0s;
+        animation: ${aniMation} 0s ease 0s;
     }
 `;
 
@@ -71,7 +74,7 @@ const MetaWord1 = styled.div`
     color: #ffffffc7;
     padding-top: 25%;
     padding-left: 15%;
-    animation: ${aniMation} 4s ease 0s;
+    animation: ${aniMation} 2s ease 0s;
 `;
 
 const MetaWord2 = styled.div`

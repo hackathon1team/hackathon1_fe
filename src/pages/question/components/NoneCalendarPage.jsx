@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Meco from '../../../assets/Img/meco.png';
 
 const NoneCalendarPage = () => {
     return (
@@ -16,10 +17,7 @@ const NoneCalendarPage = () => {
                         </TimeCalendarButton>
                     </CButtonWrapper>
                     <ImgWrapper>
-                        <img
-                            src="src\assets\Img\questionImg\알약캐릭터.png"
-                            alt="questionImg"
-                        />
+                        <img src={Meco} alt="questionImg" />
                     </ImgWrapper>
                 </GotoTimeCalendar>
             </GotoWrapper>
@@ -74,9 +72,9 @@ const TimeCalendarButton = styled.button`
     background-color: rgba(155, 134, 189, 0.41);
 `;
 const ImgWrapper = styled.div`
-    margin-top: 5%;
+    margin-top: 15%;
     text-align: end;
     & > img {
-        width: 90px;
+        width: 150px;
     }
 `;

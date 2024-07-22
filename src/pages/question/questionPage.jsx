@@ -31,6 +31,9 @@ function QuestionPage() {
             <BackImg>
                 <MecoQuestion />
             </BackImg>
+            <BackImg>
+                <QuestionSum />
+            </BackImg>
         </>
     );
 }

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Meco from '../../../assets/Img/meco.png';
 
 const NoneTimeCalendarPage = () => {
     return (
@@ -10,10 +11,7 @@ const NoneTimeCalendarPage = () => {
                 >
                     다른 날 데이터 보러가기
                 </AnotherDayButton>
-                <img
-                    src="src\assets\Img\timeCalendarImg\timeCalendar알약캐릭터.png"
-                    alt="timeCalendarImg"
-                />
+                <img src={Meco} alt="timeCalendarImg" />
             </NoneTimeCalendar>
         </>
     );

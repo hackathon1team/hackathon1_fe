@@ -1,7 +1,7 @@
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import CustomModal from '../../../components/customModal/customModal';
 import styled from 'styled-components';
-import SuccessImg from '../../../assets/Img/signUpImg/success.png';
+import SuccessImg from '../../../assets/Img/meco.png';
 import { useNavigate } from 'react-router-dom';
 
 function SignUpMadal({ setIsModalView }) {
@@ -9,7 +9,7 @@ function SignUpMadal({ setIsModalView }) {
     const handleStart = () => {
         setIsModalView(false);
         alert('임시로 회원가입 성공! 튜토리얼 시작합니다');
-        navigate('/metaAbout');
+        navigate('/socrates');
     };
     return (
         <CustomModal>
@@ -34,7 +34,7 @@ const Title = styled.div`
 `;
 
 const Img = styled.img`
-    width: 120px;
+    width: 150px;
     margin: 20px 0;
 `;
 const Button = styled.div`
