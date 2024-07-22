@@ -55,11 +55,6 @@ const QuestionAnswer = styled.div`
     color: #edececde;
     font-weight: 700;
 `;
-
-const Wrapper1 = styled.div`
-    padding-bottom: 8%;
-`;
-
 const Wrapper2 = styled.div`
     padding-bottom: 8%;
 `;
@@ -72,12 +67,4 @@ const Answer2 = styled.div`
     border-radius: 10px;
     background-color: #0000002b;
     padding: 3%;
-`;
-
-const Wrapper3 = styled.div`
-    padding-bottom: 8%;
-`;
-
-const Wrapper4 = styled.div`
-    padding-bottom: 8%;
 `;
