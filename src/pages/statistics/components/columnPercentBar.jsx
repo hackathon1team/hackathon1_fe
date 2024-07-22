@@ -76,3 +76,4 @@ const Bar = styled.div`
         animation: ${(height) => slide(height)} 2s ease-out;
     }
 `;
+
