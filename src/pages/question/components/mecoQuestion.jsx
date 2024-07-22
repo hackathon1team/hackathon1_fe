@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ChattingMecoBox from './chattingMecoBox';
 import ChattingUserBox from './chattingUserBox';
 import { useState } from 'react';
+import CustomButton from '../../../components/customButton/customButton';
+import meco from '../../../assets/Img/meco.png';
 
 function MecoQuestion() {
     const mecoQuestionList = [
@@ -60,17 +62,26 @@ function MecoQuestion() {
                 {userAnswerList.thirdAnswer.length !== 0 && (
                     <>
                         <ChattingUserBox text={userAnswerList.thirdAnswer} />
+                        <ChattingMecoBox
+                            text={`그렇군요. 태기님 오늘 하루도\n고생 많으셨어요 !`}
+                        />
                     </>
                 )}
             </ChattingTotalBox>
-            <InputWrapper>
-                <AddChatting
-                    placeholder="메코한테는 솔직한 답변을 해주세요."
-                    value={inputVal}
-                    onChange={(e) => setInputVal(e.target.value)}
-                />
-                <Button onClick={handleAnswer}>보내기</Button>
-            </InputWrapper>
+            {userAnswerList.thirdAnswer.length === 0 ? (
+                <InputWrapper>
+                    <AddChatting
+                        placeholder="메코한테는 솔직한 답변을 해주세요."
+                        value={inputVal}
+                        onChange={(e) => setInputVal(e.target.value)}
+                    />
+                    <Button onClick={handleAnswer}>보내기</Button>
+                </InputWrapper>
+            ) : (
+                <EndBox>
+                    <CustomButton icon={'right'}>대화 정리</CustomButton>
+                </EndBox>
+            )}
         </Wrapper>
     );
 }
@@ -100,7 +111,7 @@ const Button = styled.button`
     border: none;
     font-size: 14px;
     color: white;
-    padding: 3px 10px;
+    padding: 10px 12px;
     border-radius: 5px;
     position: absolute;
     right: 10px;
@@ -117,5 +128,25 @@ const AddChatting = styled.textarea`
     ::placeholder {
         color: #edececc6;
     }
+    color: white;
     font-size: 16px;
+`;
+const fadeIn = keyframes`
+  0%{
+    opacity: 0;
+  }
+  80% {    
+    opacity: 0;
+  }
+  100% {    
+    opacity: 1;
+  }
+`;
+const EndBox = styled.div`
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: end;
+    animation: ${fadeIn} 1s ease-in-out;
+    justify-content: end;
 `;

@@ -2,8 +2,31 @@ import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
 import Background from '../../assets/Img/backgroundImg/meta_1.png';
 import CustomButton from '../../components/customButton/customButton';
+import { useState } from 'react';
+import { socratestQuestionList } from '../../constants/socratesQuestionList';
+import ProgressBar from '../../components/progressBar/progressBar';
+import { useNavigate } from 'react-router-dom';
 
 function Socrates() {
+    const navigate = useNavigate();
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [answer, setAnswer] = useState({
+        answer1: '',
+        answer2: '',
+        answer3: '',
+        answer4: '',
+        answer5: '',
+    });
+
+    const handleUpDownQuestion = (upDown) => {
+        if (upDown === 'up') {
+            if (currentQuestion === 4) return;
+            setCurrentQuestion((prev) => prev + 1);
+        }
+        if (upDown === 'down') {
+            setCurrentQuestion((prev) => prev - 1);
+        }
+    };
     return (
         <BackImg>
             <MainQuestion>
@@ -11,20 +34,48 @@ function Socrates() {
                 얼마나 알고 있나요?
             </MainQuestion>
             <MiniQuestion>
-                자신의 장점과 단점은 무엇인가요? &#40;1/5&#41;
+                {socratestQuestionList[currentQuestion].question} &#40;
+                {currentQuestion + 1}/5&#41;
             </MiniQuestion>
-            <Progressbar>---별 진행바 자리입니다---</Progressbar>
+            <ProgressBar currentPageNum={currentQuestion} limit={4} />
             <MainAnswer>
                 <textarea
                     name="AboutMeAnswer"
                     placeholder="답변이 어려우면 작성하지 않아도 괜찮아요 &#10;언제든 다시 작성이 가능합니다"
+                    onChange={(e) =>
+                        setAnswer((prev) => ({
+                            ...prev,
+                            [`answer${currentQuestion + 1}`]: e.target.value,
+                        }))
+                    }
+                    value={answer[`answer${currentQuestion + 1}`]}
                     rows={6}
                     cols={40}
                 />
             </MainAnswer>
             <MQButton>
-                <CustomButton icon={'left'}>이전 질문</CustomButton>
-                <CustomButton icon={'right'}>다음 질문</CustomButton>
+                {currentQuestion === 0 ? (
+                    <div></div>
+                ) : (
+                    <CustomButton
+                        icon={'left'}
+                        onClick={() => handleUpDownQuestion('down')}
+                    >
+                        이전 질문
+                    </CustomButton>
+                )}
+                {currentQuestion === 4 ? (
+                    <CustomButton icon={'right'} onClick={() => navigate('/')}>
+                        홈으로
+                    </CustomButton>
+                ) : (
+                    <CustomButton
+                        icon={'right'}
+                        onClick={() => handleUpDownQuestion('up')}
+                    >
+                        다음 질문
+                    </CustomButton>
+                )}
             </MQButton>
         </BackImg>
     );
@@ -50,10 +101,6 @@ const MiniQuestion = styled.div`
     padding-bottom: 20px;
 `;
 
-const Progressbar = styled.div`
-    padding-bottom: 20px;
-`;
-
 const MainAnswer = styled.div`
     textarea {
         font-size: 16px;
@@ -63,12 +110,12 @@ const MainAnswer = styled.div`
         border-radius: 10px;
         width: 100%;
         background-color: #00000046;
+        color: white;
+        padding: 10px;
         ::placeholder {
-            color: white;
+            color: #b3aeae;
             font-size: 14px;
             font-weight: 700;
-            padding-top: 4%;
-            padding-left: 4%;
         }
     }
 `;

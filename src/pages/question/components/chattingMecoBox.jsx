@@ -3,17 +3,22 @@ import Star1 from '../../../assets/Img/questionImg/star.png';
 
 function ChattingMecoBox({ text }) {
     return (
-        <ChattingBox>
-            <Box>
-                {text}
-                <Star src={Star1} />
-            </Box>
-        </ChattingBox>
+        <>
+            <ChattingBox>
+                <Box>
+                    {text}
+                    <Star src={Star1} />
+                </Box>
+            </ChattingBox>
+        </>
     );
 }
 export default ChattingMecoBox;
 const fadeIn = keyframes`
   0%{
+    opacity: 0;
+  }
+  80% {    
     opacity: 0;
   }
   100% {    
@@ -23,7 +28,7 @@ const fadeIn = keyframes`
 const ChattingBox = styled.div`
     display: flex;
     margin: 20px 0;
-    animation: ${fadeIn} 2.2s ease-in-out;
+    animation: ${fadeIn} 2s ease-in-out;
 `;
 const Box = styled.div`
     background-color: #e1e2ed;
