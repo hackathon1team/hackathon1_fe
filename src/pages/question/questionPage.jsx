@@ -2,20 +2,35 @@ import styled from 'styled-components';
 import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
 import NoneCalendarPage from './components/NoneCalendarPage';
-import CustomButton from '../../components/customButton/customButton';
+import SelectDate from './components/selectDate';
+import QuestionSum from './components/QuestionSum';
+import MecoQuestion from './components/mecoQuestion';
 
 function QuestionPage() {
+    const testData = [
+        {
+            recordId: '2',
+            emotion: '짜증',
+            category: '친구',
+            contents: '태기랑 주먹다짐했다.',
+            takedTime: '2',
+        },
+        {
+            recordId: '3',
+            emotion: '기쁨',
+            category: '친구',
+            contents: '태기랑 화해했다.',
+            takedTime: '1',
+        },
+    ];
     return (
         <>
             <BackImg>
-                <NoneCalendarPage />
+                {testData.length === 0 ? <NoneCalendarPage /> : <SelectDate />}
             </BackImg>
             <BackImg>
-                1-1메코의 질문
-                <CustomButton icon={'right'}>대화하러</CustomButton>
-                <CustomButton icon={'right'}>이전 대화 보기</CustomButton>
+                <MecoQuestion />
             </BackImg>
-            <BackImg>1-2메코의 질문</BackImg>
         </>
     );
 }
