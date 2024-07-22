@@ -9,7 +9,7 @@ import PieChartComponent from './pieChartComponent';
 function TimeSpent({ data }) {
     return (
         <BackImg>
-            <GlassmorphismModal>
+            <GlassmorphismModal height={'70%'}>
                 <TitleBox
                     text={'이번 달 내가 가장 많이\n쓴 시간을 살펴볼까요?'}
                 />

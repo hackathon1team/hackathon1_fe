@@ -1,12 +1,45 @@
-import styled from 'styled-components'
-import Background from '../../assets/Img/backgroundImg/calendar&question.png'
-import { BackGroundImg } from '../../styles/common'
+import styled from 'styled-components';
+import Background from '../../assets/Img/backgroundImg/calendar&question.png';
+import { BackGroundImg } from '../../styles/common';
+import NoneCalendarPage from './components/NoneCalendarPage';
+import SelectDate from './components/selectDate';
+import QuestionSum from './components/QuestionSum';
+import MecoQuestion from './components/mecoQuestion';
 
 function QuestionPage() {
-	return <BackImg>QuestionPage</BackImg>
+    const testData = [
+        {
+            recordId: '2',
+            emotion: '짜증',
+            category: '친구',
+            contents: '태기랑 주먹다짐했다.',
+            takedTime: '2',
+        },
+        {
+            recordId: '3',
+            emotion: '기쁨',
+            category: '친구',
+            contents: '태기랑 화해했다.',
+            takedTime: '1',
+        },
+    ];
+    return (
+        <>
+            <BackImg>
+                {testData.length === 0 ? <NoneCalendarPage /> : <SelectDate />}
+            </BackImg>
+            <BackImg>
+                <MecoQuestion />
+            </BackImg>
+            <BackImg>
+                <QuestionSum />
+            </BackImg>
+        </>
+    );
 }
-export default QuestionPage
+export default QuestionPage;
 
 const BackImg = styled.div`
-	${BackGroundImg(Background)}
-`
+    ${BackGroundImg(Background)}
+    padding: 72px 30px 0 30px;
+`;

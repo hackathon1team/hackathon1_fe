@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { BackGroundImg } from '../../../styles/common';
-import Background from '../../../assets/Img/backgroundImg/meta_1.png';
+import { BackGroundImg } from '../../styles/common';
+import Background from '../../assets/Img/backgroundImg/meta_1.png';
+import CustomButton from '../../components/customButton/customButton';
 
-function MetaQuestion() {
+function Socrates() {
     return (
         <BackImg>
             <MainQuestion>
@@ -22,50 +23,45 @@ function MetaQuestion() {
                 />
             </MainAnswer>
             <MQButton>
-                <MQPrevButton>이전 질문</MQPrevButton>
-                <MQNextButton>다음 질문</MQNextButton>
+                <CustomButton icon={'left'}>이전 질문</CustomButton>
+                <CustomButton icon={'right'}>다음 질문</CustomButton>
             </MQButton>
         </BackImg>
     );
 }
-export default MetaQuestion;
+export default Socrates;
 
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
-    padding-top: 50%;
+    padding: 50% 30px 0 30px;
 `;
 
 const MainQuestion = styled.div`
-    padding-left: 7%;
-    font-size: 23px;
+    font-size: 25px;
     font-weight: 700;
     color: white;
     padding-bottom: 20px;
 `;
 
 const MiniQuestion = styled.div`
-    padding-left: 7%;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     color: #edececd7;
     padding-bottom: 20px;
 `;
 
 const Progressbar = styled.div`
-    padding-left: 7%;
     padding-bottom: 20px;
 `;
 
 const MainAnswer = styled.div`
-    display: flex;
-    justify-content: center;
     textarea {
         font-size: 16px;
-        width: 330px;
         height: 180px;
         resize: none;
         outline: none;
         border-radius: 10px;
+        width: 100%;
         background-color: #00000046;
         ::placeholder {
             color: white;
@@ -80,25 +76,5 @@ const MainAnswer = styled.div`
 const MQButton = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 5% 10%;
-`;
-
-const MQPrevButton = styled.button`
-    border: none;
-    border-radius: 30px;
-    font-size: 15px;
-    color: #5a639c;
-    padding: 10px 20px;
-    font-weight: 700;
-    cursor: pointer;
-`;
-
-const MQNextButton = styled.button`
-    border: none;
-    border-radius: 30px;
-    font-size: 15px;
-    color: #5a639c;
-    padding: 10px 20px;
-    font-weight: 700;
-    cursor: pointer;
+    padding: 5% 0;
 `;

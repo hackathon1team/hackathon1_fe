@@ -16,7 +16,7 @@ function NeutralEmotions({ data }) {
     return (
         <BackImg>
             <UpArrowIcon />
-            <GlassmorphismModal>
+            <GlassmorphismModal height={'70%'}>
                 <TitleBox text={'중립적 감정'} />
                 <PercentWrapper>
                     {data.map((val, idx) => (

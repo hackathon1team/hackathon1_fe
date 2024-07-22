@@ -17,7 +17,7 @@ function ComparisonWithLastMonth({ data }) {
     return (
         <BackImg>
             <UpArrowIcon />
-            <GlassmorphismModal>
+            <GlassmorphismModal height={'70%'}>
                 <TitleBox
                     text={'지난 달과 비교하여\n 시간을 한 눈에 확인해 볼까요?'}
                 />
@@ -56,8 +56,9 @@ const PercentWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 100%;
+
     & > * {
-        margin-top: 50px;
+        margin-top: 10px;
         height: 100px;
     }
 `;

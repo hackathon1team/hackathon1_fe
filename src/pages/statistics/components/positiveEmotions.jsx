@@ -16,7 +16,7 @@ function PositiveEmotions({ data }) {
     return (
         <BackImg>
             <UpArrowIcon />
-            <GlassmorphismModal>
+            <GlassmorphismModal height={'70%'}>
                 <TitleBox text={'긍정적 감정'} />
                 <PercentWrapper>
                     {data.map((val, idx) => (

@@ -16,7 +16,7 @@ function NegativeEmotions({ data }) {
     return (
         <BackImg>
             <UpArrowIcon />
-            <GlassmorphismModal>
+            <GlassmorphismModal height={'70%'}>
                 <TitleBox text={'부정적 감정'} />
                 <PercentWrapper>
                     {data.map((val, idx) => (
