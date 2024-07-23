@@ -6,6 +6,7 @@ import TimeCalendar from './components/TimeCalendar';
 import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
 import ScheduleModal from './components/scheduleModal';
 import { useState } from 'react';
+import ReactDatePicker from '../../components/datePicker/datePicker';
 
 function TimeCalendarPage() {
     const testData = [
@@ -52,7 +53,7 @@ function TimeCalendarPage() {
                     7월 12일의 하루를 <br />
                     기록해 볼까요?
                 </Title>
-                {testData.length === 0 ? (
+                {testData.length !== 0 ? (
                     <NoneTimeCalendarPage />
                 ) : (
                     <TimeCalendar testData={testData} />
@@ -72,7 +73,7 @@ function TimeCalendarPage() {
                         </Circle>
                     </FixedIcon>
                 </IconWrapper>
-
+                <ReactDatePicker />
                 {isView.firstModal && (
                     <ScheduleModal setIsView={setIsView} isView={isView} />
                 )}
