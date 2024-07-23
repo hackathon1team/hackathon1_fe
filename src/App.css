@@ -3,39 +3,24 @@
     max-width: 520px;
     margin: 0 auto;
 }
-@font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 100;
-    src: url('../assetsassets/font/Inter-Medium.ttf');
-}
-
-@font-face {
-    font-family: 'Inter-Light';
-    font-style: normal;
-    font-weight: 300;
-    src: url('./assets/font/Inter-Light.ttf');
-}
 
 @font-face {
     font-family: 'Inter-Medium';
     font-style: normal;
     font-weight: 500;
-    src: url('./assets/font/Inter-Medium.ttf');
+    src: url('./assets/font/Inter-Medium.ttf') format('ttf');
 }
-
 @font-face {
     font-family: 'Inter-SemiBold';
     font-style: normal;
     font-weight: 600;
-    src: url('./assets/font/Inter-SemiBold.ttf');
+    src: url('./assets/font/Inter-SemiBold.ttf') format('ttf');
 }
-
 @font-face {
     font-family: 'Inter-Bold';
     font-style: normal;
     font-weight: 700;
-    src: url('./assets/font/Inter-Bold.ttf');
+    src: url('./assets/font/Inter-Bold.ttf') format('ttf');
 }
 
 a {
@@ -80,8 +65,12 @@ ul {
 }
 button {
     cursor: pointer;
+    font-family: 'Inter-Light';
 }
 
 h1 {
     font-family: 'Inter-Bold';
+}
+h2 {
+    font-family: 'Inter-SemiBold';
 }
