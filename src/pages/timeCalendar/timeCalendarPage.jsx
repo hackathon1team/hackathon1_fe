@@ -100,9 +100,6 @@ const FixedIcon = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    bottom: 5%;
-    right: 10%;
 `;
 const Circle = styled.div`
     border: 4px solid #ffe9e9;
@@ -117,5 +114,9 @@ const Circle = styled.div`
 const IconWrapper = styled.div`
     position: fixed;
     bottom: 5%;
-    right: 38%;
+    right: 33%;
+    @media screen and (max-width: 500px) {
+        bottom: 5%;
+        right: 10%;
+    }
 `;

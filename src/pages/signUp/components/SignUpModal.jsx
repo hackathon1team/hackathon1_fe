@@ -9,7 +9,7 @@ function SignUpMadal({ setIsModalView }) {
     const handleStart = () => {
         setIsModalView(false);
         alert('임시로 회원가입 성공! 튜토리얼 시작합니다');
-        navigate('/socrates');
+        navigate('/metaAbout');
     };
     return (
         <CustomModal>

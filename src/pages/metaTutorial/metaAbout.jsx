@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 const MetaAbout = () => {
     const navigate = useNavigate();
     const handleQuestion = () => {
-        navigate('/metaQuestion');
+        navigate('/socrates');
     };
     return (
         <BackImg>
@@ -102,12 +102,12 @@ const DesWrapper = styled.div`
 `;
 const AboutMetaDes = styled.div`
     text-align: left;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     color: #ffffffc7;
     padding: 15% 0 5% 0;
     span {
-        font-size: 16px;
+        font-size: 20px;
         color: #444b77;
     }
 `;

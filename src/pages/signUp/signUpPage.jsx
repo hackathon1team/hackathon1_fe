@@ -21,7 +21,6 @@ function SignUpPage() {
         SetCurrentPageNum((prev) => prev - 1);
     };
     const handleSignUp = () => {
-        // alert('회원가입 기능은 준비중입니다 :)');
         setIsModalView(true);
     };
 
@@ -89,30 +88,8 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
 `;
-const CompleteLineWrap = styled.div`
-    width: 100%;
-    height: 7px;
-    background-color: #ffffff;
-    border-radius: 10px;
-`;
 const ButtonWrap2 = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
-`;
-const CompleteLine = styled.div`
-    width: ${({ width }) => (width ? width : '0')}%;
-    height: 7px;
-    background-color: #e2bbe9;
-    border-radius: 10px;
-    position: relative;
-`;
-const StarImg2 = styled.img`
-    width: 17px;
-    height: 16px;
-    margin-bottom: 12px;
-    margin-left: 5px;
-    position: absolute;
-    right: -10px;
-    top: -4px;
 `;
