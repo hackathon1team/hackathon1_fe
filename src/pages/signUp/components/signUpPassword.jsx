@@ -1,10 +1,21 @@
 import styled from 'styled-components';
 
-function SignUpPassword() {
+function SignUpPassword({ setUser }) {
     return (
         <NameBox0>
             <NameBox1>사용할 비밀번호를 작성해주세요</NameBox1>
-            <NameInput type="password" name="" placeholder="비밀번호" />
+            <NameInput
+                onChange={(e) => {
+                    setUser((prev) => {
+                        const updatedUser = { ...prev, userPw: e.target.value };
+                        console.log(updatedUser);
+                        return updatedUser;
+                    });
+                }}
+                type="password"
+                name=""
+                placeholder="비밀번호"
+            />
         </NameBox0>
     );
 }

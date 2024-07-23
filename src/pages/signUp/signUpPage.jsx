@@ -45,8 +45,12 @@ function SignUpPage() {
                             {currentPageNum === 1 && (
                                 <SignUpName setUser={setUser} />
                             )}
-                            {currentPageNum === 2 && <SignUpId />}
-                            {currentPageNum === 3 && <SignUpPassword />}
+                            {currentPageNum === 2 && (
+                                <SignUpId setUser={setUser} />
+                            )}
+                            {currentPageNum === 3 && (
+                                <SignUpPassword setUser={setUser} />
+                            )}
                         </Container>
                         <ButtonWrap2>
                             <CustomButton icon={'left'} onClick={downCount}>

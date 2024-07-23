@@ -5,12 +5,13 @@ function SignUpName({ setUser }) {
         <NameBox0>
             <NameBox1>당신의 이름은 무엇인가요?</NameBox1>
             <NameInput
-                onChange={(e) =>
-                    setUser((prevState) => ({
-                        ...prevState,
-                        name: e.target.value,
-                    }))
-                }
+                onChange={(e) => {
+                    setUser((prev) => {
+                        const updatedUser = { ...prev, name: e.target.value };
+                        console.log(updatedUser);
+                        return updatedUser;
+                    });
+                }}
                 type="text"
                 name=""
                 placeholder="이름을 작성해주세요"

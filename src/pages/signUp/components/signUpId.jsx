@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 
-function SignUpId() {
+function SignUpId({ setUser }) {
     return (
         <NameBox0>
             <NameBox1>사용 할 아이디를 작성해주세요.</NameBox1>
             <IdBox>
                 <NameInput2
+                    onChange={(e) => {
+                        setUser((prev) => {
+                            const updatedUser = {
+                                ...prev,
+                                userId: e.target.value,
+                            };
+                            console.log(updatedUser);
+                            return updatedUser;
+                        });
+                    }}
                     type="text"
                     name=""
                     placeholder="아이디 최대 10글자"
