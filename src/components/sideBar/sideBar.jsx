@@ -26,7 +26,7 @@ function SideBar({ handleCancel, setIsView }) {
     const urlList = [
         {
             url: '/',
-            korUrl: '홈',
+            korUrl: '홈 (시간가계부)',
             icon: <HomeIcon />,
         },
         {

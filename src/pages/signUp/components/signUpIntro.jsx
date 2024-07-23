@@ -54,6 +54,7 @@ const TopBox = styled.div`
     height: 100px;
     font-size: 32px;
     color: white;
+    margin-top: 50px;
 `;
 
 const StarImg = styled.img`

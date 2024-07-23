@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
-
+import meco from '../../../assets/Img/meco.png';
 const myPageItem = () => {
     return (
         <Wrapper>
-            {' '}
             <MyPageBox>
                 <GlassmorphismModal>
                     <LogoutBox>
-                        <img
-                            src="src\assets\Img\myPageImg\hamsterlogo.png"
-                            alt="hamsterlogo"
-                        />
+                        <img src={meco} alt="hamsterlogo" />
                         <LogoutBoxDetail>
                             <Name>메코메코</Name>
                             <LogDetail>
@@ -52,7 +48,7 @@ const Wrapper = styled.div`
     justify-content: center;
 `;
 const MyPageBox = styled.div`
-    width: 80%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,8 +61,7 @@ const LogoutBox = styled.div`
     margin-bottom: 30px;
 
     img {
-        width: 125px;
-        height: 145px;
+        width: 165px;
     }
 `;
 

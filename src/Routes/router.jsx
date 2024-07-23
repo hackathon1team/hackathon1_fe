@@ -1,7 +1,7 @@
 import Error404Page from '../components/error/error404';
 import Header from '../components/header/Header';
 import LogInPage from '../pages/logIn/logInPage';
-import MetaQuestion from '../pages/metaTutorial/MetaQuestion';
+import Socrates from '../pages/metaTutorial/socrates';
 import MetaAbout from '../pages/metaTutorial/metaAbout';
 import MetaTutorial from '../pages/metaTutorial/metaAbout';
 import MyPagePage from '../pages/myPage/myPage';
@@ -13,6 +13,14 @@ import TimeCalendarPage from '../pages/timeCalendar/timeCalendarPage';
 
 const router = [
     {
+        path: '/login',
+        element: <LogInPage />,
+    },
+    {
+        path: '/signUp',
+        element: <SignUpPage />,
+    },
+    {
         path: '/',
         element: <Header />,
         children: [
@@ -21,22 +29,13 @@ const router = [
                 element: <TimeCalendarPage />,
             },
             {
-                path: '/login',
-                element: <LogInPage />,
-            },
-            {
-                path: '/signUp',
-                element: <SignUpPage />,
-            },
-            ,
-            {
                 path: '/metaAbout',
                 element: <MetaAbout />,
             },
             ,
             {
-                path: '/metaQuestion',
-                element: <MetaQuestion />,
+                path: '/socrates',
+                element: <Socrates />,
             },
             {
                 path: '/statistics',

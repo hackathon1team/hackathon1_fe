@@ -38,6 +38,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     position: fixed;
+    z-index: 1;
 `;
 const fadeIn = keyframes`
   0% {
