@@ -84,6 +84,8 @@ export default TimeCalendarPage;
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
     height: 100%;
+    width: 100%;
+    position: relative;
 `;
 const Title = styled.div`
     font-size: 21px;
@@ -116,10 +118,4 @@ const IconWrapper = styled.div`
     position: fixed;
     bottom: 5%;
     right: 38%;
-    @media screen and (max-width: 1100px) {
-        right: 30%;
-    }
-    @media screen and (max-width: 500px) {
-        right: 10%;
-    }
 `;
