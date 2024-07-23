@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import meco from '../../../assets/Img//questionImg/happy.png';
 
 const QuestionSum = () => {
-    const Sum = [
+    const Summary = [
         {
             contents: '태기와 주먹다짐',
             questions: [
@@ -18,7 +18,7 @@ const QuestionSum = () => {
         },
     ];
 
-    const { questions, answers } = Sum[0];
+    const { questions, answers } = Summary[0];
 
     return (
         <>
