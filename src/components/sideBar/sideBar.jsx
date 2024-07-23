@@ -40,7 +40,7 @@ function SideBar({ handleCancel, setIsView }) {
             icon: <GraphIcon />,
         },
         {
-            url: '//',
+            url: '/socrates',
             korUrl: '감정 돌아보기',
             icon: <QuestionIcon />,
         },
