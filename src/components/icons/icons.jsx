@@ -10,6 +10,7 @@ import { TbDeviceIpadHorizontalQuestion } from 'react-icons/tb';
 import { VscGraph } from 'react-icons/vsc';
 import { BsPersonFill } from 'react-icons/bs';
 import { IoIosLogOut } from 'react-icons/io';
+import { IoIosArrowDown } from 'react-icons/io';
 
 export const HamburgerIcon = ({ onClick }) => (
     <RxHamburgerMenu
@@ -24,6 +25,13 @@ export const ArrowIcon = () => (
         size={40}
         color="white"
         style={{ marginTop: 15, cursor: 'pointer' }}
+    />
+);
+export const ArrowDowIcon = ({ rotate }) => (
+    <IoIosArrowDown
+        size={20}
+        color="white"
+        style={{ transform: `rotate(${rotate}deg)`, cursor: 'Pointer' }}
     />
 );
 export const ArrowRightIcon = () => <IoIosArrowForward size={15} />;

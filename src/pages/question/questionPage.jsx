@@ -4,7 +4,7 @@ import { BackGroundImg } from '../../styles/common';
 import NoneCalendarPage from './components/NoneCalendarPage';
 import SelectDate from './components/selectDate';
 import QuestionSum from './components/QuestionSum';
-import MecoQuestion from './components/mecoQuestion';
+import MecoQuestion from './mecoQuestion';
 
 function QuestionPage() {
     const testData = [
@@ -27,9 +27,6 @@ function QuestionPage() {
         <>
             <BackImg>
                 {testData.length === 0 ? <NoneCalendarPage /> : <SelectDate />}
-            </BackImg>
-            <BackImg>
-                <MecoQuestion />
             </BackImg>
         </>
     );

@@ -5,6 +5,7 @@ import MetaQuestion from '../pages/metaTutorial/MetaQuestion';
 import MetaAbout from '../pages/metaTutorial/metaAbout';
 import MetaTutorial from '../pages/metaTutorial/metaAbout';
 import MyPagePage from '../pages/myPage/myPage';
+import MecoQuestion from '../pages/question/mecoQuestion';
 import QuestionPage from '../pages/question/questionPage';
 import SignUpPage from '../pages/signUp/signUpPage';
 import StatisticsPage from '../pages/statistics/statisticsPage';
@@ -45,6 +46,11 @@ const router = [
                 path: '/question',
                 element: <QuestionPage />,
             },
+            {
+                path: '/question/:contents',
+                element: <MecoQuestion />,
+            },
+
             {
                 path: '/myPage',
                 element: <MyPagePage />,

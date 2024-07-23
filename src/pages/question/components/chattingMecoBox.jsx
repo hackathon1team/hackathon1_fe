@@ -1,9 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import Star1 from '../../../assets/Img/questionImg/star.png';
 
-function ChattingMecoBox({ text }) {
+function ChattingMecoBox({ text, isFix }) {
     return (
-        <ChattingBox>
+        <ChattingBox isFix={isFix}>
             <Box>
                 {text}
                 <Star src={Star1} />
@@ -23,7 +23,8 @@ const fadeIn = keyframes`
 const ChattingBox = styled.div`
     display: flex;
     margin: 20px 0;
-    animation: ${fadeIn} 2.2s ease-in-out;
+    animation: ${fadeIn} 2.5s ease-in-out;
+    animation: ${({ isFix }) => isFix && 'none'};
 `;
 const Box = styled.div`
     background-color: #e1e2ed;

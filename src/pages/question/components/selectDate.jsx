@@ -4,8 +4,11 @@ import Star1 from '../../../assets/Img/questionImg/star1.png';
 import Star2 from '../../../assets/Img/questionImg/star.png';
 import Hami from '../../../assets/Img/questionImg/hamham.png';
 import { useState } from 'react';
+import { ArrowDowIcon } from '../../../components/icons/icons';
+import { useNavigate } from 'react-router-dom';
 
 function SelectDate() {
+    const navigate = useNavigate();
     const testData = ['공부함', '바보', '싸움'];
     const [val, setVal] = useState('');
     const [isView, setIsView] = useState(false);
@@ -13,6 +16,10 @@ function SelectDate() {
     const handleClickCategory = (el) => {
         setVal(el);
         setIsView(false);
+    };
+    const handleGoChatting = () => {
+        if (val === '') alert('사건을 선택해주세요');
+        navigate(`/question/${val}`);
     };
     return (
         <Wrapper>
@@ -32,6 +39,7 @@ function SelectDate() {
                     >
                         <Category val={val}>
                             {val ? val : '사건을 선택해주세요.'}
+                            <ArrowDowIcon rotate={isView ? '180' : '0'} />
                         </Category>
                     </CategoryBox>
                     {isView && (
@@ -50,7 +58,9 @@ function SelectDate() {
                 </MiddleBox>
             </TopWrapper>
             <BottomBox>
-                <CustomButton icon={'right'}>대화하러</CustomButton>
+                <CustomButton icon={'right'} onClick={handleGoChatting}>
+                    대화하러
+                </CustomButton>
                 <CustomButton icon={'right'}>이전 대화 보기</CustomButton>
             </BottomBox>
         </Wrapper>
@@ -64,7 +74,7 @@ const Wrapper = styled.div`
 const TopWrapper = styled.div`
     height: 100%;
 `;
-const TopBox = styled.div`
+const TopBox = styled.h2`
     margin-top: 20px;
     width: 245px;
     height: 118px;
@@ -129,9 +139,9 @@ const Category = styled.div`
     font-size: 16px;
     margin-top: 14px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 16px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
     color: ${({ val }) => (val ? 'white' : '#cccccc')};
 `;
 const CategoryList = styled.div``;
