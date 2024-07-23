@@ -38,6 +38,7 @@ function TimeCalendarPage() {
             takedTime: '1',
         },
     ];
+
     const [isView, setIsView] = useState({
         firstModal: false,
         emotionModal: false,

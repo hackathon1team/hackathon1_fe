@@ -4,14 +4,20 @@ import CustomButton from '../../../components/customButton/customButton';
 import { useState } from 'react';
 import EmotionModal from './emotionModal';
 import CategoryModal from './categoryModal';
+import { useGetToday } from '../../../hooks/useGetToday';
 
 function ScheduleModal({ setIsView, isView }) {
+    const today = useGetToday();
+
     const [addDate, setAddDate] = useState({
+        ledgerDate: today,
+        emotionCategory: '',
         emotion: '',
         category: '',
         contents: '',
         takedTime: '',
     });
+
     const handleChangeVal = (e, category) => {
         setAddDate((prev) => ({ ...prev, [category]: e.target.value }));
     };
@@ -101,7 +107,6 @@ const Wrapper = styled.div`
     color: #5d659e;
     padding: 40px 30px;
     z-index: 11;
-
     animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     @keyframes fadeIn {
         0% {
