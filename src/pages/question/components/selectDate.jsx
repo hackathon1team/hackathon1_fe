@@ -44,8 +44,8 @@ function SelectDate() {
                     </CategoryBox>
                     {isView && (
                         <CategoryWrapper>
-                            {testData.map((el) => (
-                                <CategoryBox>
+                            {testData.map((el, idx) => (
+                                <CategoryBox key={idx}>
                                     <Category
                                         onClick={() => handleClickCategory(el)}
                                     >

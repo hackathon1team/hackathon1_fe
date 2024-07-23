@@ -1,13 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ChattingMecoBox from './components/chattingMecoBox';
 import ChattingUserBox from './components/chattingUserBox';
 import { useState } from 'react';
 import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import CustomButton from '../../components/customButton/customButton';
+import { useGetToday } from '../../hooks/useGetToday';
 
 function MecoQuestion() {
     const { contents } = useParams();
+    const navigate = useNavigate();
+    const today = useGetToday();
+
     const mecoQuestionList = [
         '이 사건에 대해 어떤 감정은 무엇이고 원인은 무엇인가요구르트?',
         '이건 테스트 질문 (2번째 질문)',
@@ -79,17 +84,31 @@ function MecoQuestion() {
                             <ChattingUserBox
                                 text={userAnswerList.thirdAnswer}
                             />
+                            <ChattingMecoBox
+                                text={`그렇군요. 태기님 오늘 하루도\n고생 많으셨어요 !`}
+                            />
                         </>
                     )}
                 </ChattingTotalBox>
-                <InputWrapper>
-                    <AddChatting
-                        placeholder="메코한테는 솔직한 답변을 해주세요."
-                        value={inputVal}
-                        onChange={(e) => setInputVal(e.target.value)}
-                    />
-                    <Button onClick={handleAnswer}>보내기</Button>
-                </InputWrapper>
+                {userAnswerList.thirdAnswer.length === 0 ? (
+                    <InputWrapper>
+                        <AddChatting
+                            placeholder="메코한테는 솔직한 답변을 해주세요."
+                            value={inputVal}
+                            onChange={(e) => setInputVal(e.target.value)}
+                        />
+                        <Button onClick={handleAnswer}>보내기</Button>
+                    </InputWrapper>
+                ) : (
+                    <EndBox>
+                        <CustomButton
+                            icon={'right'}
+                            onClick={() => navigate(`/questionSum/${today}`)}
+                        >
+                            대화 정리
+                        </CustomButton>
+                    </EndBox>
+                )}
             </Wrapper>
         </BackImg>
     );
@@ -142,4 +161,23 @@ const AddChatting = styled.textarea`
         color: #edececc6;
     }
     font-size: 16px;
+`;
+const fadeIn = keyframes`
+  0%{
+    opacity: 0;
+  }
+  80% {    
+    opacity: 0;
+  }
+  100% {    
+    opacity: 1;
+  }
+`;
+const EndBox = styled.div`
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    align-items: end;
+    animation: ${fadeIn} 1s ease-in-out;
+    justify-content: end;
 `;

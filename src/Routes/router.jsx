@@ -3,13 +3,13 @@ import Header from '../components/header/Header';
 import LogInPage from '../pages/logIn/logInPage';
 import Socrates from '../pages/metaTutorial/socrates';
 import MetaAbout from '../pages/metaTutorial/metaAbout';
-import MetaTutorial from '../pages/metaTutorial/metaAbout';
 import MyPagePage from '../pages/myPage/myPage';
 import MecoQuestion from '../pages/question/mecoQuestion';
 import QuestionPage from '../pages/question/questionPage';
 import SignUpPage from '../pages/signUp/signUpPage';
 import StatisticsPage from '../pages/statistics/statisticsPage';
 import TimeCalendarPage from '../pages/timeCalendar/timeCalendarPage';
+import QuestionSum from '../pages/question/components/QuestionSum';
 
 const router = [
     {
@@ -48,6 +48,10 @@ const router = [
             {
                 path: '/question/:contents',
                 element: <MecoQuestion />,
+            },
+            {
+                path: '/questionSum/:today',
+                element: <QuestionSum />,
             },
 
             {

@@ -3,8 +3,6 @@ import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
 import NoneCalendarPage from './components/NoneCalendarPage';
 import SelectDate from './components/selectDate';
-import QuestionSum from './components/QuestionSum';
-import MecoQuestion from './mecoQuestion';
 
 function QuestionPage() {
     const testData = [
