@@ -13,6 +13,11 @@ import ProgressBar from '../../components/progressBar/progressBar';
 function SignUpPage() {
     const [currentPageNum, SetCurrentPageNum] = useState(0);
     const [isModalView, setIsModalView] = useState(false);
+    const [user, setUser] = useState({
+        name: '',
+        userId: '',
+        userPw: '',
+    });
 
     const upCount = () => {
         SetCurrentPageNum((prev) => prev + 1);
@@ -37,7 +42,9 @@ function SignUpPage() {
                                 currentPageNum={currentPageNum}
                                 limit={3}
                             />
-                            {currentPageNum === 1 && <SignUpName />}
+                            {currentPageNum === 1 && (
+                                <SignUpName setUser={setUser} />
+                            )}
                             {currentPageNum === 2 && <SignUpId />}
                             {currentPageNum === 3 && <SignUpPassword />}
                         </Container>
