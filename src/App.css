@@ -3,14 +3,51 @@
     max-width: 520px;
     margin: 0 auto;
 }
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 100;
+    src: url('../assetsassets/font/Inter-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Inter-Light';
+    font-style: normal;
+    font-weight: 300;
+    src: url('./assets/font/Inter-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Inter-Medium';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./assets/font/Inter-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Inter-SemiBold';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/font/Inter-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: 'Inter-Bold';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./assets/font/Inter-Bold.ttf');
+}
+
 a {
     text-decoration: none;
     color: inherit;
 }
-* {
+*,
+body {
     box-sizing: border-box;
+    font-family: 'Inter-Medium';
 }
-html,
+
 body,
 div,
 span,
@@ -36,14 +73,15 @@ table {
     border: 0;
     vertical-align: baseline;
 }
-body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background-color: #f6f9f0;
-}
+
 ol,
 ul {
     list-style: none;
 }
 button {
     cursor: pointer;
+}
+
+h1 {
+    font-family: 'Inter-Bold';
 }
