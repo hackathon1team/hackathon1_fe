@@ -23,6 +23,7 @@ function MecoQuestion() {
         secondAnswer: '',
         thirdAnswer: '',
     });
+
     const [inputVal, setInputVal] = useState('');
 
     const handleAnswer = () => {
@@ -61,7 +62,6 @@ function MecoQuestion() {
                     <>
                         <ChattingUserBox text={contents} />
                     </>
-
                     <ChattingMecoBox text={mecoQuestionList[0]} />
                     {userAnswerList.firstAnswer.length !== 0 && (
                         <>
