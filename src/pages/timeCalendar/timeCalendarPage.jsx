@@ -87,8 +87,8 @@ const BackImg = styled.div`
 `;
 const Title = styled.div`
     font-size: 21px;
-    font-weight: 700;
     color: #f8f9fe;
+    font-weight: 600;
     text-align: left;
     margin-bottom: 10%;
 `;
