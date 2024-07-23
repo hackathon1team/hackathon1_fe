@@ -6,12 +6,14 @@ import Hami from '../../../assets/Img/questionImg/hamham.png';
 import { useState } from 'react';
 import { ArrowDowIcon } from '../../../components/icons/icons';
 import { useNavigate } from 'react-router-dom';
+import { useGetToday } from '../../../hooks/useGetToday';
 
 function SelectDate() {
     const navigate = useNavigate();
     const testData = ['공부함', '바보', '싸움'];
     const [val, setVal] = useState('');
     const [isView, setIsView] = useState(false);
+    const today = useGetToday();
 
     const handleClickCategory = (el) => {
         setVal(el);
@@ -61,7 +63,12 @@ function SelectDate() {
                 <CustomButton icon={'right'} onClick={handleGoChatting}>
                     대화하러
                 </CustomButton>
-                <CustomButton icon={'right'}>이전 대화 보기</CustomButton>
+                <CustomButton
+                    icon={'right'}
+                    onClick={() => navigate(`/questionSum/${today}`)}
+                >
+                    이전 대화 보기
+                </CustomButton>
             </BottomBox>
         </Wrapper>
     );
