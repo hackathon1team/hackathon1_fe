@@ -12,8 +12,8 @@ const TimeCalendarPage = ({ testData }) => {
                     <Hour>시간</Hour>
                 </Header>
                 <AllContents>
-                    {testData.map((el) => (
-                        <Contents onClick={() => alert('준비중:)')}>
+                    {testData.map((el, idx) => (
+                        <Contents key={idx} onClick={() => alert('준비중:)')}>
                             <Emotion>
                                 <EmotionEmoji>😲</EmotionEmoji>
                                 <EmotionContent>{el.emotion}</EmotionContent>

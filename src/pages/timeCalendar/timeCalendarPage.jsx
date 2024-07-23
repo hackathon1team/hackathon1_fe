@@ -56,16 +56,22 @@ function TimeCalendarPage() {
                 ) : (
                     <TimeCalendar testData={testData} />
                 )}
-                <FixedIcon>
-                    <PlusIcon
-                        onClick={() =>
-                            setIsView((prev) => ({ ...prev, firstModal: true }))
-                        }
-                    />
-                    <Circle>
-                        <CalendarIcon />
-                    </Circle>
-                </FixedIcon>
+                <IconWrapper>
+                    <FixedIcon>
+                        <PlusIcon
+                            onClick={() =>
+                                setIsView((prev) => ({
+                                    ...prev,
+                                    firstModal: true,
+                                }))
+                            }
+                        />
+                        <Circle>
+                            <CalendarIcon />
+                        </Circle>
+                    </FixedIcon>
+                </IconWrapper>
+
                 {isView.firstModal && (
                     <ScheduleModal setIsView={setIsView} isView={isView} />
                 )}
@@ -76,24 +82,23 @@ function TimeCalendarPage() {
 export default TimeCalendarPage;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}/* position: relative; */
+    ${BackGroundImg(Background)}
+    height: 100%;
 `;
 const Title = styled.div`
     font-size: 21px;
-    font-weight: 700;
     color: #f8f9fe;
     font-weight: 600;
     text-align: left;
     margin-bottom: 10%;
 `;
 const FixedIcon = styled.div`
-    /* background-color: red; */
     width: 50px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
+
     bottom: 5%;
     right: 10%;
 `;
@@ -106,4 +111,15 @@ const Circle = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 10px;
+`;
+const IconWrapper = styled.div`
+    position: fixed;
+    bottom: 5%;
+    right: 38%;
+    @media screen and (max-width: 1100px) {
+        right: 30%;
+    }
+    @media screen and (max-width: 500px) {
+        right: 10%;
+    }
 `;
