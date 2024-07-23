@@ -3,8 +3,10 @@ import Background from '../../../assets/Img/backgroundImg/signUp_1.png';
 import { BackGroundImg } from '../../../styles/common';
 import styled from 'styled-components';
 import CustomButton from '../../../components/customButton/customButton';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpIntro({ upCount }) {
+    const navigate = useNavigate();
     return (
         <BackImg>
             <Wrapper>
@@ -20,6 +22,12 @@ function SignUpIntro({ upCount }) {
                 <ButtonWrap>
                     <CustomButton icon={'right'} onClick={upCount}>
                         회원가입 하러 가기
+                    </CustomButton>
+                    <CustomButton
+                        icon={'right'}
+                        onClick={() => navigate('/login')}
+                    >
+                        로그인
                     </CustomButton>
                 </ButtonWrap>
             </Wrapper>
@@ -73,5 +81,9 @@ const BottomBox = styled.div`
 const ButtonWrap = styled.div`
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: end;
+    & > * {
+        margin-bottom: 10px;
+    }
 `;

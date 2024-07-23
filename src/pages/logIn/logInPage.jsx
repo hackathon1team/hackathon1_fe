@@ -3,8 +3,10 @@ import { BackGroundImg } from '../../styles/common';
 import Background from '../../assets/Img/backgroundImg/logInStatistics.png';
 import Meco from '../../assets/Img/meco.png';
 import GlassmorphismModal from '../../components/glassmorphismModal/glassmorphismModal';
+import { useNavigate } from 'react-router-dom';
 
 function LogInPage() {
+    const navigate = useNavigate();
     return (
         <BackImg>
             <Box>
@@ -27,7 +29,11 @@ function LogInPage() {
                     </MiddleBox>
                     <BottomBox>
                         <LogInBt type="Button" value="로그인" />
-                        <LogInBt type="Button" value="가입하러 가기" />
+                        <LogInBt
+                            type="Button"
+                            value="가입하러 가기"
+                            onClick={() => navigate('/signUp')}
+                        />
                     </BottomBox>
                 </GlassmorphismModal>
             </Box>

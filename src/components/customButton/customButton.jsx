@@ -21,4 +21,5 @@ const MetaButton = styled.button`
     font-weight: 700;
     display: flex;
     align-items: center;
+    background-color: white;
 `;
