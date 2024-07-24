@@ -6,9 +6,9 @@ import './datePickerStyld.css';
 import { useNavigate } from 'react-router-dom';
 import { useDateToNumber } from '../../hooks/useDateToNumber';
 
-function ReactCalendar() {
+function ReactCalendar({ url, modalCloseFn }) {
     const navigate = useNavigate();
-    const [selectedDate, setSelectedDate] = useState();
+    const [selectedDate, setSelectedDate] = useState('');
 
     useEffect(() => {
         let date = '';
@@ -16,7 +16,8 @@ function ReactCalendar() {
             let dateSplit = String(selectedDate).split(' ');
             date = dateSplit[3] + '-' + dateSplit[1] + '-' + dateSplit[2];
             const totalDate = useDateToNumber(date);
-            navigate(`/questionSum/${totalDate}`);
+            navigate(`${url}${totalDate}`);
+            modalCloseFn && modalCloseFn();
         }
     }, [selectedDate]);
 
@@ -40,5 +41,6 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     position: absolute;
-    bottom: 100px;
+    bottom: 150px;
+    left: 15px;
 `;

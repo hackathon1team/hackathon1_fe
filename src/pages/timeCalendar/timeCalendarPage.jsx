@@ -7,8 +7,15 @@ import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
 import ScheduleModal from './components/scheduleModal';
 import { useState } from 'react';
 import ReactCalendar from '../../components/datePicker/datePicker';
+import { useSearchParams } from 'react-router-dom';
+import { useGetToday } from '../../hooks/useGetToday';
 
 function TimeCalendarPage() {
+    const [searchParams, setSearchParams] = useSearchParams();
+    let currentDate = searchParams.get('date')
+        ? searchParams.get('date')
+        : useGetToday();
+
     const testData = [
         {
             recordId: '2',
@@ -47,15 +54,23 @@ function TimeCalendarPage() {
         dateModal: false,
     });
 
+    const modalCloseFn = () => {
+        setIsView((prev) => ({
+            ...prev,
+            dateModal: !prev.dateModal,
+        }));
+    };
+
     return (
         <>
             <BackImg>
                 <Title>
                     오늘도 하루가 끝났네요. <br />
-                    7월 12일의 하루를 <br />
+                    {currentDate && currentDate.split('-')[1]}월
+                    {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
                     기록해 볼까요?
                 </Title>
-                {testData.length !== 0 ? (
+                {testData.length === 0 ? (
                     <NoneTimeCalendarPage />
                 ) : (
                     <TimeCalendar testData={testData} />
@@ -63,14 +78,16 @@ function TimeCalendarPage() {
 
                 <IconWrapper>
                     <FixedIcon>
-                        <PlusIcon
-                            onClick={() =>
-                                setIsView((prev) => ({
-                                    ...prev,
-                                    firstModal: true,
-                                }))
-                            }
-                        />
+                        {currentDate === useGetToday() && (
+                            <PlusIcon
+                                onClick={() =>
+                                    setIsView((prev) => ({
+                                        ...prev,
+                                        firstModal: true,
+                                    }))
+                                }
+                            />
+                        )}
                         <Circle
                             onClick={() =>
                                 setIsView((prev) => ({
@@ -83,7 +100,13 @@ function TimeCalendarPage() {
                         </Circle>
                     </FixedIcon>
                 </IconWrapper>
-                {isView.dateModal && <ReactCalendar />}
+
+                {isView.dateModal && (
+                    <ReactCalendar
+                        url={'/?date='}
+                        modalCloseFn={modalCloseFn}
+                    />
+                )}
                 {isView.firstModal && (
                     <ScheduleModal setIsView={setIsView} isView={isView} />
                 )}
