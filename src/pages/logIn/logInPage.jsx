@@ -14,9 +14,7 @@ function LogInPage() {
         userPW: '',
     });
 
-    const handleLogIn = () => {
-        console.log(IdAndPw);
-    };
+    const handleLogIn = () => {};
 
     return (
         <BackImg>

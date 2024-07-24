@@ -1,23 +1,44 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import { useEffect, useState } from 'react';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import styled from 'styled-components';
+import './datePickerStyld.css';
+import { useNavigate } from 'react-router-dom';
+import { useDateToNumber } from '../../hooks/useDateToNumber';
 
-const ReactDatePicker = () => {
-    const [startDate, setStartDate] = useState(new Date());
+function ReactCalendar() {
+    const navigate = useNavigate();
+    const [selectedDate, setSelectedDate] = useState();
 
-    console.log(startDate);
+    useEffect(() => {
+        let date = '';
+        if (selectedDate) {
+            let dateSplit = String(selectedDate).split(' ');
+            date = dateSplit[3] + '-' + dateSplit[1] + '-' + dateSplit[2];
+            const totalDate = useDateToNumber(date);
+            navigate(`/questionSum/${totalDate}`);
+        }
+    }, [selectedDate]);
+
     return (
-        <label htmlFor="customDatepicker">
-            <DatePicker
-                id="customDatepicker"
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                showPopperArrow={false}
+        <Wrapper>
+            <Calendar
+                locale="en"
+                onChange={setSelectedDate} // useState로 포커스 변경 시 현재 날짜 받아오기
+                value={selectedDate}
+                // minDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
+                // maxDetail="month" // 상단 네비게이션에서 '월' 단위만 보이게 설정
+                navigationLabel={null}
+                showNeighboringMonth={false} //  이전, 이후 달의 날짜는 보이지 않도록 설정
+                className="mx-auto w-full text-sm border-b"
             />
-
-            <div>dd</div>
-        </label>
+        </Wrapper>
     );
-};
-
-export default ReactDatePicker;
+}
+export default ReactCalendar;
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 100px;
+`;

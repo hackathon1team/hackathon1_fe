@@ -6,7 +6,7 @@ import TimeCalendar from './components/TimeCalendar';
 import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
 import ScheduleModal from './components/scheduleModal';
 import { useState } from 'react';
-import ReactDatePicker from '../../components/datePicker/datePicker';
+import ReactCalendar from '../../components/datePicker/datePicker';
 
 function TimeCalendarPage() {
     const testData = [
@@ -44,7 +44,9 @@ function TimeCalendarPage() {
         firstModal: false,
         emotionModal: false,
         categoryModal: false,
+        dateModal: false,
     });
+
     return (
         <>
             <BackImg>
@@ -58,6 +60,7 @@ function TimeCalendarPage() {
                 ) : (
                     <TimeCalendar testData={testData} />
                 )}
+
                 <IconWrapper>
                     <FixedIcon>
                         <PlusIcon
@@ -68,12 +71,19 @@ function TimeCalendarPage() {
                                 }))
                             }
                         />
-                        <Circle>
+                        <Circle
+                            onClick={() =>
+                                setIsView((prev) => ({
+                                    ...prev,
+                                    dateModal: !prev.dateModal,
+                                }))
+                            }
+                        >
                             <CalendarIcon />
                         </Circle>
                     </FixedIcon>
                 </IconWrapper>
-                <ReactDatePicker />
+                {isView.dateModal && <ReactCalendar />}
                 {isView.firstModal && (
                     <ScheduleModal setIsView={setIsView} isView={isView} />
                 )}
@@ -116,7 +126,7 @@ const Circle = styled.div`
 const IconWrapper = styled.div`
     position: fixed;
     bottom: 5%;
-    right: 33%;
+    right: 40%;
     @media screen and (max-width: 500px) {
         bottom: 5%;
         right: 10%;
