@@ -4,9 +4,18 @@ import Background from '../../assets/Img/backgroundImg/logInStatistics.png';
 import Meco from '../../assets/Img/meco.png';
 import GlassmorphismModal from '../../components/glassmorphismModal/glassmorphismModal';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function LogInPage() {
     const navigate = useNavigate();
+
+    const [IdAndPw, setIdAndPw] = useState({
+        userId: '',
+        userPW: '',
+    });
+
+    const handleLogIn = () => {};
+
     return (
         <BackImg>
             <Box>
@@ -18,22 +27,43 @@ function LogInPage() {
                     <MiddleBox>
                         <LogInInput
                             type="text"
-                            name=""
+                            name="id"
                             placeholder="아이디를 입력하세요"
+                            onChange={(e) =>
+                                setIdAndPw((prev) => ({
+                                    ...prev,
+                                    userId: e.target.value,
+                                }))
+                            }
                         />
                         <LogInInput
                             type="password"
-                            name=""
+                            name="pw"
                             placeholder="비밀번호를 입력하세요"
+                            onChange={(e) =>
+                                setIdAndPw((prev) => ({
+                                    ...prev,
+                                    userPW: e.target.value,
+                                }))
+                            }
                         />
                     </MiddleBox>
                     <BottomBox>
-                        <LogInBt type="Button" value="로그인" />
                         <LogInBt
                             type="Button"
-                            value="가입하러 가기"
+                            disabled={
+                                IdAndPw.userId === '' || IdAndPw.userPW === ''
+                            }
+                            onClick={handleLogIn}
+                        >
+                            로그인
+                        </LogInBt>
+                        <LogInBt
+                            type="Button"
                             onClick={() => navigate('/signUp')}
-                        />
+                        >
+                            가입하러 가기
+                        </LogInBt>
                     </BottomBox>
                 </GlassmorphismModal>
             </Box>
@@ -50,7 +80,7 @@ const BackImg = styled.div`
     padding-bottom: 120px;
 `;
 
-const Box = styled.div`
+const Box = styled.form`
     margin-top: 50px;
     width: 100%;
     height: 500px;
@@ -112,7 +142,7 @@ const LogInInput = styled.input`
         outline: none;
     }
 `;
-const LogInBt = styled.input`
+const LogInBt = styled.button`
     border: 0px;
     width: 100%;
     height: 43px;
@@ -125,4 +155,7 @@ const LogInBt = styled.input`
     padding-top: 3px;
     cursor: pointer;
     font-weight: bold;
+    &:disabled {
+        opacity: 0.9;
+    }
 `;
