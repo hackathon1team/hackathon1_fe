@@ -13,14 +13,23 @@ import ProgressBar from '../../components/progressBar/progressBar';
 function SignUpPage() {
     const [currentPageNum, SetCurrentPageNum] = useState(0);
     const [isModalView, setIsModalView] = useState(false);
+    const [user, setUser] = useState({
+        name: '',
+        userId: '',
+        userPw: '',
+    });
+    const [isCheckId, setIsCheckId] = useState(false);
 
     const upCount = () => {
+        if (currentPageNum === 1 && user.name === '') return;
+        if (currentPageNum === 2 && user.userId === '') return;
         SetCurrentPageNum((prev) => prev + 1);
     };
     const downCount = () => {
         SetCurrentPageNum((prev) => prev - 1);
     };
     const handleSignUp = () => {
+        if (currentPageNum === 3 && user.userPw === '') return;
         setIsModalView(true);
     };
 
@@ -36,9 +45,23 @@ function SignUpPage() {
                                 currentPageNum={currentPageNum}
                                 limit={3}
                             />
-                            {currentPageNum === 1 && <SignUpName />}
-                            {currentPageNum === 2 && <SignUpId />}
-                            {currentPageNum === 3 && <SignUpPassword />}
+                            {currentPageNum === 1 && (
+                                <SignUpName
+                                    setUser={setUser}
+                                    name={user.name}
+                                />
+                            )}
+
+                            {currentPageNum === 2 && (
+                                <SignUpId setUser={setUser} id={user.userId} />
+                            )}
+                            {currentPageNum === 3 && (
+                                <SignUpPassword
+                                    setUser={setUser}
+                                    pw={user.userPw}
+                                />
+                            )}
+                            <ErrorBox></ErrorBox>
                         </Container>
                         <ButtonWrap2>
                             <CustomButton icon={'left'} onClick={downCount}>
@@ -48,6 +71,7 @@ function SignUpPage() {
                                 <CustomButton
                                     icon={'right'}
                                     onClick={handleSignUp}
+                                    disable={true}
                                 >
                                     회원가입 하기
                                 </CustomButton>
@@ -93,3 +117,4 @@ const ButtonWrap2 = styled.div`
     display: flex;
     justify-content: space-between;
 `;
+const ErrorBox = styled.div``;

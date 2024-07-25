@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
-function SignUpPassword() {
+function SignUpPassword({ setUser, pw }) {
     return (
         <NameBox0>
             <NameBox1>사용할 비밀번호를 작성해주세요</NameBox1>
-            <NameInput type="password" name="" placeholder="비밀번호" />
+            <NameInput
+                type="password"
+                value={pw}
+                placeholder="비밀번호"
+                onChange={(e) =>
+                    setUser((prev) => ({ ...prev, userPw: e.target.value }))
+                }
+            />
         </NameBox0>
     );
 }
@@ -30,6 +37,7 @@ const NameBox0 = styled.div`
 const NameInput = styled.input`
     border-width: 0 0 2px;
     border-color: white;
+    color: white;
     width: 100%;
     font-size: 22px;
     padding-left: 5px;

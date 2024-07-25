@@ -7,12 +7,14 @@ import { useState } from 'react';
 import { ArrowDowIcon } from '../../../components/icons/icons';
 import { useNavigate } from 'react-router-dom';
 import { useGetToday } from '../../../hooks/useGetToday';
+import ReactCalendar from '../../../components/datePicker/datePicker';
 
 function SelectDate() {
     const navigate = useNavigate();
     const testData = ['공부함', '바보', '싸움'];
     const [val, setVal] = useState('');
     const [isView, setIsView] = useState(false);
+    const [isViewModal, setIsViewModal] = useState(false);
     const today = useGetToday();
 
     const handleClickCategory = (el) => {
@@ -59,13 +61,15 @@ function SelectDate() {
                     )}
                 </MiddleBox>
             </TopWrapper>
+            {isViewModal && <ReactCalendar url={'/questionSum/'} />}
+
             <BottomBox>
                 <CustomButton icon={'right'} onClick={handleGoChatting}>
                     대화하러
                 </CustomButton>
                 <CustomButton
                     icon={'right'}
-                    onClick={() => navigate(`/questionSum/${today}`)}
+                    onClick={() => setIsViewModal((prev) => !prev)}
                 >
                     이전 대화 보기
                 </CustomButton>

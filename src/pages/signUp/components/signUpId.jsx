@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 
-function SignUpId() {
+function SignUpId({ setUser, id }) {
     return (
         <NameBox0>
             <NameBox1>사용 할 아이디를 작성해주세요.</NameBox1>
             <IdBox>
                 <NameInput2
                     type="text"
-                    name=""
+                    value={id}
                     placeholder="아이디 최대 10글자"
+                    onChange={(e) =>
+                        setUser((prev) => ({ ...prev, userId: e.target.value }))
+                    }
                 />
                 <IdCheckBt type="Button" value="중복확인" />
             </IdBox>
@@ -58,6 +61,8 @@ const NameInput2 = styled.input`
     padding-right: 50px;
     padding-bottom: 10px;
     background-color: transparent;
+    color: white;
+
     &::placeholder {
         color: #edecec;
         opacity: 70%;
