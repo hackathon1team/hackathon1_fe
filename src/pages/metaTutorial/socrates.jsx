@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 function Socrates() {
     const navigate = useNavigate();
     const [currentQuestion, setCurrentQuestion] = useState(0);
+
     const [answer, setAnswer] = useState({
         answer1: '',
         answer2: '',

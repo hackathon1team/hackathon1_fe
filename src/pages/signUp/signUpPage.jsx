@@ -9,6 +9,7 @@ import Background1 from '../../assets/Img/backgroundImg/signUp_2.png';
 import CustomButton from '../../components/customButton/customButton';
 import SignUpMadal from './components/SignUpModal';
 import ProgressBar from '../../components/progressBar/progressBar';
+import { usePostSignUp } from '../../query/Post/usePostSignUp';
 
 function SignUpPage() {
     const [currentPageNum, SetCurrentPageNum] = useState(0);
@@ -22,6 +23,8 @@ function SignUpPage() {
         isError: false,
         isCheckIdMs: '',
     });
+
+    const { mutate: postSignUp } = usePostSignUp(setIsModalView);
 
     const upCount = () => {
         if (currentPageNum === 1 && user.name === '')
@@ -47,6 +50,7 @@ function SignUpPage() {
     const handleSignUp = () => {
         if (currentPageNum === 3 && user.userPw === '')
             return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
+        postSignUp(user);
         setIsModalView(true);
     };
 

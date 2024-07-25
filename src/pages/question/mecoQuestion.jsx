@@ -161,6 +161,10 @@ const AddChatting = styled.textarea`
         color: #edececc6;
     }
     font-size: 16px;
+    color: white;
+    :focus {
+        outline: none;
+    }
 `;
 const fadeIn = keyframes`
   0%{
