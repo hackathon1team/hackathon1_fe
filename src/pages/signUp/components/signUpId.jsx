@@ -1,29 +1,25 @@
 import styled from 'styled-components';
 import UserApi from '../../../apis/UserApi';
-import { useState } from 'react';
 
 function SignUpId({ setUser, id, setIsCheckAndError }) {
-    const [result, setResult] = useState(false);
     const handleCheckId = async () => {
         if (!id) setIsCheckAndError((prev) => ({ ...prev, isError: true }));
         try {
             const res = await UserApi.getCheckId(id);
-            setResult(res.data);
+            res.data
+                ? setIsCheckAndError((prev) => ({
+                      ...prev,
+                      isCheckIdMs: '사용할수없는 아이디입니다.',
+                  }))
+                : setIsCheckAndError((prev) => ({
+                      ...prev,
+                      isCheckIdMs: '사용가능한 아이디입니다.',
+                  }));
         } catch (err) {}
-
-        result
-            ? setIsCheckAndError((prev) => ({
-                  ...prev,
-                  isCheckIdMs: '사용할수없는 아이디입니다.',
-              }))
-            : setIsCheckAndError((prev) => ({
-                  ...prev,
-                  isCheckIdMs: '사용가능한 아이디입니다.',
-              }));
     };
     const handleOnChangeInput = (val) => {
         setUser((prev) => ({ ...prev, userId: val }));
-        setIsCheckAndError((prev) => ({
+        setIsCheckAndError(() => ({
             isError: false,
             isCheckIdMs: '중복확인 해주세요.',
         }));

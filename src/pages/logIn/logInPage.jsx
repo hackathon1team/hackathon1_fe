@@ -5,16 +5,22 @@ import Meco from '../../assets/Img/meco.png';
 import GlassmorphismModal from '../../components/glassmorphismModal/glassmorphismModal';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { usePostLogIn } from '../../query/Post/usePostLogIn';
+// import TokenService from '../../utils/tokenService';
 
 function LogInPage() {
     const navigate = useNavigate();
 
-    const [IdAndPw, setIdAndPw] = useState({
+    const [idAndPw, setIdAndPw] = useState({
         userId: '',
-        userPW: '',
+        userPw: '',
     });
+    const { mutate } = usePostLogIn(navigate);
 
-    const handleLogIn = () => {};
+    const handleLogIn = () => {
+        if (idAndPw.userId === '' || idAndPw.userPw === '') return;
+        mutate(idAndPw);
+    };
 
     return (
         <BackImg>
@@ -43,7 +49,7 @@ function LogInPage() {
                             onChange={(e) =>
                                 setIdAndPw((prev) => ({
                                     ...prev,
-                                    userPW: e.target.value,
+                                    userPw: e.target.value,
                                 }))
                             }
                         />
@@ -52,7 +58,7 @@ function LogInPage() {
                         <LogInBt
                             type="Button"
                             disabled={
-                                IdAndPw.userId === '' || IdAndPw.userPW === ''
+                                idAndPw.userId === '' || idAndPw.userPw === ''
                             }
                             onClick={handleLogIn}
                         >
@@ -134,6 +140,7 @@ const LogInInput = styled.input`
     background-color: #6a6b9d;
     font-size: 16px;
     margin-bottom: 20px;
+    color: white;
     &::placeholder {
         color: #edecec;
         opacity: 70%;
