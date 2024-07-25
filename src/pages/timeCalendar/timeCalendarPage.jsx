@@ -19,7 +19,7 @@ function TimeCalendarPage() {
     const testData = [
         {
             recordId: '2',
-            emotion: '짜증',
+            emotion: '사랑',
             category: '친구',
             contents: '태기랑 주먹다짐했다.',
             takedTime: '2',

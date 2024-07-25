@@ -2,33 +2,26 @@ export const emotions = {
     positiveEmotions: [
         {
             type: '기쁨',
-            count: '7',
             emotions: '😄',
         },
         {
             type: '사랑',
-            count: '3',
             emotions: '❤️',
         },
         {
             type: '감사',
-            count: '1',
             emotions: '🙏',
         },
         {
             type: '희망',
-            count: '2',
-
             emotions: '🌟',
         },
         {
             type: '만족',
-            count: '5',
             emotions: '😊',
         },
         {
             type: '흥분',
-            count: '0',
             emotions: '🤩',
         },
     ],
@@ -97,7 +90,7 @@ export const emotions = {
         },
         {
             type: '객관적',
-            emotions: '',
+            emotions: '🧑‍🏫',
         },
         {
             type: '생각에 잠김',

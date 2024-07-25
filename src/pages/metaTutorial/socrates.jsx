@@ -17,7 +17,6 @@ function Socrates() {
         answer4: '',
         answer5: '',
     });
-
     const handleUpDownQuestion = (upDown) => {
         if (upDown === 'up') {
             if (currentQuestion === 4) return;

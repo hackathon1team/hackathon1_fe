@@ -26,7 +26,7 @@ function EmotionModal({ setIsView, setAddDate }) {
     const handleClickEmotion = (e, type, emotions) => {
         setAddDate((prev) => ({
             ...prev,
-            emotion: emotions + type,
+            emotion: type,
             emotionCategory: clickCategory.kor,
         }));
         setIsView((prev) => ({ ...prev, emotionModal: false }));

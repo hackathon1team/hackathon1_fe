@@ -5,6 +5,7 @@ import { useState } from 'react';
 import EmotionModal from './emotionModal';
 import CategoryModal from './categoryModal';
 import { useGetToday } from '../../../hooks/useGetToday';
+import { useFindEmotions } from '../../../hooks/useFindEmotions';
 
 function ScheduleModal({ setIsView, isView }) {
     const today = useGetToday();
@@ -20,6 +21,16 @@ function ScheduleModal({ setIsView, isView }) {
 
     const handleChangeVal = (e, category) => {
         setAddDate((prev) => ({ ...prev, [category]: e.target.value }));
+    };
+    const handleAddSchedul = () => {
+        if (
+            addDate.emotionCategory === '' ||
+            addDate.emotion === '' ||
+            addDate.category === '' ||
+            addDate.contents === ''
+        )
+            return;
+        console.log(addDate);
     };
 
     return (
@@ -44,7 +55,9 @@ function ScheduleModal({ setIsView, isView }) {
                     }
                     isVal={isView.emotion === ''}
                 >
-                    {addDate.emotion ? addDate.emotion : '감정을 선택해주세요'}
+                    {addDate.emotion
+                        ? useFindEmotions(addDate.emotion)
+                        : '감정을 선택해주세요'}
                 </CategoryVal>
             </ContentsList>
             <ContentsList>
@@ -79,8 +92,7 @@ function ScheduleModal({ setIsView, isView }) {
             <ButtonWrapper>
                 <CustomButton
                     value={addDate.takedTime}
-                    onClick={() => alert('서비스 준비중입니다:)')}
-                    disabled
+                    onClick={handleAddSchedul}
                 >
                     추가
                 </CustomButton>

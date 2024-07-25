@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
+import { useFindEmotions } from '../../../hooks/useFindEmotions';
 
 const TimeCalendarPage = ({ testData }) => {
     return (
@@ -15,8 +16,11 @@ const TimeCalendarPage = ({ testData }) => {
                     {testData.map((el, idx) => (
                         <Contents key={idx} onClick={() => alert('준비중:)')}>
                             <Emotion>
-                                <EmotionEmoji>😲</EmotionEmoji>
-                                <EmotionContent>{el.emotion}</EmotionContent>
+                                <EmotionContent>
+                                    {useFindEmotions(el.emotion)}
+                                </EmotionContent>
+                                {/* <EmotionEmoji>😲</EmotionEmoji>
+                                <EmotionContent>{el.emotion}</EmotionContent> */}
                             </Emotion>
                             <Case>{el.category}</Case>
                             <Content>{el.contents}</Content>
