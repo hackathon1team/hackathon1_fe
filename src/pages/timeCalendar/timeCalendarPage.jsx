@@ -9,6 +9,7 @@ import { useState } from 'react';
 import ReactCalendar from '../../components/datePicker/datePicker';
 import { useSearchParams } from 'react-router-dom';
 import { useGetToday } from '../../hooks/useGetToday';
+import useGetScheduleDate from '../../query/Get/useGetScheduleDate';
 
 function TimeCalendarPage() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -16,6 +17,8 @@ function TimeCalendarPage() {
         ? searchParams.get('date')
         : useGetToday();
 
+    const { data } = useGetScheduleDate(currentDate);
+    console.log(data);
     const testData = [
         {
             recordId: '2',
@@ -70,10 +73,10 @@ function TimeCalendarPage() {
                     {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
                     기록해 볼까요?
                 </Title>
-                {testData.length === 0 ? (
+                {data && data.length === 0 ? (
                     <NoneTimeCalendarPage />
                 ) : (
-                    <TimeCalendar testData={testData} />
+                    <TimeCalendar data={data} />
                 )}
 
                 <IconWrapper>

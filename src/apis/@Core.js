@@ -1,4 +1,5 @@
 import axios from 'axios';
+import TokenService from '../utils/tokenService';
 
 //axios.defaults.withCredentials = true;
 
@@ -9,11 +10,11 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
     (config) => {
-        // const access_token = TokenService.getAccessToken();
-        // if (access_token === null) return config;
-        // if (access_token) {
-        //     config.headers['Authorization'] = `Bearer ${access_token}`;
-        // }
+        const access_token = TokenService.getAccessToken();
+        if (access_token === null) return config;
+        if (access_token) {
+            config.headers['Authorization'] = `Bearer ${access_token}`;
+        }
         return config;
     },
 
