@@ -56,7 +56,11 @@ const BackImg = styled.div`
     ${BackGroundImg(Background)}
     padding: 72px 30px 0 30px;
 `;
-const QuestionSumImg = styled.div``;
+const QuestionSumImg = styled.div`
+    & > img {
+        width: 80%;
+    }
+`;
 
 const QuestionAnswer = styled.div`
     text-align: left;
@@ -80,4 +84,5 @@ const Answer = styled.div`
 const BtnWrapper = styled.div`
     display: flex;
     justify-content: end;
+    padding-bottom: 20px;
 `;
