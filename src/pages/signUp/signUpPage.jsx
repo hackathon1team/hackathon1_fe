@@ -18,18 +18,35 @@ function SignUpPage() {
         userId: '',
         userPw: '',
     });
-    const [isCheckId, setIsCheckId] = useState(false);
+    const [isCheckAndError, setIsCheckAndError] = useState({
+        isError: false,
+        isCheckIdMs: '',
+    });
 
     const upCount = () => {
-        if (currentPageNum === 1 && user.name === '') return;
-        if (currentPageNum === 2 && user.userId === '') return;
+        if (currentPageNum === 1 && user.name === '')
+            return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
+        if (currentPageNum === 2 && user.userId === '')
+            return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
+        if (
+            currentPageNum === 2 &&
+            isCheckAndError.isCheckIdMs !== '사용가능한 아이디입니다.'
+        )
+            return setIsCheckAndError((prev) => ({
+                ...prev,
+                isCheckIdMs: '중복확인 해주세요.',
+            }));
+
         SetCurrentPageNum((prev) => prev + 1);
+        setIsCheckAndError((prev) => ({ isError: false, isCheckIdMs: '' }));
     };
     const downCount = () => {
         SetCurrentPageNum((prev) => prev - 1);
+        setIsCheckAndError((prev) => ({ ...prev, isError: false }));
     };
     const handleSignUp = () => {
-        if (currentPageNum === 3 && user.userPw === '') return;
+        if (currentPageNum === 3 && user.userPw === '')
+            return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
         setIsModalView(true);
     };
 
@@ -49,19 +66,38 @@ function SignUpPage() {
                                 <SignUpName
                                     setUser={setUser}
                                     name={user.name}
+                                    setIsCheckAndError={setIsCheckAndError}
                                 />
                             )}
 
                             {currentPageNum === 2 && (
-                                <SignUpId setUser={setUser} id={user.userId} />
+                                <SignUpId
+                                    setUser={setUser}
+                                    id={user.userId}
+                                    setIsCheckAndError={setIsCheckAndError}
+                                />
                             )}
                             {currentPageNum === 3 && (
                                 <SignUpPassword
                                     setUser={setUser}
                                     pw={user.userPw}
+                                    setIsCheckAndError={setIsCheckAndError}
                                 />
                             )}
-                            <ErrorBox></ErrorBox>
+                            <ErrorBox
+                                isSuccess={
+                                    isCheckAndError.isCheckIdMs ===
+                                    '사용가능한 아이디입니다.'
+                                }
+                            >
+                                {isCheckAndError.isCheckIdMs}
+                                {isCheckAndError.isError
+                                    ? '값을 입력해주세요'
+                                    : currentPageNum === 2 &&
+                                        isCheckAndError.isCheckIdError
+                                      ? '중복확인 해주세요.'
+                                      : ''}
+                            </ErrorBox>
                         </Container>
                         <ButtonWrap2>
                             <CustomButton icon={'left'} onClick={downCount}>
@@ -107,7 +143,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
     margin-top: 200px;
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -117,4 +153,8 @@ const ButtonWrap2 = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-const ErrorBox = styled.div``;
+const ErrorBox = styled.h2`
+    color: ${({ isSuccess }) => (isSuccess ? '#88d459' : '#a93b3b')};
+    font-size: 17px;
+    margin-top: 10px;
+`;

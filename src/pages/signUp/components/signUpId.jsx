@@ -1,6 +1,26 @@
 import styled from 'styled-components';
 
-function SignUpId({ setUser, id }) {
+function SignUpId({ setUser, id, setIsCheckAndError }) {
+    const handleCheckId = () => {
+        const testResult = true;
+        if (!id) setIsCheckAndError((prev) => ({ ...prev, isError: true }));
+        testResult
+            ? setIsCheckAndError((prev) => ({
+                  ...prev,
+                  isCheckIdMs: '사용가능한 아이디입니다.',
+              }))
+            : setIsCheckAndError((prev) => ({
+                  ...prev,
+                  isCheckIdMs: '사용할수없는 아이디입니다.',
+              }));
+    };
+    const handleOnChangeInput = (val) => {
+        setUser((prev) => ({ ...prev, userId: val }));
+        setIsCheckAndError((prev) => ({
+            isError: false,
+            isCheckIdMs: '중복확인 해주세요.',
+        }));
+    };
     return (
         <NameBox0>
             <NameBox1>사용 할 아이디를 작성해주세요.</NameBox1>
@@ -8,12 +28,15 @@ function SignUpId({ setUser, id }) {
                 <NameInput2
                     type="text"
                     value={id}
+                    name=""
                     placeholder="아이디 최대 10글자"
-                    onChange={(e) =>
-                        setUser((prev) => ({ ...prev, userId: e.target.value }))
-                    }
+                    onChange={(e) => handleOnChangeInput(e.target.value)}
                 />
-                <IdCheckBt type="Button" value="중복확인" />
+                <IdCheckBt
+                    type="Button"
+                    value="중복확인"
+                    onClick={handleCheckId}
+                />
             </IdBox>
         </NameBox0>
     );

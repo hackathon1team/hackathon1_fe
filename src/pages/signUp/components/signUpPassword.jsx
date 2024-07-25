@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-function SignUpPassword({ setUser, pw }) {
+function SignUpPassword({ setUser, pw, setIsCheckAndError }) {
+    const handleOnChangeInput = (val) => {
+        setUser((prev) => ({ ...prev, userPw: val }));
+        setIsCheckAndError((prev) => ({ ...prev, isError: false }));
+    };
     return (
         <NameBox0>
             <NameBox1>사용할 비밀번호를 작성해주세요</NameBox1>
@@ -8,9 +12,7 @@ function SignUpPassword({ setUser, pw }) {
                 type="password"
                 value={pw}
                 placeholder="비밀번호"
-                onChange={(e) =>
-                    setUser((prev) => ({ ...prev, userPw: e.target.value }))
-                }
+                onChange={(e) => handleOnChangeInput(e.target.value)}
             />
         </NameBox0>
     );
