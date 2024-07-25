@@ -1,10 +1,17 @@
 import styled from 'styled-components';
 
-function SignUpName() {
+function SignUpName({ setUser, name }) {
     return (
         <NameBox0>
             <NameBox1>당신의 이름은 무엇인가요?</NameBox1>
-            <NameInput type="text" name="" placeholder="이름을 작성해주세요" />
+            <NameInput
+                type="text"
+                value={name}
+                placeholder="이름을 작성해주세요"
+                onChange={(e) =>
+                    setUser((prev) => ({ ...prev, name: e.target.value }))
+                }
+            />
         </NameBox0>
     );
 }
@@ -35,6 +42,7 @@ const NameInput = styled.input`
     padding-left: 5px;
     padding-right: 50px;
     padding-bottom: 10px;
+    color: white;
     background-color: transparent;
     &::placeholder {
         color: #edecec;
