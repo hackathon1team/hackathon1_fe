@@ -42,5 +42,5 @@ const Wrapper = styled.div`
     justify-content: center;
     position: absolute;
     bottom: 150px;
-    left: 15px;
+    /* left: 15px; */
 `;

@@ -146,10 +146,12 @@ const Circle = styled.div`
     justify-content: center;
     margin-top: 10px;
 `;
+
 const IconWrapper = styled.div`
     position: fixed;
+
     bottom: 5%;
-    right: 40%;
+    /* right: 35%; */
     @media screen and (max-width: 500px) {
         bottom: 5%;
         right: 10%;
