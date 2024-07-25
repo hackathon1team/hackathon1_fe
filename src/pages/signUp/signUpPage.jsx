@@ -61,7 +61,7 @@ function SignUpPage() {
                                     pw={user.userPw}
                                 />
                             )}
-                            <div>dd</div>
+                            <ErrorBox></ErrorBox>
                         </Container>
                         <ButtonWrap2>
                             <CustomButton icon={'left'} onClick={downCount}>
@@ -117,3 +117,4 @@ const ButtonWrap2 = styled.div`
     display: flex;
     justify-content: space-between;
 `;
+const ErrorBox = styled.div``;
