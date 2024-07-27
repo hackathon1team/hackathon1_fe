@@ -5,7 +5,7 @@ import NoneTimeCalendarPage from './components/NoneTimeCalendarPage';
 import TimeCalendar from './components/TimeCalendar';
 import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
 import ScheduleModal from './components/scheduleModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactCalendar from '../../components/datePicker/datePicker';
 import { useSearchParams } from 'react-router-dom';
 import { useGetToday } from '../../hooks/useGetToday';
@@ -17,38 +17,7 @@ function TimeCalendarPage() {
         ? searchParams.get('date')
         : useGetToday();
 
-    const { data } = useGetScheduleDate(currentDate);
-    console.log(data);
-    const testData = [
-        {
-            recordId: '2',
-            emotion: '사랑',
-            category: '친구',
-            contents: '태기랑 주먹다짐했다.',
-            takedTime: '2',
-        },
-        {
-            recordId: '3',
-            emotion: '기쁨',
-            category: '친구',
-            contents: '태기랑 화해했다.',
-            takedTime: '1',
-        },
-        {
-            recordId: '3',
-            emotion: '기쁨',
-            category: '친구',
-            contents: '태기랑 밥먹었다.',
-            takedTime: '11',
-        },
-        {
-            recordId: '3',
-            emotion: '기쁨',
-            category: '친구',
-            contents: '태기랑 놀았다.',
-            takedTime: '1',
-        },
-    ];
+    const { data, refetch } = useGetScheduleDate(currentDate);
 
     const [isView, setIsView] = useState({
         firstModal: false,
@@ -63,6 +32,9 @@ function TimeCalendarPage() {
             dateModal: !prev.dateModal,
         }));
     };
+    useEffect(() => {
+        refetch();
+    }, [currentDate]);
 
     return (
         <>
@@ -73,8 +45,8 @@ function TimeCalendarPage() {
                     {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
                     기록해 볼까요?
                 </Title>
-                {data && data.length === 0 ? (
-                    <NoneTimeCalendarPage />
+                {data.length === 0 ? (
+                    <NoneTimeCalendarPage modalCloseFn={modalCloseFn} />
                 ) : (
                     <TimeCalendar data={data} />
                 )}

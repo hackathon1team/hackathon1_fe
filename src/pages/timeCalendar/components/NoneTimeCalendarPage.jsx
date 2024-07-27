@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 import Meco from '../../../assets/Img/meco.png';
 
-const NoneTimeCalendarPage = () => {
+const NoneTimeCalendarPage = ({ modalCloseFn }) => {
     return (
         <>
             <NoneTimeCalendar>
                 <NotYet>아직 작성한 가계부가 없네요.</NotYet>
-                <AnotherDayButton
-                    onClick={() => alert('서비스 개발중입니다 :)')}
-                >
+                <AnotherDayButton onClick={modalCloseFn}>
                     다른 날 데이터 보러가기
                 </AnotherDayButton>
                 <img src={Meco} alt="timeCalendarImg" />

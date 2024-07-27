@@ -8,9 +8,10 @@ const getScheduleDate = async (date) => {
 };
 
 const useGetScheduleDate = (date) => {
-    const scheduleDateQuery = useQuery(['useGetScheduleDate'], () =>
-        getScheduleDate(date),
-    );
+    const scheduleDateQuery = useQuery({
+        queryKey: 'useGetScheduleDate',
+        queryFn: () => getScheduleDate(date),
+    });
     return scheduleDateQuery;
 };
 
