@@ -7,6 +7,7 @@ import CategoryModal from './categoryModal';
 import { useGetToday } from '../../../hooks/useGetToday';
 import { useFindEmotions } from '../../../hooks/useFindEmotions';
 import { usePostSchedule } from '../../../query/Post/usePostSchedule.js';
+import TimeModal from './timeModal';
 
 function ScheduleModal({ setIsView, isView, refetch }) {
     const today = useGetToday();
@@ -45,6 +46,8 @@ function ScheduleModal({ setIsView, isView, refetch }) {
                             firstModal: false,
                             emotionModal: false,
                             categoryModal: false,
+                            dateModal: false,
+                            timeModal: false,
                         }))
                     }
                 />
@@ -85,11 +88,16 @@ function ScheduleModal({ setIsView, isView, refetch }) {
             </ContentsList>
             <ContentsList>
                 <Category>시간 : </Category>
-                <CategoryValInput
-                    placeholder="소요시간을 작성해주세요 (시간당)"
-                    type="number"
-                    onChange={(e) => handleChangeVal(e, 'takedTime')}
-                />
+                <CategoryVal
+                    onClick={() =>
+                        setIsView((prev) => ({ ...prev, timeModal: true }))
+                    }
+                    isVal={isView.category === ''}
+                >
+                    {addDate.takedTime
+                        ? addDate.takedTime + '시간'
+                        : '시간을 선택해주세요'}
+                </CategoryVal>
             </ContentsList>
             <ButtonWrapper>
                 <CustomButton
@@ -104,6 +112,9 @@ function ScheduleModal({ setIsView, isView, refetch }) {
             )}
             {isView.categoryModal && (
                 <CategoryModal setIsView={setIsView} setAddDate={setAddDate} />
+            )}
+            {isView.timeModal && (
+                <TimeModal setIsView={setIsView} setAddDate={setAddDate} />
             )}
         </Wrapper>
     );

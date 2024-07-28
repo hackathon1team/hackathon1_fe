@@ -24,6 +24,7 @@ function TimeCalendarPage() {
         emotionModal: false,
         categoryModal: false,
         dateModal: false,
+        timeModal: false,
     });
 
     const modalCloseFn = () => {
