@@ -1,28 +1,25 @@
 import styled, { keyframes } from 'styled-components';
 import ChattingMecoBox from './components/chattingMecoBox';
 import ChattingUserBox from './components/chattingUserBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
 import { useNavigate, useParams } from 'react-router-dom';
 import CustomButton from '../../components/customButton/customButton';
 import { useGetToday } from '../../hooks/useGetToday';
+import { useRandomQuestion } from '../../hooks/useRandomQuestion';
 
 function MecoQuestion() {
     const { contents } = useParams();
     const navigate = useNavigate();
     const today = useGetToday();
 
-    const mecoQuestionList = [
-        '이 사건에 대해 어떤 감정은 무엇이고 원인은 무엇인가요구르트?',
-        '이건 테스트 질문 (2번째 질문)',
-        '이것도 세번째 테스트 질문입니다!',
-    ];
     const [userAnswerList, setUserAnswerList] = useState({
         firstAnswer: '',
         secondAnswer: '',
         thirdAnswer: '',
     });
+    const [mecoQuestionList, setMecoQuestionList] = useState([]);
 
     const [inputVal, setInputVal] = useState('');
 
@@ -44,6 +41,9 @@ function MecoQuestion() {
                 thirdAnswer: inputVal ? inputVal : '(생략)',
             }));
     };
+    useEffect(() => {
+        setMecoQuestionList(useRandomQuestion());
+    }, []);
     return (
         <BackImg>
             <Wrapper>
