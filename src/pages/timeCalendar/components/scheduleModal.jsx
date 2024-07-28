@@ -6,8 +6,9 @@ import EmotionModal from './emotionModal';
 import CategoryModal from './categoryModal';
 import { useGetToday } from '../../../hooks/useGetToday';
 import { useFindEmotions } from '../../../hooks/useFindEmotions';
+import { usePostSchedule } from '../../../query/Post/usePostSchedule.js';
 
-function ScheduleModal({ setIsView, isView }) {
+function ScheduleModal({ setIsView, isView, refetch }) {
     const today = useGetToday();
 
     const [addDate, setAddDate] = useState({
@@ -18,6 +19,7 @@ function ScheduleModal({ setIsView, isView }) {
         contents: '',
         takedTime: '',
     });
+    const { mutate: postSchedule } = usePostSchedule(setIsView, refetch);
 
     const handleChangeVal = (e, category) => {
         setAddDate((prev) => ({ ...prev, [category]: e.target.value }));
@@ -30,7 +32,7 @@ function ScheduleModal({ setIsView, isView }) {
             addDate.contents === ''
         )
             return;
-        console.log(addDate);
+        postSchedule(addDate);
     };
 
     return (

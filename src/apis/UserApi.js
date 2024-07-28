@@ -12,6 +12,9 @@ const UserApi = {
             params: { userId },
         });
     },
+    getToken() {
+        return axiosInstance.post('/api/v1/accessToken');
+    },
 };
 
 export default UserApi;

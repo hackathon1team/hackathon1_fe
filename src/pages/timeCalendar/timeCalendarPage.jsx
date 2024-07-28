@@ -33,7 +33,9 @@ function TimeCalendarPage() {
         }));
     };
     useEffect(() => {
-        refetch();
+        if (searchParams.get('date')) {
+            refetch();
+        }
     }, [currentDate]);
 
     return (
@@ -83,7 +85,11 @@ function TimeCalendarPage() {
                     />
                 )}
                 {isView.firstModal && (
-                    <ScheduleModal setIsView={setIsView} isView={isView} />
+                    <ScheduleModal
+                        setIsView={setIsView}
+                        isView={isView}
+                        refetch={refetch}
+                    />
                 )}
             </BackImg>
         </>

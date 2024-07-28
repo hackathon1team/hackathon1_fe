@@ -6,6 +6,7 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
         if (!id) setIsCheckAndError((prev) => ({ ...prev, isError: true }));
         try {
             const res = await UserApi.getCheckId(id);
+            console.log(res);
             res.data
                 ? setIsCheckAndError((prev) => ({
                       ...prev,
