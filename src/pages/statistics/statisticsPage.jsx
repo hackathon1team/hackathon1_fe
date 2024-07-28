@@ -5,9 +5,19 @@ import NegativeEmotions from './components/negativeEmotions';
 import NeutralEmotions from './components/neutralEmotions';
 import EmotionsSummary from './components/emotionsSummary';
 import styled from 'styled-components';
+import useGetStatisticDate from '../../query/Get/useGetStatisticData';
 // import useScrollFullPage from '../../hooks/useScrollFullPage';
 
 function StatisticsPage() {
+    const { data: statisticsData } = useGetStatisticDate();
+    const {
+        timeSpent,
+        comparisonWithLastMonth,
+        emotionsSummary,
+        positiveEmotions,
+        neutralEmotions,
+        negativeEmotions,
+    } = statisticsData;
     const testData = {
         timeSpent: [
             // 상위5개 + 0시간인 거 빼고
@@ -164,12 +174,12 @@ function StatisticsPage() {
 
     return (
         <Wrapper>
-            <TimeSpent data={testData.timeSpent} />
-            <ComparisonWithLastMonth data={testData.comparisonWithLastMonth} />
-            <EmotionsSummary data={testData.emotionsSummary} />
-            <PositiveEmotions data={testData.positiveEmotions} />
-            <NeutralEmotions data={testData.neutralEmotions} />
-            <NegativeEmotions data={testData.negativeEmotions} />
+            <TimeSpent data={timeSpent} />
+            <ComparisonWithLastMonth data={comparisonWithLastMonth} />
+            <EmotionsSummary data={emotionsSummary} />
+            <PositiveEmotions data={positiveEmotions} />
+            <NeutralEmotions data={neutralEmotions} />
+            <NegativeEmotions data={negativeEmotions} />
         </Wrapper>
     );
 }

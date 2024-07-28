@@ -32,7 +32,7 @@ function ColumnPercentBar(props) {
 export default ColumnPercentBar;
 
 const Wrapper = styled.div`
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,4 +76,3 @@ const Bar = styled.div`
         animation: ${(height) => slide(height)} 2s ease-out;
     }
 `;
-

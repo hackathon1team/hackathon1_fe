@@ -7,11 +7,12 @@ export const usePostSchedule = (setIsView, refetch) => {
             return ScheduleApi.postSchedule(data);
         },
         onSuccess: (res) => {
-            console.log(res);
             setIsView(() => ({
                 firstModal: false,
                 emotionModal: false,
                 categoryModal: false,
+                dateModal: false,
+                timeModal: false,
             }));
             refetch();
         },
