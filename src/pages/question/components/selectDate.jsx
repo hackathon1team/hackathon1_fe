@@ -9,9 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import { useGetToday } from '../../../hooks/useGetToday';
 import ReactCalendar from '../../../components/datePicker/datePicker';
 
-function SelectDate() {
+function SelectDate({ getContents }) {
     const navigate = useNavigate();
-    const testData = ['공부함', '바보', '싸움'];
+
+    console.log(getContents);
     const [val, setVal] = useState('');
     const [isView, setIsView] = useState(false);
     const [isViewModal, setIsViewModal] = useState(false);
@@ -48,7 +49,7 @@ function SelectDate() {
                     </CategoryBox>
                     {isView && (
                         <CategoryWrapper>
-                            {testData.map((el, idx) => (
+                            {getContents.map((el, idx) => (
                                 <CategoryBox key={idx}>
                                     <Category
                                         onClick={() => handleClickCategory(el)}

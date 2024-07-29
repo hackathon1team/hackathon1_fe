@@ -8,6 +8,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import CustomButton from '../../components/customButton/customButton';
 import { useGetToday } from '../../hooks/useGetToday';
 import { useRandomQuestion } from '../../hooks/useRandomQuestion';
+import { usePostMecoQuestion } from '../../query/Post/usePostMecoQuestion';
 
 function MecoQuestion() {
     const { contents } = useParams();
@@ -20,8 +21,9 @@ function MecoQuestion() {
         thirdAnswer: '',
     });
     const [mecoQuestionList, setMecoQuestionList] = useState([]);
-
     const [inputVal, setInputVal] = useState('');
+
+    const { mutate: postQuestion } = usePostMecoQuestion();
 
     const handleAnswer = () => {
         setInputVal('');
@@ -30,20 +32,35 @@ function MecoQuestion() {
                 ...prev,
                 firstAnswer: inputVal ? inputVal : '(생략)',
             }));
+
         if (userAnswerList.secondAnswer.length === 0)
             return setUserAnswerList((prev) => ({
                 ...prev,
                 secondAnswer: inputVal ? inputVal : '(생략)',
             }));
-        if (userAnswerList.thirdAnswer.length === 0)
-            return setUserAnswerList((prev) => ({
+        if (userAnswerList.thirdAnswer.length === 0) {
+            setUserAnswerList((prev) => ({
                 ...prev,
                 thirdAnswer: inputVal ? inputVal : '(생략)',
             }));
+            let postData = {
+                mecoDate: useGetToday(),
+                contents: contents,
+                questions: [
+                    userAnswerList.firstAnswer,
+                    userAnswerList.secondAnswer,
+                    inputVal ? inputVal : '(생략)',
+                ],
+                answers: mecoQuestionList,
+            };
+            postQuestion(postData);
+        }
     };
+
     useEffect(() => {
         setMecoQuestionList(useRandomQuestion());
     }, []);
+
     return (
         <BackImg>
             <Wrapper>

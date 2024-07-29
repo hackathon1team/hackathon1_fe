@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import Meco from '../../../assets/Img/meco.png';
+import { useNavigate } from 'react-router-dom';
 
 const NoneCalendarPage = () => {
+    const navigate = useNavigate();
     return (
         <>
             <Title>
@@ -12,7 +14,7 @@ const NoneCalendarPage = () => {
                 <GotoTimeCalendar>
                     먼저 시간가계부를 작성하러 갈까요?
                     <CButtonWrapper>
-                        <TimeCalendarButton>
+                        <TimeCalendarButton onClick={() => navigate('/')}>
                             <div>시간 가계부 가기</div>
                         </TimeCalendarButton>
                     </CButtonWrapper>

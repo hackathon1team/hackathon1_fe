@@ -39,7 +39,7 @@ axiosInstance.interceptors.response.use(
         if (error.response.status === 415) {
             //refrest 만료시 로그아웃 및  /logInPage로 Reouter
             TokenService.removeAccessToken();
-            window.location.href = '/logIn';
+            // window.location.href = '/logIn';
             return Promise.reject(error);
         }
 

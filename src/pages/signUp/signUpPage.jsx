@@ -15,7 +15,7 @@ function SignUpPage() {
     const [currentPageNum, SetCurrentPageNum] = useState(0);
     const [isModalView, setIsModalView] = useState(false);
     const [user, setUser] = useState({
-        name: '',
+        userName: '',
         userId: '',
         userPw: '',
     });
@@ -27,7 +27,7 @@ function SignUpPage() {
     const { mutate: postSignUp } = usePostSignUp(setIsModalView);
 
     const upCount = () => {
-        if (currentPageNum === 1 && user.name === '')
+        if (currentPageNum === 1 && user.userName === '')
             return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
         if (currentPageNum === 2 && user.userId === '')
             return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
@@ -69,7 +69,7 @@ function SignUpPage() {
                             {currentPageNum === 1 && (
                                 <SignUpName
                                     setUser={setUser}
-                                    name={user.name}
+                                    name={user.userName}
                                     setIsCheckAndError={setIsCheckAndError}
                                 />
                             )}

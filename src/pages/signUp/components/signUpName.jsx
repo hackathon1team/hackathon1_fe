@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 function SignUpName({ setUser, name, setIsCheckAndError }) {
     const handleOnChangeInput = (val) => {
-        setUser((prev) => ({ ...prev, name: val }));
+        setUser((prev) => ({ ...prev, userName: val }));
         setIsCheckAndError((prev) => ({ ...prev, isError: false }));
     };
     return (

@@ -6,11 +6,15 @@ import { useState } from 'react';
 import { socratestQuestionList } from '../../constants/socratesQuestionList';
 import ProgressBar from '../../components/progressBar/progressBar';
 import { useNavigate } from 'react-router-dom';
+import useGetSocrates from '../../query/Get/useGetSocrates';
+import { usePatchMetaQuestion } from '../../query/Patch/usePatchMetaQuestion';
 
 function Socrates() {
     const navigate = useNavigate();
+    const { data: getSocratesData } = useGetSocrates();
+    console.log(getSocratesData);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-
+    const { mutate } = usePatchMetaQuestion();
     const [answer, setAnswer] = useState({
         answer1: '',
         answer2: '',
@@ -26,6 +30,13 @@ function Socrates() {
         if (upDown === 'down') {
             setCurrentQuestion((prev) => prev - 1);
         }
+    };
+    const handlePatchSocrates = () => {
+        let data = { answers: [] };
+        for (let i = 1; i <= 5; i++) {
+            data.answers.push(answer['answer' + i]);
+        }
+        mutate(data);
     };
     return (
         <BackImg>
@@ -65,7 +76,7 @@ function Socrates() {
                     </CustomButton>
                 )}
                 {currentQuestion === 4 ? (
-                    <CustomButton icon={'right'} onClick={() => navigate('/')}>
+                    <CustomButton icon={'right'} onClick={handlePatchSocrates}>
                         홈으로
                     </CustomButton>
                 ) : (

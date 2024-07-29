@@ -3,6 +3,7 @@ import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
 import NoneCalendarPage from './components/NoneCalendarPage';
 import SelectDate from './components/selectDate';
+import useGetScheduleContents from '../../query/Get/useGetScheduleContents';
 
 function QuestionPage() {
     const testData = [
@@ -21,10 +22,15 @@ function QuestionPage() {
             takedTime: '1',
         },
     ];
+    const { data: getContents } = useGetScheduleContents();
     return (
         <>
             <BackImg>
-                {testData.length === 0 ? <NoneCalendarPage /> : <SelectDate />}
+                {getContents.length === 0 ? (
+                    <NoneCalendarPage />
+                ) : (
+                    <SelectDate getContents={getContents} />
+                )}
             </BackImg>
         </>
     );
