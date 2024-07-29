@@ -1,6 +1,7 @@
 import axios from 'axios';
 import TokenService from '../utils/tokenService';
 import UserApi from './UserApi';
+import UserNickNameService from '../utils/userNickNameService';
 
 //axios.defaults.withCredentials = true;
 
@@ -37,9 +38,10 @@ axiosInstance.interceptors.response.use(
         const originalRequest = error.config;
 
         if (error.response.status === 415) {
-            //refrest 만료시 로그아웃 및  /logInPage로 Reouter
+            //refrest 만료시 로그아웃 및  /logInPage로 Router
             TokenService.removeAccessToken();
-            // window.location.href = '/logIn';
+            UserNickNameService.removeNickName();
+            window.location.href = '/logIn';
             return Promise.reject(error);
         }
 
