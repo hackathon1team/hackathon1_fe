@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
 import Background from '../../assets/Img/backgroundImg/meta_1.png';
 import CustomButton from '../../components/customButton/customButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { socratestQuestionList } from '../../constants/socratesQuestionList';
 import ProgressBar from '../../components/progressBar/progressBar';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ function Socrates() {
     const { data: getSocratesData } = useGetSocrates();
     console.log(getSocratesData);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const { mutate } = usePatchMetaQuestion();
+    const { mutate } = usePatchMetaQuestion(navigate);
     const [answer, setAnswer] = useState({
         answer1: '',
         answer2: '',
@@ -38,6 +38,15 @@ function Socrates() {
         }
         mutate(data);
     };
+    useEffect(() => {
+        setAnswer({
+            answer1: getSocratesData[0],
+            answer2: getSocratesData[1],
+            answer3: getSocratesData[2],
+            answer4: getSocratesData[3],
+            answer5: getSocratesData[4],
+        });
+    }, []);
     return (
         <BackImg>
             <MainQuestion>
