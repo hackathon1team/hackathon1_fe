@@ -6,7 +6,7 @@ import { useState } from 'react';
 function EmotionModal({ setIsView, setAddDate }) {
     const emotionCategory = [
         {
-            kor: '긍정적',
+            kor: '긍정',
             en: 'positiveEmotions',
         },
         {
@@ -14,7 +14,7 @@ function EmotionModal({ setIsView, setAddDate }) {
             en: 'neutralEmotions',
         },
         {
-            kor: '부정적',
+            kor: '부정',
             en: 'negativeEmotions',
         },
     ];

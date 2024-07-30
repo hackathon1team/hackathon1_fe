@@ -15,7 +15,7 @@ export default CustomModal;
 const Wrapper = styled.div`
     position: fixed;
     left: 0;
-    height: 150vh;
+
     width: 100%;
     display: flex;
     justify-content: center;

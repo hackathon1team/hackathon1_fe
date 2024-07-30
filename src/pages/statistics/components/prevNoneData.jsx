@@ -3,7 +3,7 @@ import styled from 'styled-components';
 function PrevNoneData() {
     return (
         <Wrapper>
-            전달에 데이터가 없습니다.
+            데이터가 없습니다.
             <br />
             우리가 더 친해져볼까요?
         </Wrapper>
@@ -18,4 +18,5 @@ const Wrapper = styled.h3`
     color: #edecec;
     text-align: center;
     font-size: 21px;
+    line-height: 200%;
 `;
