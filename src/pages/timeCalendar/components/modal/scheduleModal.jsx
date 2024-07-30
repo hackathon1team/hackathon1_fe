@@ -132,14 +132,12 @@ const Wrapper = styled.div`
     color: #5d659e;
     padding: 40px 30px;
     z-index: 11;
-    animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    animation: fadeIn 1s forwards;
     @keyframes fadeIn {
         0% {
-            bottom: -20rem;
             opacity: 0;
         }
         100% {
-            bottom: 0;
             opacity: 1;
         }
     }

@@ -11,17 +11,20 @@ import { usePatchMetaQuestion } from '../../query/Patch/usePatchMetaQuestion';
 
 function Socrates() {
     const navigate = useNavigate();
-    const { data: getSocratesData } = useGetSocrates();
+    const { data: getSocratesData, refetch } = useGetSocrates();
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const { mutate } = usePatchMetaQuestion(navigate);
+
     const [answer, setAnswer] = useState({
-        answer1: '',
-        answer2: '',
-        answer3: '',
-        answer4: '',
-        answer5: '',
+        answer1: getSocratesData[0],
+        answer2: getSocratesData[1],
+        answer3: getSocratesData[2],
+        answer4: getSocratesData[3],
+        answer5: getSocratesData[4],
     });
+    console.log(answer.answer1);
+
     const handleUpDownQuestion = (upDown) => {
         if (upDown === 'up') {
             if (currentQuestion === 4) return;
@@ -36,17 +39,10 @@ function Socrates() {
         for (let i = 1; i <= 5; i++) {
             data.answers.push(answer['answer' + i]);
         }
+        setAnswer(data);
         mutate(data);
     };
-    useEffect(() => {
-        setAnswer({
-            answer1: getSocratesData[0],
-            answer2: getSocratesData[1],
-            answer3: getSocratesData[2],
-            answer4: getSocratesData[3],
-            answer5: getSocratesData[4],
-        });
-    }, []);
+
     return (
         <BackImg>
             <MainQuestion>

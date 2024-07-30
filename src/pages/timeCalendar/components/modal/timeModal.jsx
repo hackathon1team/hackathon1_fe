@@ -48,13 +48,14 @@ const Wrapper = styled.div`
     animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     @keyframes fadeIn {
         0% {
-            bottom: -20rem;
             opacity: 0;
         }
         100% {
-            bottom: 0;
             opacity: 1;
         }
+    }
+    ::-webkit-scrollbar {
+        display: none;
     }
 `;
 const Top = styled.div`
