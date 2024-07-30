@@ -3,16 +3,14 @@ import UserApi from '../../apis/UserApi';
 import TokenService from '../../utils/tokenService';
 import UserNickNameService from '../../utils/userNickNameService';
 
-export const usePostLogIn = (navigate) => {
+export const useDeleteAccount = (navigate) => {
     return useMutation({
-        mutationFn: (idAndPw) => {
-            return UserApi.postLogIn(idAndPw);
+        mutationFn: () => {
+            return UserApi.deleteAccount();
         },
         onSuccess: (res) => {
-            TokenService.setAccessToken(res.data.accessToken);
-            UserNickNameService.setNickName(
-                res.data.userName === null ? '이름미정' : res.data.userName,
-            );
+            TokenService.removeAccessToken();
+            UserNickNameService.removeNickName();
             navigate('/');
         },
     });

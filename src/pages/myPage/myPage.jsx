@@ -2,8 +2,11 @@ import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
 import Background from '../../assets/Img/backgroundImg/myPage.png';
 import MyPageItem from './components/myPageItem.jsx';
+import { useState } from 'react';
+import DeleteAccoutModal from './components/DeleteAccoutModal';
 
 function MyPagePage() {
+    const [isModalView, setIsModalView] = useState(true);
     return (
         <BackImg>
             <MyPageMainLine>
@@ -12,6 +15,7 @@ function MyPagePage() {
                 나의 페이지
             </MyPageMainLine>
             <MyPageItem />
+            {isModalView && <DeleteAccoutModal />}
         </BackImg>
     );
 }

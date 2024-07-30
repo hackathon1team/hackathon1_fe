@@ -12,7 +12,6 @@ import ReactCalendar from '../../../components/datePicker/datePicker';
 function SelectDate({ getContents }) {
     const navigate = useNavigate();
 
-    console.log(getContents);
     const [val, setVal] = useState('');
     const [isView, setIsView] = useState(false);
     const [isViewModal, setIsViewModal] = useState(false);

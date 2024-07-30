@@ -7,6 +7,9 @@ const UserApi = {
     postLogIn(idAndPw) {
         return axiosInstance.post('/api/v1/login', idAndPw);
     },
+    getToken() {
+        return axiosInstance.post('/api/v1/accessToken');
+    },
     patchMetaQuestion(data) {
         return axiosInstance.patch('/api/v1/meta-questions', data);
     },
@@ -15,8 +18,11 @@ const UserApi = {
             params: { userId },
         });
     },
-    getToken() {
-        return axiosInstance.post('/api/v1/accessToken');
+    getLogout() {
+        return axiosInstance.get('api/v1/logout');
+    },
+    deleteAccount() {
+        return axiosInstance.delete('api/v1/account');
     },
 };
 

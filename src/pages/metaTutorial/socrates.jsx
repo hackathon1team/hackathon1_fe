@@ -12,7 +12,7 @@ import { usePatchMetaQuestion } from '../../query/Patch/usePatchMetaQuestion';
 function Socrates() {
     const navigate = useNavigate();
     const { data: getSocratesData } = useGetSocrates();
-    console.log(getSocratesData);
+
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const { mutate } = usePatchMetaQuestion(navigate);
     const [answer, setAnswer] = useState({

@@ -8,7 +8,7 @@ const getScheduleContents = async () => {
 
 const useGetScheduleContents = () =>
     useQuery({
-        queryKey: ['getScheduleContents'],
+        queryKey: ['useGetScheduleContents'],
         queryFn: () => getScheduleContents(),
     });
 

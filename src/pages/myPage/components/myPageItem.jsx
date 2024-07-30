@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import meco from '../../../assets/Img/meco.png';
+import TokenService from '../../../utils/tokenService';
+import UserNickNameService from '../../../utils/userNickNameService';
+import { useNavigate } from 'react-router-dom';
+
 const myPageItem = () => {
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        TokenService.removeAccessToken();
+        UserNickNameService.removeNickName();
+        navigate('/logIn');
+    };
     return (
         <Wrapper>
             <MyPageBox>
@@ -15,7 +25,9 @@ const myPageItem = () => {
                                 <br /> 함께하는,
                                 <br /> 하루하루
                             </LogDetail>
-                            <LogoutButton>로그아웃</LogoutButton>
+                            <LogoutButton onClick={handleLogout}>
+                                로그아웃
+                            </LogoutButton>
                         </LogoutBoxDetail>
                     </LogoutBox>
 

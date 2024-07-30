@@ -46,12 +46,12 @@ function MecoQuestion() {
             let postData = {
                 mecoDate: useGetToday(),
                 contents: contents,
-                questions: [
+                questions: mecoQuestionList,
+                answers: [
                     userAnswerList.firstAnswer,
                     userAnswerList.secondAnswer,
                     inputVal ? inputVal : '(생략)',
                 ],
-                answers: mecoQuestionList,
             };
             postQuestion(postData);
         }

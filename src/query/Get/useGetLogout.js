@@ -8,7 +8,7 @@ const getLogout = async () => {
 
 const useGetLogout = () =>
     useQuery({
-        queryKey: ['getLogout'],
+        queryKey: ['useGetLogout'],
         queryFn: () => getLogout(),
     });
 
