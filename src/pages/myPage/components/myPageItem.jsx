@@ -4,8 +4,11 @@ import meco from '../../../assets/Img/meco.png';
 import TokenService from '../../../utils/tokenService';
 import UserNickNameService from '../../../utils/userNickNameService';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import DeleteAccoutModal from '../components/DeleteAccoutModal';
 
 const myPageItem = () => {
+    const [isModalView, setIsModalView] = useState(false);
     const navigate = useNavigate();
     const handleLogout = () => {
         TokenService.removeAccessToken();
@@ -38,7 +41,13 @@ const myPageItem = () => {
                                 <br />
                                 -소크라테스
                             </DelDetail>
-                            <DeleteAccountButton>회원탈퇴</DeleteAccountButton>
+                            <DeleteAccountButton
+                                onClick={() => {
+                                    setIsModalView(true);
+                                }}
+                            >
+                                회원탈퇴
+                            </DeleteAccountButton>
                         </DeleteAccountBoxDetail>
                         <img
                             src="src\assets\Img\myPageImg\starcloud.png"
@@ -47,6 +56,9 @@ const myPageItem = () => {
                     </DeleteAccountBox>
                 </GlassmorphismModal>
             </MyPageBox>
+            {isModalView && (
+                <DeleteAccoutModal setIsModalView={setIsModalView} />
+            )}
         </Wrapper>
     );
 };
