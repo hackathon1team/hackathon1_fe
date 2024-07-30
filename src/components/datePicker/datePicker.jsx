@@ -20,6 +20,7 @@ function ReactCalendar({ url, modalCloseFn }) {
             modalCloseFn && modalCloseFn();
         }
     }, [selectedDate]);
+    const today = new Date();
 
     return (
         <Wrapper>
@@ -32,6 +33,17 @@ function ReactCalendar({ url, modalCloseFn }) {
                 navigationLabel={null}
                 showNeighboringMonth={false} //  이전, 이후 달의 날짜는 보이지 않도록 설정
                 className="mx-auto w-full text-sm border-b"
+                tileContent={({ date, view }) => {
+                    let html = [];
+                    if (
+                        view === 'month' &&
+                        date.getMonth() === today.getMonth() &&
+                        date.getDate() === today.getDate()
+                    ) {
+                        html.push(<Today key={'today'}>오늘</Today>);
+                    }
+                    return <>{html}</>;
+                }}
             />
         </Wrapper>
     );
@@ -42,5 +54,7 @@ const Wrapper = styled.div`
     justify-content: center;
     position: absolute;
     bottom: 150px;
-    /* left: 15px; */
+`;
+const Today = styled.div`
+    color: purple;
 `;
