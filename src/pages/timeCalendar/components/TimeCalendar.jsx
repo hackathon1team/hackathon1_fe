@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import { useFindEmotions } from '../../../hooks/useFindEmotions';
+import { useState } from 'react';
+import DetailModal from './modal/detailModal';
 
-const TimeCalendarPage = ({ data }) => {
+const TimeCalendarPage = ({ data, refetch }) => {
+    const [isDetailModal, setIsDetailModal] = useState({
+        isView: false,
+        data: {},
+    });
+
     return (
         <Wrapper>
             <GlassmorphismModal>
@@ -14,7 +21,12 @@ const TimeCalendarPage = ({ data }) => {
                 </Header>
                 <AllContents>
                     {data.map((el, idx) => (
-                        <Contents key={idx} onClick={() => alert('준비중:)')}>
+                        <Contents
+                            key={idx}
+                            onClick={() =>
+                                setIsDetailModal({ isView: true, data: el })
+                            }
+                        >
                             <Emotion>{useFindEmotions(el.emotion)}</Emotion>
                             <Case>{el.category}</Case>
                             <Content>{el.contents}</Content>
@@ -23,6 +35,13 @@ const TimeCalendarPage = ({ data }) => {
                     ))}
                 </AllContents>
             </GlassmorphismModal>
+            {isDetailModal.isView && (
+                <DetailModal
+                    setIsDetailModal={setIsDetailModal}
+                    isDetailModal={isDetailModal}
+                    refetch={refetch}
+                />
+            )}
         </Wrapper>
     );
 };

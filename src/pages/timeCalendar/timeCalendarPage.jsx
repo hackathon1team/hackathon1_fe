@@ -4,12 +4,12 @@ import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import NoneTimeCalendarPage from './components/NoneTimeCalendarPage';
 import TimeCalendar from './components/TimeCalendar';
 import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
-import ScheduleModal from './components/scheduleModal';
 import { useEffect, useState } from 'react';
 import ReactCalendar from '../../components/datePicker/datePicker';
 import { useSearchParams } from 'react-router-dom';
 import { useGetToday } from '../../hooks/useGetToday';
 import useGetScheduleDate from '../../query/Get/useGetScheduleDate';
+import ScheduleModal from './components/modal/scheduleModal';
 
 function TimeCalendarPage() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -51,7 +51,7 @@ function TimeCalendarPage() {
                 {data.length === 0 ? (
                     <NoneTimeCalendarPage modalCloseFn={modalCloseFn} />
                 ) : (
-                    <TimeCalendar data={data} />
+                    <TimeCalendar data={data} refetch={refetch} />
                 )}
 
                 <IconWrapper>

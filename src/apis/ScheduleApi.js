@@ -16,6 +16,9 @@ const ScheduleApi = {
     postSchedule(data) {
         return axiosInstance.post('api/v1/time-ledger/record', data);
     },
+    deleteSchedule(recordId) {
+        return axiosInstance.delete(`api/v1/time-ledger/records/${recordId}`);
+    },
 };
 
 export default ScheduleApi;

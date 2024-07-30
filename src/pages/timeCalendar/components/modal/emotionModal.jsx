@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { CancelIcon } from '../../../components/icons/icons';
-import { emotions } from '../../../constants/emotions';
+import { CancelIcon } from '../../../../components/icons/icons';
+import { emotions } from '../../../../constants/emotions';
 import { useState } from 'react';
 
 function EmotionModal({ setIsView, setAddDate }) {
@@ -61,6 +61,7 @@ function EmotionModal({ setIsView, setAddDate }) {
             <EmotionList>
                 {emotions[clickCategory.en].map((el, idx) => (
                     <Emotion
+                        key={el.type}
                         onClick={(e) =>
                             handleClickEmotion(e, el.type, el.emotions)
                         }

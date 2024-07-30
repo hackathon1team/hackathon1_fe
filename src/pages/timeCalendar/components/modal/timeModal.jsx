@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { CancelIcon } from '../../../components/icons/icons';
+import { CancelIcon } from '../../../../components/icons/icons';
 
 function TimeModal({ setIsView, setAddDate }) {
     const handleClickEmotion = (el) => {

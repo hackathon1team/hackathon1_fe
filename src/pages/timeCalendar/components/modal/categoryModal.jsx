@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { CancelIcon } from '../../../components/icons/icons';
-import { category } from '../../../constants/category';
+import { CancelIcon } from '../../../../components/icons/icons';
+import { category } from '../../../../constants/category';
 
 function CategoryModal({ setIsView, setAddDate }) {
     const handleClickEmotion = (el) => {

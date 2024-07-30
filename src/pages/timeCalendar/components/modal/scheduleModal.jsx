@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { CancelIcon } from '../../../components/icons/icons';
-import CustomButton from '../../../components/customButton/customButton';
+import { CancelIcon } from '../../../../components/icons/icons';
+import CustomButton from '../../../../components/customButton/customButton';
 import { useState } from 'react';
 import EmotionModal from './emotionModal';
 import CategoryModal from './categoryModal';
-import { useGetToday } from '../../../hooks/useGetToday';
-import { useFindEmotions } from '../../../hooks/useFindEmotions';
-import { usePostSchedule } from '../../../query/Post/usePostSchedule.js';
+import { useGetToday } from '../../../../hooks/useGetToday';
+import { useFindEmotions } from '../../../../hooks/useFindEmotions';
+import { usePostSchedule } from '../../../../query/Post/usePostSchedule.js.js';
 import TimeModal from './timeModal';
 
 function ScheduleModal({ setIsView, isView, refetch }) {
