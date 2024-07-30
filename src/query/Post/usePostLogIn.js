@@ -2,8 +2,10 @@ import { useMutation } from '@tanstack/react-query';
 import UserApi from '../../apis/UserApi';
 import TokenService from '../../utils/tokenService';
 import UserNickNameService from '../../utils/userNickNameService';
+import { useNavigate } from 'react-router-dom';
 
-export const usePostLogIn = (navigate) => {
+export const usePostLogIn = (url) => {
+    const navigate = useNavigate();
     return useMutation({
         mutationFn: (idAndPw) => {
             return UserApi.postLogIn(idAndPw);
@@ -13,7 +15,7 @@ export const usePostLogIn = (navigate) => {
             UserNickNameService.setNickName(
                 res.data.userName === null ? '이름미정' : res.data.userName,
             );
-            navigate('/');
+            navigate(url);
         },
     });
 };

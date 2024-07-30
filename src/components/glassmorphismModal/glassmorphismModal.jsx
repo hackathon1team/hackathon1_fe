@@ -29,7 +29,7 @@ const Box = styled.div`
     box-shadow:
         0 19px 38px rgba(0, 0, 0, 0.3),
         0 15px 12px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(5.1px);
+    /* backdrop-filter: blur(5.1px); */
     border: 1px solid rgba(255, 255, 255, 0.14);
     display: flex;
     flex-direction: column;

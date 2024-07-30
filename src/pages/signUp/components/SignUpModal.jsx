@@ -2,14 +2,17 @@ import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorp
 import CustomModal from '../../../components/customModal/customModal';
 import styled from 'styled-components';
 import SuccessImg from '../../../assets/Img/meco.png';
-import { useNavigate } from 'react-router-dom';
+import { usePostLogIn } from '../../../query/Post/usePostLogIn';
 
-function SignUpMadal({ setIsModalView }) {
-    const navigate = useNavigate();
+function SignUpMadal({ setIsModalView, user }) {
+    const { mutate } = usePostLogIn('/metaAbout');
     const handleStart = () => {
+        mutate({
+            userId: user.userId,
+            userPw: user.userPw,
+        });
         setIsModalView(false);
         alert('임시로 회원가입 성공! 튜토리얼 시작합니다');
-        navigate('/metaAbout');
     };
     return (
         <CustomModal>

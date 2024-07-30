@@ -123,7 +123,10 @@ function SignUpPage() {
                         </ButtonWrap2>
                     </Wrapper>
                     {isModalView && (
-                        <SignUpMadal setIsModalView={setIsModalView} />
+                        <SignUpMadal
+                            setIsModalView={setIsModalView}
+                            user={user}
+                        />
                     )}
                 </BackImg1>
             )}

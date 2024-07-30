@@ -15,7 +15,7 @@ function LogInPage() {
         userId: '',
         userPw: '',
     });
-    const { mutate } = usePostLogIn(navigate);
+    const { mutate } = usePostLogIn('/');
 
     const handleLogIn = () => {
         if (idAndPw.userId === '' || idAndPw.userPw === '') return;
