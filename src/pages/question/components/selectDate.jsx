@@ -39,8 +39,8 @@ function SelectDate({ getContents }) {
                 <TopBox>
                     {isGetQuestionSumData ? (
                         <>
-                            이미 메코의 질문을 하셨네요!! <br />
-                            메코 ~ 메코
+                            이미 메코의 질문을 하셨네요. <br />
+                            메코..! 메코..!
                         </>
                     ) : (
                         <>

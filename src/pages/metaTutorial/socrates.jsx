@@ -100,6 +100,10 @@ export default Socrates;
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
     padding: 50% 30px 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40%;
 `;
 
 const MainQuestion = styled.div`
