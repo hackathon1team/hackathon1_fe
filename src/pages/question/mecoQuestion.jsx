@@ -35,18 +35,18 @@ function MecoQuestion() {
         if (userAnswerList.firstAnswer.length === 0)
             return setUserAnswerList((prev) => ({
                 ...prev,
-                firstAnswer: inputVal ? inputVal : '(생략)',
+                firstAnswer: inputVal.trim() ? inputVal : '(생략)',
             }));
 
         if (userAnswerList.secondAnswer.length === 0)
             return setUserAnswerList((prev) => ({
                 ...prev,
-                secondAnswer: inputVal ? inputVal : '(생략)',
+                secondAnswer: inputVal.trim() ? inputVal : '(생략)',
             }));
         if (userAnswerList.thirdAnswer.length === 0) {
             setUserAnswerList((prev) => ({
                 ...prev,
-                thirdAnswer: inputVal ? inputVal : '(생략)',
+                thirdAnswer: inputVal.trim() ? inputVal : '(생략)',
             }));
             let postData = {
                 mecoDate: useGetToday(),
@@ -55,7 +55,7 @@ function MecoQuestion() {
                 answers: [
                     userAnswerList.firstAnswer,
                     userAnswerList.secondAnswer,
-                    inputVal ? inputVal : '(생략)',
+                    inputVal.trim() ? inputVal : '(생략)',
                 ],
             };
             postQuestion(postData);
