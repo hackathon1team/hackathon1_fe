@@ -76,7 +76,10 @@ function MecoQuestion() {
                     <br />
                     궁금한게 많아요.
                 </Title>
-                <ChattingTotalBox id="top">
+                <ChattingTotalBox
+                    id="top"
+                    isEnd={userAnswerList.thirdAnswer.length !== 0}
+                >
                     <ChattingMecoBox
                         text={'오늘의 인상깊은 사건은 무엇인가요?'}
                         isFix={true}
@@ -154,7 +157,8 @@ const Title = styled.div`
     color: #ffffff;
 `;
 const ChattingTotalBox = styled.div`
-    height: 50vh;
+    /* height: ${({ isEnd }) => (isEnd ? '100vh' : '50vh')}; */
+    height: 100%;
     overflow: auto;
     display: flex;
     flex-direction: column;
@@ -206,6 +210,6 @@ const EndBox = styled.div`
     height: 20vh;
     display: flex;
     align-items: end;
-    animation: ${fadeIn} 0.5s ease-in-out;
     justify-content: end;
+    animation: ${fadeIn} 2.5s ease-in-out;
 `;
