@@ -15,7 +15,6 @@ function ComparisonWithLastMonth({ data }) {
             : data.previousHours)
     ).toFixed(2);
 
-    console.log(data);
     return (
         <BackImg>
             <UpArrowIcon />

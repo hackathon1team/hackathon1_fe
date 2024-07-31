@@ -17,5 +17,9 @@ export const usePostLogIn = (url) => {
             );
             navigate(url);
         },
+        onError: (err) => {
+            console.log(err.response.data.message);
+            throw err;
+        },
     });
 };

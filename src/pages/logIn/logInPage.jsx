@@ -58,7 +58,8 @@ function LogInPage() {
                         <LogInBt
                             type="Button"
                             disabled={
-                                idAndPw.userId === '' || idAndPw.userPw === ''
+                                idAndPw.userId.trim() === '' ||
+                                idAndPw.userPw.trim() === ''
                             }
                             onClick={handleLogIn}
                         >

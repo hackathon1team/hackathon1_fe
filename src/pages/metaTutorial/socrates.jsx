@@ -23,7 +23,6 @@ function Socrates() {
         answer4: getSocratesData[3],
         answer5: getSocratesData[4],
     });
-    console.log(answer.answer1);
 
     const handleUpDownQuestion = (upDown) => {
         if (upDown === 'up') {

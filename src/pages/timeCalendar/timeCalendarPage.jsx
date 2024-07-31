@@ -10,6 +10,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useGetToday } from '../../hooks/useGetToday';
 import useGetScheduleDate from '../../query/Get/useGetScheduleDate';
 import ScheduleModal from './components/modal/scheduleModal';
+import { Toast } from '../../components/toast/toast';
 
 function TimeCalendarPage() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -34,6 +35,7 @@ function TimeCalendarPage() {
         }));
     };
     useEffect(() => {
+        Toast('test');
         if (searchParams.get('date')) {
             refetch();
         }

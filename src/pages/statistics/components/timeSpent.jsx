@@ -8,7 +8,6 @@ import PieChartComponent from './pieChartComponent';
 import PrevNoneData from './prevNoneData';
 
 function TimeSpent({ data }) {
-    console.log(data);
     return (
         <BackImg>
             <GlassmorphismModal height={'70%'}>
