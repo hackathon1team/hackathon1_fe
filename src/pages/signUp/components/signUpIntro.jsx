@@ -57,7 +57,7 @@ const Box = styled.div`
     justify-content: space-between;
 `;
 
-const TopBox = styled.div`
+const TopBox = styled.h2`
     width: 80%;
     height: 100px;
     font-size: 32px;
@@ -72,7 +72,7 @@ const StarImg = styled.img`
     margin-left: 5px;
 `;
 
-const BottomBox = styled.div`
+const BottomBox = styled.h2`
     width: 100%;
     height: 50px;
     font-size: 18px;

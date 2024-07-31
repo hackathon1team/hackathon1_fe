@@ -19,7 +19,7 @@ function SignUpPassword({ setUser, pw, setIsCheckAndError }) {
 }
 export default SignUpPassword;
 
-const NameBox1 = styled.div`
+const NameBox1 = styled.h2`
     width: 100%;
     height: 100px;
     font-size: 25px;

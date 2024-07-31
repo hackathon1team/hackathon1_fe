@@ -3,6 +3,7 @@ import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorp
 import { useFindEmotions } from '../../../hooks/useFindEmotions';
 import { useState } from 'react';
 import DetailModal from './modal/detailModal';
+import useStrAddDots from '../../../hooks/useStrAddDot';
 
 const TimeCalendarPage = ({ data, refetch }) => {
     const [isDetailModal, setIsDetailModal] = useState({
@@ -14,7 +15,7 @@ const TimeCalendarPage = ({ data, refetch }) => {
         <Wrapper>
             <GlassmorphismModal>
                 <Header>
-                    <Emotion>감정</Emotion>
+                    <EmotionTitle>감정</EmotionTitle>
                     <Case>분류</Case>
                     <Content>내용</Content>
                     <Hour>시간</Hour>
@@ -27,9 +28,11 @@ const TimeCalendarPage = ({ data, refetch }) => {
                                 setIsDetailModal({ isView: true, data: el })
                             }
                         >
-                            <Emotion>{useFindEmotions(el.emotion)}</Emotion>
+                            <Emotion>
+                                {useStrAddDots(useFindEmotions(el.emotion), 5)}
+                            </Emotion>
                             <Case>{el.category}</Case>
-                            <Content>{el.contents}</Content>
+                            <Content>{useStrAddDots(el.contents, 15)}</Content>
                             <Hour>{el.takedTime}h</Hour>
                         </Contents>
                     ))}
@@ -79,30 +82,42 @@ const AllContents = styled.div`
     width: 95%;
     display: flex;
     align-items: center;
-    text-align: center;
     color: white;
     flex-direction: column;
-    justify-content: center;
 `;
 const Contents = styled.div`
     display: flex;
     width: 100%;
-    padding: 13px 0;
+    padding: 10px 0;
     align-items: center;
+    justify-content: space-between;
     white-space: nowrap;
     overflow: hidden;
+    color: white;
     & > div {
         height: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
+    & > div:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    cursor: pointer;
+`;
+const EmotionTitle = styled.div`
+    min-width: 15%;
+    max-width: 15%;
+    text-align: center;
 `;
 const Emotion = styled.div`
-    min-width: 20%;
-    max-width: 20%;
+    min-width: 15%;
+    max-width: 15%;
     white-space: nowrap;
-    padding-bottom: 4px;
+    padding-top: 1px;
     overflow: hidden;
+    text-align: start;
 `;
 const EmotionEmoji = styled.div``;

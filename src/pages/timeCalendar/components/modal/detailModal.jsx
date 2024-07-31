@@ -42,7 +42,7 @@ function DetailModal({ setIsDetailModal, isDetailModal, refetch }) {
             </ContentsList>
             <ContentsList>
                 <Category>시간 : </Category>
-                <CategoryVal>{takedTime}</CategoryVal>
+                <CategoryVal>{takedTime}시간</CategoryVal>
             </ContentsList>
             <ButtonWrapper>
                 <CustomButton onClick={handleDetail}>삭제</CustomButton>

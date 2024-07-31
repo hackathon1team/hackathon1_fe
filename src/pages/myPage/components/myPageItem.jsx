@@ -96,14 +96,21 @@ const LogoutBoxDetail = styled.div`
 `;
 
 const Name = styled.div`
-    font-size: 20px;
+    font-size: 27px;
+    @media screen and (max-width: 500px) {
+        font-size: 23px;
+    }
+
     font-weight: 900;
     color: #5a639c;
     margin-bottom: 5px;
 `;
 
 const LogDetail = styled.div`
-    font-size: 14px;
+    font-size: 20px;
+    @media screen and (max-width: 500px) {
+        font-size: 17px;
+    }
     font-weight: 600;
     color: #5a639cb2;
     margin-bottom: 10px;
@@ -119,7 +126,7 @@ const LogoutButton = styled.button`
     font-weight: 700;
 
     &:hover {
-        background-color: #4b578e;
+        opacity: 0.7;
     }
 `;
 
@@ -145,6 +152,10 @@ const DelDetail = styled.div`
     color: #5a639cb2;
     margin-bottom: 10px;
     text-align: right;
+    font-size: 27px;
+    @media screen and (max-width: 500px) {
+        font-size: 23px;
+    }
 `;
 
 const DeleteAccountButton = styled.button`
@@ -155,8 +166,7 @@ const DeleteAccountButton = styled.button`
     font-size: 9px;
     color: #5f6bbacb;
     font-weight: 700;
-
     &:hover {
-        background-color: #4b578e;
+        opacity: 0.7;
     }
 `;
