@@ -27,6 +27,11 @@ function MecoQuestion() {
 
     const handleAnswer = () => {
         setInputVal('');
+        setTimeout(function () {
+            document.getElementById('top').scrollTop =
+                document.getElementById('top').scrollHeight;
+        }, 10);
+
         if (userAnswerList.firstAnswer.length === 0)
             return setUserAnswerList((prev) => ({
                 ...prev,
@@ -71,7 +76,7 @@ function MecoQuestion() {
                     <br />
                     궁금한게 많아요.
                 </Title>
-                <ChattingTotalBox>
+                <ChattingTotalBox id="top">
                     <ChattingMecoBox
                         text={'오늘의 인상깊은 사건은 무엇인가요?'}
                         isFix={true}
@@ -151,6 +156,8 @@ const Title = styled.div`
 const ChattingTotalBox = styled.div`
     height: 50vh;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 `;
 const InputWrapper = styled.div`
     position: relative;
@@ -199,6 +206,6 @@ const EndBox = styled.div`
     height: 20vh;
     display: flex;
     align-items: end;
-    animation: ${fadeIn} 1s ease-in-out;
+    animation: ${fadeIn} 0.5s ease-in-out;
     justify-content: end;
 `;
