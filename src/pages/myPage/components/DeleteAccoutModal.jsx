@@ -11,7 +11,7 @@ function DeleteAccoutModal({ setIsModalView }) {
     const { mutate: deleteAccout } = useDeleteAccount(navigate);
     return (
         <CustomModal>
-            <GlassmorphismModal>
+            <GlassmorphismModal isBlur={true}>
                 <Top>
                     <CancelIcon
                         onClick={() => {

@@ -18,7 +18,7 @@ const myPageItem = () => {
     return (
         <Wrapper>
             <MyPageBox>
-                <GlassmorphismModal>
+                <GlassmorphismModal isBlur={true}>
                     <LogoutBox>
                         <img src={meco} alt="hamsterlogo" />
                         <LogoutBoxDetail>
