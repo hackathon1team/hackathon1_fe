@@ -1,12 +1,11 @@
 import { Outlet } from 'react-router-dom';
 import TokenService from '../utils/tokenService';
-
-import NotLogIn from '../pages/logIn/components/notLogIn';
+import LogInPage from '../pages/logIn/logInPage';
 
 const PrivateRoute = () => {
     const access_token = TokenService.getAccessToken();
 
-    return access_token ? <Outlet /> : <NotLogIn />;
+    return access_token ? <Outlet /> : <LogInPage />;
 };
 
 export default PrivateRoute;

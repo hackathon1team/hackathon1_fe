@@ -127,12 +127,15 @@ const MainAnswer = styled.div`
         resize: none;
         outline: none;
         border-radius: 10px;
+        border: none;
         width: 100%;
         background-color: #00000046;
         color: white;
+        font-weight: 700;
+
         padding: 10px;
         ::placeholder {
-            color: #b3aeae;
+            color: white;
             font-size: 14px;
             font-weight: 700;
         }
