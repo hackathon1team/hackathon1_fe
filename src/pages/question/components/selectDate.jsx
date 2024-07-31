@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import CustomButton from '../../../components/customButton/customButton';
 import Star1 from '../../../assets/Img/questionImg/star1.png';
 import Star2 from '../../../assets/Img/questionImg/star.png';
-import Hami from '../../../assets/Img/questionImg/hamham.png';
+import Meco from '../../../assets/Img/meco.png';
 import { useState } from 'react';
 import { ArrowDowIcon } from '../../../components/icons/icons';
 import { useNavigate } from 'react-router-dom';
@@ -35,7 +35,7 @@ function SelectDate({ getContents }) {
                     <StarImg2 src={Star2} alt="" />
                 </TopBox>
                 <MiddleBox>
-                    <HamHam src={Hami} alt="" />
+                    <HamHam src={Meco} alt="" />
 
                     <CategoryBox
                         isView={isView}
@@ -141,8 +141,8 @@ const CategoryWrapper = styled.div`
     }
 `;
 const HamHam = styled.img`
-    width: 125px;
-    height: 143px;
+    width: 180px;
+
     margin-bottom: 30px;
 `;
 
