@@ -1,26 +1,41 @@
-import { toast } from 'react-toastify';
-import { SuccessIcon, ErrorIcon } from '../../components/icons/icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import styled from 'styled-components';
 
-function ToastComponent({ type, message }) {
+export const StyledToastConatiner = styled(ToastContainer)`
+    margin-top: 10px;
+`;
+
+const defaultToastOption = {
+    position: 'top-center',
+    autoClose: 1500,
+    // hideProgressBar: true,
+    // 2-3. 사라지기까지 progressBar 보이지 않게 설정
+    closeOnClick: true,
+    rtl: false,
+    pauseOnFocusLoss: false,
+    draggable: false,
+    pauseOnHover: false,
+};
+
+const useToast = (message, type) => {
     switch (type) {
         case 'success':
-            // enum으로 타입 지정했을 때 가독성 상승 -> case ToastType.success:
-            toast.success(message || '성공적으로 완료되었습니다', {
-                ...toastOptions,
-                icon: <img src={SuccessIcon} alt="success" />,
+            return toast.success(message, {
+                ...defaultToastOption,
+                // icon: <div>😚</div>,
             });
-            return;
         case 'error':
-            toast.error(message || '다시 한번 시도해주세요', {
-                ...toastOptions,
-                icon: <img src={ErrorIcon} alt="error" />,
+            return toast.error(message, {
+                ...defaultToastOption,
+                // icon: <div>😡</div>,
+            });
+        case 'warning':
+            return toast.warning(message, {
+                ...defaultToastOption,
+                // icon: <div>😡</div>,
             });
     }
-}
+};
 
-export const Toast = () =>
-    toast(<ToastComponent />, {
-        autoClose: 2000,
-        hideProgressBar: true,
-        progress: undefined,
-    });
+export default useToast;

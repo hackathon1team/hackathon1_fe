@@ -6,13 +6,13 @@ import TimeCalendar from './components/TimeCalendar';
 import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
 import { useEffect, useState } from 'react';
 import ReactCalendar from '../../components/datePicker/datePicker';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGetToday } from '../../hooks/useGetToday';
 import useGetScheduleDate from '../../query/Get/useGetScheduleDate';
 import ScheduleModal from './components/modal/scheduleModal';
-import { Toast } from '../../components/toast/toast';
 
 function TimeCalendarPage() {
+    const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
     let currentDate = searchParams.get('date')
         ? searchParams.get('date')
@@ -35,7 +35,6 @@ function TimeCalendarPage() {
         }));
     };
     useEffect(() => {
-        Toast('test');
         if (searchParams.get('date')) {
             refetch();
         }
@@ -55,7 +54,6 @@ function TimeCalendarPage() {
                 ) : (
                     <TimeCalendar data={data} refetch={refetch} />
                 )}
-
                 <IconWrapper>
                     <FixedIcon>
                         {currentDate === useGetToday() && (
@@ -80,7 +78,6 @@ function TimeCalendarPage() {
                         </Circle>
                     </FixedIcon>
                 </IconWrapper>
-
                 {isView.dateModal && (
                     <ReactCalendar
                         url={'/?date='}

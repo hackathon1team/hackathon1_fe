@@ -4,8 +4,11 @@ import Background from '../../assets/Img/backgroundImg/logInStatistics.png';
 import Meco from '../../assets/Img/meco.png';
 import GlassmorphismModal from '../../components/glassmorphismModal/glassmorphismModal';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePostLogIn } from '../../query/Post/usePostLogIn';
+import useToast from '../../components/toast/toast';
+import TokenService from '../../utils/tokenService';
+
 // import TokenService from '../../utils/tokenService';
 
 function LogInPage() {
@@ -18,9 +21,11 @@ function LogInPage() {
     const { mutate } = usePostLogIn('/');
 
     const handleLogIn = () => {
-        if (idAndPw.userId === '' || idAndPw.userPw === '') return;
         mutate(idAndPw);
     };
+    useEffect(() => {
+        if (!TokenService.getAccessToken()) return navigate('/login');
+    }, []);
 
     return (
         <BackImg>
