@@ -6,14 +6,14 @@ export default defineConfig({
     plugins: [react()],
     server: {
         proxy: {
-            '/api': {
-                target: 'http://15.165.154.126:8080',
-                // target: 'http://3.38.99.173:8080',
-                changeOrigin: true,
-                secure: false,
-                rewrite: (path) => path.replace(/^\/api/, ''),
-                // ws: true,
-            },
+            // '/api': {
+            //     target: process.env.VITE_BACKEND_URL,
+            //     changeOrigin: true,
+            //     secure: false,
+            //     rewrite: (path) => path.replace(/^\/api/, ''),
+            //     // ws: true,
+            // },
+            '/api': process.env.VITE_BACKEND_URL,
         },
     },
 });
