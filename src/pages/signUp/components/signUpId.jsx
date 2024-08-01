@@ -24,7 +24,7 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
 
     const handleOnChangeInput = (val) => {
         setUser((prev) => ({ ...prev, userId: val }));
-        setIsCheckAndError(({ setUser, id }) => ({
+        setIsCheckAndError(() => ({
             isError: false,
             isCheckIdMs: '중복확인 해주세요.',
         }));
@@ -35,7 +35,6 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
             <IdBox>
                 <NameInput2
                     type="text"
-                    value={id}
                     value={id}
                     placeholder="아이디 최대 10글자"
                     onChange={(e) => handleOnChangeInput(e.target.value)}

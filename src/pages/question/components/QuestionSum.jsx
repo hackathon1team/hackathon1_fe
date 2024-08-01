@@ -21,7 +21,6 @@ const QuestionSum = () => {
 
     return (
         <BackImg>
-        <BackImg>
             <QuestionSumImg>
                 <img src={meco} alt="QuestionSumImg" />
             </QuestionSumImg>
@@ -75,6 +74,7 @@ const QuestionSum = () => {
 };
 
 export default QuestionSum;
+
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
     padding: 72px 30px 0 30px;
@@ -84,7 +84,6 @@ const QuestionSumImg = styled.div`
         width: 80%;
     }
 `;
-const QuestionSumImg = styled.div``;
 
 const QuestionAnswer = styled.div`
     text-align: left;

@@ -17,12 +17,6 @@ function TimeCalendarPage() {
         ? searchParams.get('date')
         : useGetToday();
 
-    const navigate = useNavigate();
-    const [searchParams, setSearchParams] = useSearchParams();
-    let currentDate = searchParams.get('date')
-        ? searchParams.get('date')
-        : useGetToday();
-
     const { data, refetch } = useGetScheduleDate(currentDate);
 
     const [isView, setIsView] = useState({
@@ -46,21 +40,11 @@ function TimeCalendarPage() {
         }
     }, [currentDate]);
 
-
-    const modalCloseFn = () => {
-        setIsView((prev) => ({
-            ...prev,
-            dateModal: !prev.dateModal,
-        }));
-    };
-
     return (
         <>
             <BackImg>
                 <Title>
                     오늘도 하루가 끝났네요. <br />
-                    {currentDate && currentDate.split('-')[1]}월
-                    {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
                     {currentDate && currentDate.split('-')[1]}월
                     {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
                     기록해 볼까요?
@@ -83,24 +67,7 @@ function TimeCalendarPage() {
                                 }
                             />
                         )}
-                        <Circle
-                            onClick={() =>
-                                setIsView((prev) => ({
-                                    ...prev,
-                                    dateModal: !prev.dateModal,
-                                }))
-                            }
-                        >
-                        {currentDate === useGetToday() && (
-                            <PlusIcon
-                                onClick={() =>
-                                    setIsView((prev) => ({
-                                        ...prev,
-                                        firstModal: true,
-                                    }))
-                                }
-                            />
-                        )}
+
                         <Circle
                             onClick={() =>
                                 setIsView((prev) => ({
