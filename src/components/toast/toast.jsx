@@ -18,7 +18,7 @@ const defaultToastOption = {
     pauseOnHover: false,
 };
 
-const useToast = (message, type) => {
+const customToast = (message, type) => {
     switch (type) {
         case 'success':
             return toast.success(message, {
@@ -38,4 +38,4 @@ const useToast = (message, type) => {
     }
 };
 
-export default useToast;
+export default customToast;

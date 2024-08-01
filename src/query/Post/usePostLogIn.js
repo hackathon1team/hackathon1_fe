@@ -3,7 +3,7 @@ import UserApi from '../../apis/UserApi';
 import TokenService from '../../utils/tokenService';
 import UserNickNameService from '../../utils/userNickNameService';
 import { useNavigate } from 'react-router-dom';
-import useToast from '../../components/toast/toast';
+import customToast from '../../components/toast/toast';
 
 export const usePostLogIn = (url) => {
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const usePostLogIn = (url) => {
             navigate(url);
         },
         onError: (err) => {
-            useToast(err.response.data.message, 'error');
+            customToast(err.response.data.message, 'error');
             throw err;
         },
     });

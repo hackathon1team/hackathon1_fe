@@ -3,20 +3,25 @@ import UserApi from '../../../apis/UserApi';
 
 function SignUpId({ setUser, id, setIsCheckAndError }) {
     const handleCheckId = async () => {
-        if (!id) setIsCheckAndError((prev) => ({ ...prev, isError: true }));
+        if (id.trim().length < 4)
+            return setIsCheckAndError(() => ({
+                isCheckIdMs: '최소 4글자 최대 12글자 입력해주세요.',
+                isError: true,
+            }));
         try {
             const res = await UserApi.getCheckId(id);
             res.data
                 ? setIsCheckAndError((prev) => ({
-                      ...prev,
+                      isError: true,
                       isCheckIdMs: '사용할수없는 아이디입니다.',
                   }))
                 : setIsCheckAndError((prev) => ({
-                      ...prev,
+                      isError: true,
                       isCheckIdMs: '사용가능한 아이디입니다.',
                   }));
         } catch (err) {}
     };
+
     const handleOnChangeInput = (val) => {
         setUser((prev) => ({ ...prev, userId: val }));
         setIsCheckAndError(() => ({

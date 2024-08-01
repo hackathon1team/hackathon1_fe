@@ -27,10 +27,16 @@ function SignUpPage() {
     const { mutate: postSignUp } = usePostSignUp(setIsModalView);
 
     const upCount = () => {
-        if (currentPageNum === 1 && user.userName === '')
-            return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
-        if (currentPageNum === 2 && user.userId === '')
-            return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
+        if (currentPageNum === 1 && user.userName.trim().length < 2)
+            return setIsCheckAndError(() => ({
+                isCheckIdMs: '최소 2글자 최대 12글자 입력해주세요.',
+                isError: true,
+            }));
+        if (currentPageNum === 2 && user.userId.trim().length < 4)
+            return setIsCheckAndError(() => ({
+                isCheckIdMs: '최소 4글자 최대 12글자 입력해주세요.',
+                isError: true,
+            }));
         if (
             currentPageNum === 2 &&
             isCheckAndError.isCheckIdMs !== '사용가능한 아이디입니다.'
@@ -94,13 +100,8 @@ function SignUpPage() {
                                     '사용가능한 아이디입니다.'
                                 }
                             >
-                                {isCheckAndError.isCheckIdMs}
-                                {isCheckAndError.isError
-                                    ? '값을 입력해주세요'
-                                    : currentPageNum === 2 &&
-                                        isCheckAndError.isCheckIdError
-                                      ? '중복확인 해주세요.'
-                                      : ''}
+                                {isCheckAndError.isError &&
+                                    isCheckAndError.isCheckIdMs}
                             </ErrorBox>
                         </Container>
                         <ButtonWrap2>
