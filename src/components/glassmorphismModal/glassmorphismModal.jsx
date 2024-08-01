@@ -32,5 +32,6 @@ const Box = styled.div`
     flex-direction: column;
     align-items: center;
     height: ${({ height }) => height};
+    position: relative;
     margin-top: ${({ margin }) => margin};
 `;

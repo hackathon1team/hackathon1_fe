@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
-import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import NoneTimeCalendarPage from './components/NoneTimeCalendarPage';
 import TimeCalendar from './components/TimeCalendar';
 import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
@@ -41,69 +40,63 @@ function TimeCalendarPage() {
     }, [currentDate]);
 
     return (
-        <>
-            <BackImg>
-                <Title>
-                    오늘도 하루가 끝났네요. <br />
-                    {currentDate && currentDate.split('-')[1]}월
-                    {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
-                    기록해 볼까요?
-                </Title>
-                {data.length === 0 ? (
-                    <NoneTimeCalendarPage modalCloseFn={modalCloseFn} />
-                ) : (
-                    <TimeCalendar data={data} refetch={refetch} />
-                )}
+        <BackImg>
+            <Title>
+                오늘도 하루가 끝났네요. <br />
+                {currentDate && currentDate.split('-')[1]}월
+                {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
+                기록해 볼까요?
+            </Title>
+            {data.length === 0 ? (
+                <NoneTimeCalendarPage modalCloseFn={modalCloseFn} />
+            ) : (
+                <TimeCalendar data={data} refetch={refetch} />
+            )}
 
-                <IconWrapper>
-                    <FixedIcon>
-                        {currentDate === useGetToday() && (
-                            <PlusIcon
-                                onClick={() =>
-                                    setIsView((prev) => ({
-                                        ...prev,
-                                        firstModal: true,
-                                    }))
-                                }
-                            />
-                        )}
-
-                        <Circle
+            <IconWrapper>
+                <FixedIcon>
+                    {currentDate === useGetToday() && (
+                        <PlusIcon
                             onClick={() =>
                                 setIsView((prev) => ({
                                     ...prev,
-                                    dateModal: !prev.dateModal,
+                                    firstModal: true,
                                 }))
                             }
-                        >
-                            <CalendarIcon />
-                        </Circle>
-                    </FixedIcon>
-                </IconWrapper>
-                {isView.dateModal && (
-                    <ReactCalendar
-                        url={'/?date='}
-                        modalCloseFn={modalCloseFn}
-                    />
-                )}
-                {isView.firstModal && (
-                    <ScheduleModal
-                        setIsView={setIsView}
-                        isView={isView}
-                        refetch={refetch}
-                    />
-                )}
-            </BackImg>
-        </>
+                        />
+                    )}
+
+                    <Circle
+                        onClick={() =>
+                            setIsView((prev) => ({
+                                ...prev,
+                                dateModal: !prev.dateModal,
+                            }))
+                        }
+                    >
+                        <CalendarIcon />
+                    </Circle>
+                </FixedIcon>
+            </IconWrapper>
+            {isView.dateModal && (
+                <ReactCalendar url={'/?date='} modalCloseFn={modalCloseFn} />
+            )}
+            {isView.firstModal && (
+                <ScheduleModal
+                    setIsView={setIsView}
+                    isView={isView}
+                    refetch={refetch}
+                />
+            )}
+        </BackImg>
     );
 }
 export default TimeCalendarPage;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     height: 100%;
     width: 100%;
-    position: relative;
 `;
 const Title = styled.div`
     font-size: 21px;

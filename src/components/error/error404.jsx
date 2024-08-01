@@ -1,5 +1,4 @@
 import { BackGroundImg } from '../../styles/common';
-import Background from '../../assets/Img/backgroundImg/myPage.png';
 import styled from 'styled-components';
 import Error from '../../assets/Img/404.png';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +21,7 @@ function Error404Page() {
 export default Error404Page;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     padding: 0 30px 0 30px;
     display: flex;
     flex-direction: column;

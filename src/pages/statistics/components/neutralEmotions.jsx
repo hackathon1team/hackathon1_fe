@@ -3,8 +3,8 @@ import PercentBar from './percentBar';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import TitleBox from './titleBox';
 import { BackGroundImg } from '../../../styles/common';
-import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
+import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 import PrevNoneData from './prevNoneData';
 
 function NeutralEmotions({ data }) {
@@ -21,6 +21,8 @@ function NeutralEmotions({ data }) {
         <BackImg>
             <UpArrowIcon />
             <GlassmorphismModal height={'70%'}>
+                <Cloud1Img src={Cloud1} alt="" />
+
                 <TitleBox text={'중립적 감정'} />
                 {maxObjArr === 0 ? (
                     <PrevNoneData />
@@ -43,7 +45,7 @@ function NeutralEmotions({ data }) {
 }
 export default NeutralEmotions;
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,4 +61,9 @@ const PercentWrapper = styled.div`
     & > * {
         margin-top: 15px;
     }
+`;
+const Cloud1Img = styled.img`
+    position: absolute;
+    top: -100px;
+    left: -10px;
 `;

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
-import Background from '../../assets/Img/backgroundImg/meta_1.png';
 import CustomButton from '../../components/customButton/customButton';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { socratestQuestionList } from '../../constants/socratesQuestionList';
 import ProgressBar from '../../components/progressBar/progressBar';
 import { useNavigate } from 'react-router-dom';
 import useGetSocrates from '../../query/Get/useGetSocrates';
 import { usePatchMetaQuestion } from '../../query/Patch/usePatchMetaQuestion';
+import Cloud1 from '../../assets/Img/signUpImg/socrates.png';
 
 function Socrates() {
     const navigate = useNavigate();
@@ -45,6 +45,7 @@ function Socrates() {
     return (
         <BackImg>
             <MainQuestion>
+                <Cloud1Img src={Cloud1} alt="" />
                 자신에 대해서 <br />
                 얼마나 알고 있나요?
             </MainQuestion>
@@ -98,7 +99,7 @@ function Socrates() {
 export default Socrates;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     padding: 50% 30px 0 30px;
     display: flex;
     flex-direction: column;
@@ -111,6 +112,7 @@ const MainQuestion = styled.div`
     font-weight: 700;
     color: white;
     padding-bottom: 20px;
+    position: relative;
 `;
 
 const MiniQuestion = styled.div`
@@ -146,4 +148,9 @@ const MQButton = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 5% 0;
+`;
+const Cloud1Img = styled.img`
+    position: absolute;
+    top: -200px;
+    left: -15px;
 `;

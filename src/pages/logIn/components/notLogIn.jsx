@@ -1,4 +1,3 @@
-import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import { BackGroundImg } from '../../../styles/common';
@@ -13,7 +12,7 @@ function NotLogIn() {
 export default NotLogIn;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     display: flex;
     justify-content: center;
     align-items: center;

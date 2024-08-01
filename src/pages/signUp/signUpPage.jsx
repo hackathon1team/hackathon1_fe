@@ -5,7 +5,8 @@ import SignUpPassword from './components/signUpPassword';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
-import Background1 from '../../assets/Img/backgroundImg/signUp_2.png';
+import Cloud1 from '../../assets/Img/LogInImg/Cloud1.png';
+import Cloud2 from '../../assets/Img/LogInImg/Cloud2.png';
 import CustomButton from '../../components/customButton/customButton';
 import SignUpMadal from './components/SignUpModal';
 import ProgressBar from '../../components/progressBar/progressBar';
@@ -70,6 +71,9 @@ function SignUpPage() {
             ) : (
                 <BackImg1>
                     <Wrapper>
+                        <Cloud1Img src={Cloud1} alt="" />
+                        <Cloud2Img src={Cloud2} alt="" />
+
                         <Container>
                             <ProgressBar
                                 currentPageNum={currentPageNum}
@@ -140,10 +144,22 @@ function SignUpPage() {
 export default SignUpPage;
 
 const BackImg1 = styled.div`
-    ${BackGroundImg(Background1)}
+    ${BackGroundImg()}
     display: flex;
     flex-direction: column;
 `;
+const Cloud1Img = styled.img`
+    position: absolute;
+    top: 50px;
+    left: 10px;
+`;
+const Cloud2Img = styled.img`
+    position: absolute;
+    right: 10px;
+    top: 100px;
+    width: 140px;
+`;
+
 const Wrapper = styled.div`
     width: 100%;
     height: 80vh;

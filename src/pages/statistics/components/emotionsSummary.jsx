@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import TitleBox from './titleBox';
 import { BackGroundImg } from '../../../styles/common';
-import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import ColumnPercentBar from './columnPercentBar';
 import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 import PrevNoneData from './prevNoneData';
+import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
 function EmotionsSummary({ data }) {
     const maxObjArr =
@@ -23,6 +23,8 @@ function EmotionsSummary({ data }) {
         <BackImg>
             <UpArrowIcon />
             <GlassmorphismModal height={'70%'}>
+                <Cloud1Img src={Cloud1} alt="" />
+
                 <TitleBox
                     text={'이번 달, 내가 가장 많이\n느낀 감정을 확인해 볼까요?'}
                 />
@@ -48,7 +50,7 @@ function EmotionsSummary({ data }) {
 export default EmotionsSummary;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,4 +63,9 @@ const PercentWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+`;
+const Cloud1Img = styled.img`
+    position: absolute;
+    top: -100px;
+    left: -10px;
 `;

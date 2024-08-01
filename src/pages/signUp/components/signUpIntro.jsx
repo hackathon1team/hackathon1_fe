@@ -1,15 +1,17 @@
 import Star from '../../../assets/Img/signUpImg/star.png';
-import Background from '../../../assets/Img/backgroundImg/signUp_1.png';
 import { BackGroundImg } from '../../../styles/common';
 import styled from 'styled-components';
 import CustomButton from '../../../components/customButton/customButton';
 import { useNavigate } from 'react-router-dom';
+import Cloud1 from '../../../assets/Img/signUpImg/MecoCloud.png';
 
 function SignUpIntro({ upCount }) {
     const navigate = useNavigate();
     return (
         <BackImg>
             <Wrapper>
+                <Cloud1Img src={Cloud1} alt="" />
+
                 <Box>
                     <TopBox>
                         안녕.
@@ -37,7 +39,7 @@ function SignUpIntro({ upCount }) {
 export default SignUpIntro;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     display: flex;
     justify-content: center;
 `;
@@ -47,6 +49,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 `;
 const Box = styled.div`
     margin-top: 200px;
@@ -86,4 +89,9 @@ const ButtonWrap = styled.div`
     & > * {
         margin-bottom: 10px;
     }
+`;
+const Cloud1Img = styled.img`
+    position: absolute;
+    top: 20px;
+    left: -10px;
 `;

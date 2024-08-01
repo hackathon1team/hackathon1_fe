@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import PercentBar from './percentBar';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
-import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import { BackGroundImg } from '../../../styles/common';
 import TitleBox from './titleBox';
 import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 import PrevNoneData from './prevNoneData';
+import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
 function ComparisonWithLastMonth({ data }) {
     let ratio = (
@@ -19,6 +19,8 @@ function ComparisonWithLastMonth({ data }) {
         <BackImg>
             <UpArrowIcon />
             <GlassmorphismModal height={'70%'}>
+                <Cloud1Img src={Cloud1} alt="" />
+
                 <TitleBox
                     text={'지난 달과 비교하여\n 시간을 한 눈에 확인해 볼까요?'}
                 />
@@ -49,7 +51,7 @@ function ComparisonWithLastMonth({ data }) {
 }
 export default ComparisonWithLastMonth;
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,4 +68,9 @@ const PercentWrapper = styled.div`
         margin-top: 10px;
         height: 100px;
     }
+`;
+const Cloud1Img = styled.img`
+    position: absolute;
+    top: -100px;
+    left: -10px;
 `;

@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
-import Background from '../../assets/Img/backgroundImg/logInStatistics.png';
 import Meco from '../../assets/Img/meco.png';
 import GlassmorphismModal from '../../components/glassmorphismModal/glassmorphismModal';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { usePostLogIn } from '../../query/Post/usePostLogIn';
 import TokenService from '../../utils/tokenService';
+import Cloud1 from '../../assets/Img/LogInImg/Cloud1.png';
+import Cloud2 from '../../assets/Img/LogInImg/Cloud2.png';
 
 // import TokenService from '../../utils/tokenService';
 
@@ -30,6 +31,9 @@ function LogInPage() {
         <BackImg>
             <Box>
                 <GlassmorphismModal>
+                    <Cloud1Img src={Cloud1} alt="" />
+                    <Cloud2Img src={Cloud2} alt="" />
+
                     <TopBox>
                         <LogoBox>로고</LogoBox>
                         <MecoImg src={Meco} alt="" />
@@ -84,24 +88,36 @@ function LogInPage() {
 export default LogInPage;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 120px;
+    overflow: hidden;
 `;
 
 const Box = styled.form`
-    margin-top: 50px;
     width: 100%;
     height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 2;
 `;
-
+const Cloud1Img = styled.img`
+    position: absolute;
+    top: -100px;
+    left: -10px;
+    z-index: -1;
+`;
+const Cloud2Img = styled.img`
+    position: absolute;
+    bottom: -110px;
+    right: 0px;
+    z-index: -1;
+`;
 const TopBox = styled.div`
-    /* width: 60%; */
     width: 75%;
     height: 103px;
     display: flex;

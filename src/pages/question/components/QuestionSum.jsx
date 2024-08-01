@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import meco from '../../../assets/Img//questionImg/happy.png';
 import { BackGroundImg } from '../../../styles/common';
-import Background from '../../../assets/Img/backgroundImg/calendar&question.png';
 import CustomButton from '../../../components/customButton/customButton';
 import { useNavigate, useParams } from 'react-router-dom';
 import useGetMecoQuestions from '../../../query/Get/useGetMecoQuestions';
@@ -76,7 +75,7 @@ const QuestionSum = () => {
 export default QuestionSum;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     padding: 72px 30px 0 30px;
 `;
 const QuestionSumImg = styled.div`

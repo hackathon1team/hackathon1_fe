@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
-import Background from '../../assets/Img/backgroundImg/myPage.png';
 import MyPageItem from './components/myPageItem.jsx';
 
 function MyPagePage() {
@@ -19,10 +18,8 @@ function MyPagePage() {
 export default MyPagePage;
 
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}/* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
+    ${BackGroundImg()};
+    background: linear-gradient(#ad96d3 0%, #d7cbec 50%, #ad96d3 100%);
 `;
 const MyPageMainLine = styled.div`
     margin-top: 40px;

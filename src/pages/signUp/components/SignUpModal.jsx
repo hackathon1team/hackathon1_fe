@@ -1,7 +1,7 @@
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import CustomModal from '../../../components/customModal/customModal';
 import styled from 'styled-components';
-import SuccessImg from '../../../assets/Img/meco.png';
+import SuccessImg from '../../../assets/Img/signUpImg/mecoSuccess.png';
 import { usePostLogIn } from '../../../query/Post/usePostLogIn';
 
 function SignUpMadal({ setIsModalView, user }) {

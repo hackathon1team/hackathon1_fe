@@ -2,7 +2,6 @@ import styled, { keyframes } from 'styled-components';
 import ChattingMecoBox from './components/chattingMecoBox';
 import ChattingUserBox from './components/chattingUserBox';
 import { useEffect, useState } from 'react';
-import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
 import { useNavigate, useParams } from 'react-router-dom';
 import CustomButton from '../../components/customButton/customButton';
@@ -140,7 +139,7 @@ function MecoQuestion() {
 }
 export default MecoQuestion;
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
     padding: 72px 30px 0 30px;
 `;
 

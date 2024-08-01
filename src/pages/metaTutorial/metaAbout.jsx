@@ -1,6 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-
-import Background from '../../assets/Img/backgroundImg/meta.png';
 import { BackGroundImg } from '../../styles/common';
 import CustomButton from '../../components/customButton/customButton';
 import { useNavigate } from 'react-router-dom';
@@ -41,7 +39,8 @@ const MetaAbout = () => {
 
 export default MetaAbout;
 const BackImg = styled.div`
-    ${BackGroundImg(Background)}
+    ${BackGroundImg()}
+    background: linear-gradient(to bottom, #59629B 0%,#59629be4 18%, #9B86BD 100%);
 `;
 const aniMation = keyframes`
     0% {
