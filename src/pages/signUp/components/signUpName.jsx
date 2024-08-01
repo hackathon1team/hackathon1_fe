@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function SignUpName({ setUser, name, setIsCheckAndError }) {
+function SignUpName({ setUser, name, setIsCheckAndError }{ setUser, name }) {
     const handleOnChangeInput = (val) => {
         setUser((prev) => ({ ...prev, userName: val }));
         setIsCheckAndError((prev) => ({ ...prev, isError: false }));
@@ -44,6 +44,7 @@ const NameInput = styled.input`
     padding-left: 5px;
     padding-right: 50px;
     padding-bottom: 10px;
+    color: white;
     color: white;
     background-color: transparent;
     &::placeholder {

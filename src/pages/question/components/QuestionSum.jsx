@@ -21,6 +21,7 @@ const QuestionSum = () => {
 
     return (
         <BackImg>
+        <BackImg>
             <QuestionSumImg>
                 <img src={meco} alt="QuestionSumImg" />
             </QuestionSumImg>
@@ -83,6 +84,7 @@ const QuestionSumImg = styled.div`
         width: 80%;
     }
 `;
+const QuestionSumImg = styled.div``;
 
 const QuestionAnswer = styled.div`
     text-align: left;

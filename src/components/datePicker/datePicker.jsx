@@ -46,6 +46,7 @@ function ReactCalendar({ url, modalCloseFn }) {
                 }}
             />
         </Wrapper>
+        </Wrapper>
     );
 }
 export default ReactCalendar;

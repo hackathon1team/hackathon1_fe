@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function SignUpPassword({ setUser, pw, setIsCheckAndError }) {
+function SignUpPassword({ setUser, pw, setIsCheckAndError }{ setUser, pw }) {
     const handleOnChangeInput = (val) => {
         setUser((prev) => ({ ...prev, userPw: val }));
         setIsCheckAndError((prev) => ({ ...prev, isError: false }));

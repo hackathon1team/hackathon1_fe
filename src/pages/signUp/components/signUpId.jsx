@@ -24,7 +24,7 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
 
     const handleOnChangeInput = (val) => {
         setUser((prev) => ({ ...prev, userId: val }));
-        setIsCheckAndError(() => ({
+        setIsCheckAndError(({ setUser, id }) => ({
             isError: false,
             isCheckIdMs: '중복확인 해주세요.',
         }));
@@ -36,7 +36,7 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
                 <NameInput2
                     type="text"
                     value={id}
-                    name=""
+                    value={id}
                     placeholder="아이디 최대 10글자"
                     onChange={(e) => handleOnChangeInput(e.target.value)}
                 />
@@ -44,6 +44,9 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
                     type="Button"
                     value="중복확인"
                     onClick={handleCheckId}
+                    onChange={(e) =>
+                        setUser((prev) => ({ ...prev, userId: e.target.value }))
+                    }
                 />
             </IdBox>
         </NameBox0>
@@ -92,6 +95,8 @@ const NameInput2 = styled.input`
     padding-right: 50px;
     padding-bottom: 10px;
     background-color: transparent;
+    color: white;
+
     color: white;
 
     &::placeholder {

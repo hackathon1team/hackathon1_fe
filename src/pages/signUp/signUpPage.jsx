@@ -46,6 +46,8 @@ function SignUpPage() {
                 isCheckIdMs: '중복확인 해주세요.',
             }));
 
+        if (currentPageNum === 1 && user.name === '') return;
+        if (currentPageNum === 2 && user.userId === '') return;
         SetCurrentPageNum((prev) => prev + 1);
         setIsCheckAndError((prev) => ({ isError: false, isCheckIdMs: '' }));
     };
@@ -57,6 +59,7 @@ function SignUpPage() {
         if (currentPageNum === 3 && user.userPw === '')
             return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
         postSignUp(user);
+        if (currentPageNum === 3 && user.userPw === '') return;
         setIsModalView(true);
     };
 
