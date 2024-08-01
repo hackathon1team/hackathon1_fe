@@ -15,7 +15,7 @@ export default CustomModal;
 const Wrapper = styled.div`
     position: fixed;
     left: 0;
-    height: 150vh;
+
     width: 100%;
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@ const Wrapper = styled.div`
 const Box = styled.div`
     max-width: 520px;
     width: 100%;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     position: fixed;

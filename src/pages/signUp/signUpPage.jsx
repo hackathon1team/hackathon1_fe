@@ -9,26 +9,56 @@ import Background1 from '../../assets/Img/backgroundImg/signUp_2.png';
 import CustomButton from '../../components/customButton/customButton';
 import SignUpMadal from './components/SignUpModal';
 import ProgressBar from '../../components/progressBar/progressBar';
+import { usePostSignUp } from '../../query/Post/usePostSignUp';
 
 function SignUpPage() {
     const [currentPageNum, SetCurrentPageNum] = useState(0);
     const [isModalView, setIsModalView] = useState(false);
     const [user, setUser] = useState({
-        name: '',
+        userName: '',
         userId: '',
         userPw: '',
     });
-    const [isCheckId, setIsCheckId] = useState(false);
+    const [isCheckAndError, setIsCheckAndError] = useState({
+        isError: false,
+        isCheckIdMs: '',
+    });
+
+    const { mutate: postSignUp } = usePostSignUp(setIsModalView);
 
     const upCount = () => {
+        if (currentPageNum === 1 && user.userName.trim().length < 2)
+            return setIsCheckAndError(() => ({
+                isCheckIdMs: '최소 2글자 최대 12글자 입력해주세요.',
+                isError: true,
+            }));
+        if (currentPageNum === 2 && user.userId.trim().length < 4)
+            return setIsCheckAndError(() => ({
+                isCheckIdMs: '최소 4글자 최대 12글자 입력해주세요.',
+                isError: true,
+            }));
+        if (
+            currentPageNum === 2 &&
+            isCheckAndError.isCheckIdMs !== '사용가능한 아이디입니다.'
+        )
+            return setIsCheckAndError((prev) => ({
+                ...prev,
+                isCheckIdMs: '중복확인 해주세요.',
+            }));
+
         if (currentPageNum === 1 && user.name === '') return;
         if (currentPageNum === 2 && user.userId === '') return;
         SetCurrentPageNum((prev) => prev + 1);
+        setIsCheckAndError((prev) => ({ isError: false, isCheckIdMs: '' }));
     };
     const downCount = () => {
         SetCurrentPageNum((prev) => prev - 1);
+        setIsCheckAndError((prev) => ({ ...prev, isError: false }));
     };
     const handleSignUp = () => {
+        if (currentPageNum === 3 && user.userPw === '')
+            return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
+        postSignUp(user);
         if (currentPageNum === 3 && user.userPw === '') return;
         setIsModalView(true);
     };
@@ -48,20 +78,34 @@ function SignUpPage() {
                             {currentPageNum === 1 && (
                                 <SignUpName
                                     setUser={setUser}
-                                    name={user.name}
+                                    name={user.userName}
+                                    setIsCheckAndError={setIsCheckAndError}
                                 />
                             )}
 
                             {currentPageNum === 2 && (
-                                <SignUpId setUser={setUser} id={user.userId} />
+                                <SignUpId
+                                    setUser={setUser}
+                                    id={user.userId}
+                                    setIsCheckAndError={setIsCheckAndError}
+                                />
                             )}
                             {currentPageNum === 3 && (
                                 <SignUpPassword
                                     setUser={setUser}
                                     pw={user.userPw}
+                                    setIsCheckAndError={setIsCheckAndError}
                                 />
                             )}
-                            <ErrorBox></ErrorBox>
+                            <ErrorBox
+                                isSuccess={
+                                    isCheckAndError.isCheckIdMs ===
+                                    '사용가능한 아이디입니다.'
+                                }
+                            >
+                                {isCheckAndError.isError &&
+                                    isCheckAndError.isCheckIdMs}
+                            </ErrorBox>
                         </Container>
                         <ButtonWrap2>
                             <CustomButton icon={'left'} onClick={downCount}>
@@ -83,7 +127,10 @@ function SignUpPage() {
                         </ButtonWrap2>
                     </Wrapper>
                     {isModalView && (
-                        <SignUpMadal setIsModalView={setIsModalView} />
+                        <SignUpMadal
+                            setIsModalView={setIsModalView}
+                            user={user}
+                        />
                     )}
                 </BackImg1>
             )}
@@ -107,7 +154,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
     margin-top: 200px;
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -117,4 +164,8 @@ const ButtonWrap2 = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-const ErrorBox = styled.div``;
+const ErrorBox = styled.h2`
+    color: ${({ isSuccess }) => (isSuccess ? '#88d459' : '#a93b3b')};
+    font-size: 17px;
+    margin-top: 10px;
+`;

@@ -1,4 +1,4 @@
-.react-calendar {
+/* .react-calendar {
     border: none;
 }
 
@@ -42,11 +42,10 @@
 
 /* 오늘 날짜 */
 .react-calendar__tile--now {
-    background-color: #c9c2d4;
-    border-radius: 50px;
+    background-color: #4c0c4c6d;
 }
 
 /* 선택된 날짜의 배경색 변경 */
 .react-calendar__tile--active {
     border-radius: 50px;
-}
+} */

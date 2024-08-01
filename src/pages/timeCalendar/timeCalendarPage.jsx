@@ -4,11 +4,12 @@ import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import NoneTimeCalendarPage from './components/NoneTimeCalendarPage';
 import TimeCalendar from './components/TimeCalendar';
 import { CalendarIcon, PlusIcon } from '../../components/icons/icons';
-import ScheduleModal from './components/scheduleModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactCalendar from '../../components/datePicker/datePicker';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGetToday } from '../../hooks/useGetToday';
+import useGetScheduleDate from '../../query/Get/useGetScheduleDate';
+import ScheduleModal from './components/modal/scheduleModal';
 
 function TimeCalendarPage() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -16,43 +17,35 @@ function TimeCalendarPage() {
         ? searchParams.get('date')
         : useGetToday();
 
-    const testData = [
-        {
-            recordId: '2',
-            emotion: '짜증',
-            category: '친구',
-            contents: '태기랑 주먹다짐했다.',
-            takedTime: '2',
-        },
-        {
-            recordId: '3',
-            emotion: '기쁨',
-            category: '친구',
-            contents: '태기랑 화해했다.',
-            takedTime: '1',
-        },
-        {
-            recordId: '3',
-            emotion: '기쁨',
-            category: '친구',
-            contents: '태기랑 밥먹었다.',
-            takedTime: '11',
-        },
-        {
-            recordId: '3',
-            emotion: '기쁨',
-            category: '친구',
-            contents: '태기랑 놀았다.',
-            takedTime: '1',
-        },
-    ];
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useSearchParams();
+    let currentDate = searchParams.get('date')
+        ? searchParams.get('date')
+        : useGetToday();
+
+    const { data, refetch } = useGetScheduleDate(currentDate);
 
     const [isView, setIsView] = useState({
         firstModal: false,
         emotionModal: false,
         categoryModal: false,
         dateModal: false,
+        timeModal: false,
+        dateModal: false,
     });
+
+    const modalCloseFn = () => {
+        setIsView((prev) => ({
+            ...prev,
+            dateModal: !prev.dateModal,
+        }));
+    };
+    useEffect(() => {
+        if (searchParams.get('date')) {
+            refetch();
+        }
+    }, [currentDate]);
+
 
     const modalCloseFn = () => {
         setIsView((prev) => ({
@@ -68,12 +61,14 @@ function TimeCalendarPage() {
                     오늘도 하루가 끝났네요. <br />
                     {currentDate && currentDate.split('-')[1]}월
                     {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
+                    {currentDate && currentDate.split('-')[1]}월
+                    {currentDate && currentDate.split('-')[2]}일의 하루를 <br />
                     기록해 볼까요?
                 </Title>
-                {testData.length === 0 ? (
-                    <NoneTimeCalendarPage />
+                {data.length === 0 ? (
+                    <NoneTimeCalendarPage modalCloseFn={modalCloseFn} />
                 ) : (
-                    <TimeCalendar testData={testData} />
+                    <TimeCalendar data={data} refetch={refetch} />
                 )}
 
                 <IconWrapper>
@@ -96,11 +91,28 @@ function TimeCalendarPage() {
                                 }))
                             }
                         >
+                        {currentDate === useGetToday() && (
+                            <PlusIcon
+                                onClick={() =>
+                                    setIsView((prev) => ({
+                                        ...prev,
+                                        firstModal: true,
+                                    }))
+                                }
+                            />
+                        )}
+                        <Circle
+                            onClick={() =>
+                                setIsView((prev) => ({
+                                    ...prev,
+                                    dateModal: !prev.dateModal,
+                                }))
+                            }
+                        >
                             <CalendarIcon />
                         </Circle>
                     </FixedIcon>
                 </IconWrapper>
-
                 {isView.dateModal && (
                     <ReactCalendar
                         url={'/?date='}
@@ -108,7 +120,11 @@ function TimeCalendarPage() {
                     />
                 )}
                 {isView.firstModal && (
-                    <ScheduleModal setIsView={setIsView} isView={isView} />
+                    <ScheduleModal
+                        setIsView={setIsView}
+                        isView={isView}
+                        refetch={refetch}
+                    />
                 )}
             </BackImg>
         </>
@@ -146,10 +162,12 @@ const Circle = styled.div`
     justify-content: center;
     margin-top: 10px;
 `;
+
 const IconWrapper = styled.div`
     position: fixed;
+
     bottom: 5%;
-    right: 40%;
+    /* right: 35%; */
     @media screen and (max-width: 500px) {
         bottom: 5%;
         right: 10%;

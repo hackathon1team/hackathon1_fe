@@ -5,6 +5,7 @@ import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import { ArrowIcon } from '../../../components/icons/icons';
 import PieChartComponent from './pieChartComponent';
+import PrevNoneData from './prevNoneData';
 
 function TimeSpent({ data }) {
     return (
@@ -13,7 +14,11 @@ function TimeSpent({ data }) {
                 <TitleBox
                     text={'이번 달 내가 가장 많이\n쓴 시간을 살펴볼까요?'}
                 />
-                <PieChartComponent apiData={data} />
+                {data.length === 0 ? (
+                    <PrevNoneData />
+                ) : (
+                    <PieChartComponent apiData={data} />
+                )}
             </GlassmorphismModal>
             <ArrowIcon />
         </BackImg>

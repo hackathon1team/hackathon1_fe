@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import { CancelIcon } from '../../../components/icons/icons';
-import { emotions } from '../../../constants/emotions';
+import { CancelIcon } from '../../../../components/icons/icons';
+import { emotions } from '../../../../constants/emotions';
 import { useState } from 'react';
 
 function EmotionModal({ setIsView, setAddDate }) {
     const emotionCategory = [
         {
-            kor: '긍정적',
+            kor: '긍정',
             en: 'positiveEmotions',
         },
         {
@@ -14,7 +14,7 @@ function EmotionModal({ setIsView, setAddDate }) {
             en: 'neutralEmotions',
         },
         {
-            kor: '부정적',
+            kor: '부정',
             en: 'negativeEmotions',
         },
     ];
@@ -26,7 +26,7 @@ function EmotionModal({ setIsView, setAddDate }) {
     const handleClickEmotion = (e, type, emotions) => {
         setAddDate((prev) => ({
             ...prev,
-            emotion: emotions + type,
+            emotion: type,
             emotionCategory: clickCategory.kor,
         }));
         setIsView((prev) => ({ ...prev, emotionModal: false }));
@@ -61,6 +61,7 @@ function EmotionModal({ setIsView, setAddDate }) {
             <EmotionList>
                 {emotions[clickCategory.en].map((el, idx) => (
                     <Emotion
+                        key={el.type}
                         onClick={(e) =>
                             handleClickEmotion(e, el.type, el.emotions)
                         }
@@ -90,11 +91,9 @@ const Wrapper = styled.div`
     animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     @keyframes fadeIn {
         0% {
-            bottom: -20rem;
             opacity: 0;
         }
         100% {
-            bottom: 0;
             opacity: 1;
         }
     }
@@ -115,6 +114,7 @@ const Box = styled.div`
     padding: 10px 15px;
     border-radius: 20px;
     background-color: ${({ point }) => (point ? '#D6CDE4' : '')};
+    cursor: pointer;
 `;
 const EmotionList = styled.div`
     display: flex;
@@ -127,4 +127,5 @@ const Emotion = styled.div`
     padding: 5px 12px;
     border-radius: 15px;
     margin: 5px;
+    cursor: pointer;
 `;

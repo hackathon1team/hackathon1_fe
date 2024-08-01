@@ -9,7 +9,7 @@ function PercentBar(props) {
 
     return (
         <Wrapper>
-            <Title>{category}</Title>
+            <Title>{category === '' ? '저번달' : category}</Title>
             <BarWrapper>
                 <Bar
                     width={ratio * count}

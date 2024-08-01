@@ -1,12 +1,15 @@
 import styled from 'styled-components';
-import { CancelIcon } from '../../../components/icons/icons';
-import CustomButton from '../../../components/customButton/customButton';
+import { CancelIcon } from '../../../../components/icons/icons';
+import CustomButton from '../../../../components/customButton/customButton';
 import { useState } from 'react';
 import EmotionModal from './emotionModal';
 import CategoryModal from './categoryModal';
-import { useGetToday } from '../../../hooks/useGetToday';
+import { useGetToday } from '../../../../hooks/useGetToday';
+import { useFindEmotions } from '../../../../hooks/useFindEmotions';
+import { usePostSchedule } from '../../../../query/Post/usePostSchedule.js.js';
+import TimeModal from './timeModal';
 
-function ScheduleModal({ setIsView, isView }) {
+function ScheduleModal({ setIsView, isView, refetch }) {
     const today = useGetToday();
 
     const [addDate, setAddDate] = useState({
@@ -17,9 +20,20 @@ function ScheduleModal({ setIsView, isView }) {
         contents: '',
         takedTime: '',
     });
+    const { mutate: postSchedule } = usePostSchedule(setIsView, refetch);
 
     const handleChangeVal = (e, category) => {
         setAddDate((prev) => ({ ...prev, [category]: e.target.value }));
+    };
+    const handleAddSchedul = () => {
+        if (
+            addDate.emotionCategory === '' ||
+            addDate.emotion === '' ||
+            addDate.category === '' ||
+            addDate.contents === ''
+        )
+            return;
+        postSchedule(addDate);
     };
 
     return (
@@ -32,6 +46,8 @@ function ScheduleModal({ setIsView, isView }) {
                             firstModal: false,
                             emotionModal: false,
                             categoryModal: false,
+                            dateModal: false,
+                            timeModal: false,
                         }))
                     }
                 />
@@ -44,7 +60,9 @@ function ScheduleModal({ setIsView, isView }) {
                     }
                     isVal={isView.emotion === ''}
                 >
-                    {addDate.emotion ? addDate.emotion : '감정을 선택해주세요'}
+                    {addDate.emotion
+                        ? useFindEmotions(addDate.emotion)
+                        : '감정을 선택해주세요'}
                 </CategoryVal>
             </ContentsList>
             <ContentsList>
@@ -70,17 +88,21 @@ function ScheduleModal({ setIsView, isView }) {
             </ContentsList>
             <ContentsList>
                 <Category>시간 : </Category>
-                <CategoryValInput
-                    placeholder="소요시간을 작성해주세요 (시간당)"
-                    type="number"
-                    onChange={(e) => handleChangeVal(e, 'takedTime')}
-                />
+                <CategoryVal
+                    onClick={() =>
+                        setIsView((prev) => ({ ...prev, timeModal: true }))
+                    }
+                    isVal={isView.category === ''}
+                >
+                    {addDate.takedTime
+                        ? addDate.takedTime + '시간'
+                        : '시간을 선택해주세요'}
+                </CategoryVal>
             </ContentsList>
             <ButtonWrapper>
                 <CustomButton
                     value={addDate.takedTime}
-                    onClick={() => alert('서비스 준비중입니다:)')}
-                    disabled
+                    onClick={handleAddSchedul}
                 >
                     추가
                 </CustomButton>
@@ -90,6 +112,9 @@ function ScheduleModal({ setIsView, isView }) {
             )}
             {isView.categoryModal && (
                 <CategoryModal setIsView={setIsView} setAddDate={setAddDate} />
+            )}
+            {isView.timeModal && (
+                <TimeModal setIsView={setIsView} setAddDate={setAddDate} />
             )}
         </Wrapper>
     );
@@ -107,14 +132,12 @@ const Wrapper = styled.div`
     color: #5d659e;
     padding: 40px 30px;
     z-index: 11;
-    animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    animation: fadeIn 1s forwards;
     @keyframes fadeIn {
         0% {
-            bottom: -20rem;
             opacity: 0;
         }
         100% {
-            bottom: 0;
             opacity: 1;
         }
     }

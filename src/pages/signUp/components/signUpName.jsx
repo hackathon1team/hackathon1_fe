@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
-function SignUpName({ setUser, name }) {
+function SignUpName({ setUser, name, setIsCheckAndError }{ setUser, name }) {
+    const handleOnChangeInput = (val) => {
+        setUser((prev) => ({ ...prev, userName: val }));
+        setIsCheckAndError((prev) => ({ ...prev, isError: false }));
+    };
     return (
         <NameBox0>
             <NameBox1>당신의 이름은 무엇인가요?</NameBox1>
@@ -8,16 +12,14 @@ function SignUpName({ setUser, name }) {
                 type="text"
                 value={name}
                 placeholder="이름을 작성해주세요"
-                onChange={(e) =>
-                    setUser((prev) => ({ ...prev, name: e.target.value }))
-                }
+                onChange={(e) => handleOnChangeInput(e.target.value)}
             />
         </NameBox0>
     );
 }
 export default SignUpName;
 
-const NameBox1 = styled.div`
+const NameBox1 = styled.h2`
     width: 100%;
     height: 100px;
     font-size: 25px;
@@ -28,7 +30,7 @@ const NameBox1 = styled.div`
 `;
 const NameBox0 = styled.div`
     width: 100%;
-    height: 130px;
+    /* height: 130px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -42,6 +44,7 @@ const NameInput = styled.input`
     padding-left: 5px;
     padding-right: 50px;
     padding-bottom: 10px;
+    color: white;
     color: white;
     background-color: transparent;
     &::placeholder {

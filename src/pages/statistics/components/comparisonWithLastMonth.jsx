@@ -5,6 +5,7 @@ import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import { BackGroundImg } from '../../../styles/common';
 import TitleBox from './titleBox';
 import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
+import PrevNoneData from './prevNoneData';
 
 function ComparisonWithLastMonth({ data }) {
     let ratio = (
@@ -21,22 +22,26 @@ function ComparisonWithLastMonth({ data }) {
                 <TitleBox
                     text={'지난 달과 비교하여\n 시간을 한 눈에 확인해 볼까요?'}
                 />
-                <PercentWrapper>
-                    <PercentBar
-                        ratio={ratio}
-                        heigth={'bold'}
-                        category={data.previousCategory}
-                        count={data.previousHours}
-                        unit={'시간'}
-                    />
-                    <PercentBar
-                        ratio={ratio}
-                        heigth={'bold'}
-                        category={data.currentCategory}
-                        count={data.currentHours}
-                        unit={'시간'}
-                    />
-                </PercentWrapper>
+                {data.previousCategory === '' && data.currentCategory === '' ? (
+                    <PrevNoneData />
+                ) : (
+                    <PercentWrapper>
+                        <PercentBar
+                            ratio={ratio}
+                            heigth={'bold'}
+                            category={data.previousCategory}
+                            count={data.previousHours}
+                            unit={'시간'}
+                        />
+                        <PercentBar
+                            ratio={ratio}
+                            heigth={'bold'}
+                            category={data.currentCategory}
+                            count={data.currentHours}
+                            unit={'시간'}
+                        />
+                    </PercentWrapper>
+                )}
             </GlassmorphismModal>
             <ArrowIcon />
         </BackImg>

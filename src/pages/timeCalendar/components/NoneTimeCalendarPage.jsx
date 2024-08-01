@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 import Meco from '../../../assets/Img/meco.png';
 
-const NoneTimeCalendarPage = () => {
+const NoneTimeCalendarPage = ({ modalCloseFn }) => {
     return (
         <>
             <NoneTimeCalendar>
                 <NotYet>아직 작성한 가계부가 없네요.</NotYet>
-                <AnotherDayButton
-                    onClick={() => alert('서비스 개발중입니다 :)')}
-                >
+                <AnotherDayButton onClick={modalCloseFn}>
                     다른 날 데이터 보러가기
                 </AnotherDayButton>
+
                 <img src={Meco} alt="timeCalendarImg" />
             </NoneTimeCalendar>
         </>
@@ -34,7 +33,6 @@ const NotYet = styled.div`
     font-size: 21px;
     font-weight: 600;
     color: #d3cbcb;
-    margin-bottom: 3%;
 `;
 
 const AnotherDayButton = styled.button`
@@ -45,4 +43,5 @@ const AnotherDayButton = styled.button`
     border: none;
     border-radius: 10px;
     padding: 8px 10px;
+    margin-top: 20px;
 `;

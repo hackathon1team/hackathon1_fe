@@ -30,7 +30,10 @@ const MyPageMainLine = styled.div`
     justify-content: center;
     text-align: center;
     color: #5a639c;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 700;
     margin-bottom: 20px;
+    @media screen and (max-width: 500px) {
+        font-size: 24px;
+    }
 `;

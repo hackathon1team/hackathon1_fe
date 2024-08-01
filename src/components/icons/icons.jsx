@@ -13,6 +13,8 @@ import { IoIosLogOut } from 'react-icons/io';
 import { IoIosArrowDown } from 'react-icons/io';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { RiCalendar2Line } from 'react-icons/ri';
+import { FaRegCheckCircle } from 'react-icons/fa';
+import { MdError } from 'react-icons/md';
 
 export const HamburgerIcon = ({ onClick }) => (
     <RxHamburgerMenu
@@ -85,3 +87,5 @@ export const QuestionIcon = () => (
     <MdOutlineQuestionAnswer size={40} color="white" />
 );
 export const HomeIcon = () => <MdHomeFilled size={40} color="white" />;
+export const SuccessIcon = () => <FaRegCheckCircle />;
+export const ErrorIcon = () => <MdError />;

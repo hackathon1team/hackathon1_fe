@@ -3,50 +3,73 @@ import meco from '../../../assets/Img//questionImg/happy.png';
 import { BackGroundImg } from '../../../styles/common';
 import Background from '../../../assets/Img/backgroundImg/calendar&question.png';
 import CustomButton from '../../../components/customButton/customButton';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import useGetMecoQuestions from '../../../query/Get/useGetMecoQuestions';
+import { useState } from 'react';
+import ReactCalendar from '../../../components/datePicker/datePicker';
 
 const QuestionSum = () => {
     const navigate = useNavigate();
-    const Summary = {
-        contents: '태기와 주먹다짐',
-        questions: [
-            '기분이 어땠나요?',
-            '그 행동의 결과는 어땠나요?',
-            '다음에는 어떻게 해결할 건가요?',
-        ],
-        answers: [
-            '싸워서 마음이 아팠어요',
-            '나의 주먹이 날라갔어요',
-            '주먹보다 말로 풀려고 할 거에요',
-        ],
+    const { today } = useParams();
+
+    const { data } = useGetMecoQuestions(today);
+    const [isViewModal, setIsViewModal] = useState(false);
+
+    const modalCloseFn = () => {
+        setIsViewModal(false);
     };
-    const { questions, answers } = Summary;
 
     return (
+        <BackImg>
         <BackImg>
             <QuestionSumImg>
                 <img src={meco} alt="QuestionSumImg" />
             </QuestionSumImg>
-            <QuestionAnswer>
-                <Wrapper>
-                    <Question>오늘의 인상깊은 사건은 무엇인가요?</Question>
-                    <Answer>친구들과의 약속</Answer>
-                </Wrapper>
-                {questions.map((question, idx) => (
-                    <Wrapper key={idx}>
-                        <Question>{question}</Question>
-                        <Answer>{answers[idx]}</Answer>
-                    </Wrapper>
-                ))}
-            </QuestionAnswer>
-            <BtnWrapper>
-                <CustomButton
-                    icon="right"
-                    onClick={() => navigate('/question')}
-                >
-                    시간 가계부
-                </CustomButton>
-            </BtnWrapper>
+            {Object.keys(data).length === 0 ? (
+                <NoneDataWrapper>
+                    <NoneData>
+                        조회한 날의 메코와
+                        <br />
+                        대화가 존재하지 않습니다.
+                    </NoneData>
+                    <AnotherDateBtn
+                        onClick={() => setIsViewModal((prev) => !prev)}
+                    >
+                        다른 날 보러가기
+                    </AnotherDateBtn>
+                </NoneDataWrapper>
+            ) : (
+                <>
+                    <QuestionAnswer>
+                        <Wrapper>
+                            <Question>
+                                오늘의 인상깊은 사건은 무엇인가요?
+                            </Question>
+                            <Answer>{data.contents}</Answer>
+                        </Wrapper>
+                        {data.questions.map((question, idx) => (
+                            <Wrapper key={idx}>
+                                <Question>{question}</Question>
+                                <Answer>{data.answers[idx]}</Answer>
+                            </Wrapper>
+                        ))}
+                    </QuestionAnswer>
+                    <BtnWrapper>
+                        <CustomButton
+                            icon="right"
+                            onClick={() => navigate('/question')}
+                        >
+                            홈으로
+                        </CustomButton>
+                    </BtnWrapper>
+                </>
+            )}
+            {isViewModal && (
+                <ReactCalendar
+                    url={'/questionSum/'}
+                    modalCloseFn={modalCloseFn}
+                />
+            )}
         </BackImg>
     );
 };
@@ -55,6 +78,11 @@ export default QuestionSum;
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
     padding: 72px 30px 0 30px;
+`;
+const QuestionSumImg = styled.div`
+    & > img {
+        width: 80%;
+    }
 `;
 const QuestionSumImg = styled.div``;
 
@@ -80,4 +108,28 @@ const Answer = styled.div`
 const BtnWrapper = styled.div`
     display: flex;
     justify-content: end;
+    padding-bottom: 20px;
+`;
+const NoneDataWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+const NoneData = styled.h2`
+    font-size: 20px;
+    color: #d4d2d2;
+    text-align: center;
+    margin-top: 30px;
+    line-height: 150%;
+`;
+const AnotherDateBtn = styled.h2`
+    background-color: #aea8ba45;
+    width: 200px;
+    text-align: center;
+    color: #ffb0b0;
+    font-size: 15px;
+    padding: 10px 0;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
 `;

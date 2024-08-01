@@ -1,6 +1,34 @@
 import styled from 'styled-components';
+import UserApi from '../../../apis/UserApi';
 
-function SignUpId({ setUser, id }) {
+function SignUpId({ setUser, id, setIsCheckAndError }) {
+    const handleCheckId = async () => {
+        if (id.trim().length < 4)
+            return setIsCheckAndError(() => ({
+                isCheckIdMs: '최소 4글자 최대 12글자 입력해주세요.',
+                isError: true,
+            }));
+        try {
+            const res = await UserApi.getCheckId(id);
+            res.data
+                ? setIsCheckAndError((prev) => ({
+                      isError: true,
+                      isCheckIdMs: '사용할수없는 아이디입니다.',
+                  }))
+                : setIsCheckAndError((prev) => ({
+                      isError: true,
+                      isCheckIdMs: '사용가능한 아이디입니다.',
+                  }));
+        } catch (err) {}
+    };
+
+    const handleOnChangeInput = (val) => {
+        setUser((prev) => ({ ...prev, userId: val }));
+        setIsCheckAndError(({ setUser, id }) => ({
+            isError: false,
+            isCheckIdMs: '중복확인 해주세요.',
+        }));
+    };
     return (
         <NameBox0>
             <NameBox1>사용 할 아이디를 작성해주세요.</NameBox1>
@@ -8,19 +36,25 @@ function SignUpId({ setUser, id }) {
                 <NameInput2
                     type="text"
                     value={id}
+                    value={id}
                     placeholder="아이디 최대 10글자"
+                    onChange={(e) => handleOnChangeInput(e.target.value)}
+                />
+                <IdCheckBt
+                    type="Button"
+                    value="중복확인"
+                    onClick={handleCheckId}
                     onChange={(e) =>
                         setUser((prev) => ({ ...prev, userId: e.target.value }))
                     }
                 />
-                <IdCheckBt type="Button" value="중복확인" />
             </IdBox>
         </NameBox0>
     );
 }
 export default SignUpId;
 
-const NameBox1 = styled.div`
+const NameBox1 = styled.h2`
     width: 100%;
     height: 100px;
     font-size: 25px;
@@ -61,6 +95,8 @@ const NameInput2 = styled.input`
     padding-right: 50px;
     padding-bottom: 10px;
     background-color: transparent;
+    color: white;
+
     color: white;
 
     &::placeholder {

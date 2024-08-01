@@ -5,11 +5,15 @@ import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorp
 import TitleBox from './titleBox';
 import PercentBar from './percentBar';
 import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
+import PrevNoneData from './prevNoneData';
 
 function PositiveEmotions({ data }) {
-    const maxObjArr = data.reduce((prev, value) => {
-        return prev.count >= value.count ? prev : value;
-    });
+    const maxObjArr =
+        data.length === 0
+            ? 0
+            : data.reduce((prev, value) => {
+                  return prev.count >= value.count ? prev : value;
+              });
 
     let ratio = Math.floor(100 / maxObjArr.count).toFixed(2);
 
@@ -18,16 +22,20 @@ function PositiveEmotions({ data }) {
             <UpArrowIcon />
             <GlassmorphismModal height={'70%'}>
                 <TitleBox text={'긍정적 감정'} />
-                <PercentWrapper>
-                    {data.map((val, idx) => (
-                        <PercentBar
-                            key={idx}
-                            ratio={ratio}
-                            category={val.type}
-                            count={val.count}
-                        />
-                    ))}
-                </PercentWrapper>
+                {maxObjArr === 0 ? (
+                    <PrevNoneData />
+                ) : (
+                    <PercentWrapper>
+                        {data.map((val, idx) => (
+                            <PercentBar
+                                key={idx}
+                                ratio={ratio}
+                                category={val.emotions}
+                                count={val.count}
+                            />
+                        ))}
+                    </PercentWrapper>
+                )}
             </GlassmorphismModal>
             <ArrowIcon />
         </BackImg>
@@ -44,6 +52,7 @@ const BackImg = styled.div`
 `;
 const PercentWrapper = styled.div`
     display: flex;
+    min-height: 200px;
     align-items: center;
     flex-direction: column;
     justify-content: center;

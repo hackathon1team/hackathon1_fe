@@ -5,11 +5,15 @@ import TitleBox from './titleBox';
 import { BackGroundImg } from '../../../styles/common';
 import Background from '../../../assets/Img/backgroundImg/logInStatistics.png';
 import { UpArrowIcon } from '../../../components/icons/icons';
+import PrevNoneData from './prevNoneData';
 
 function NegativeEmotions({ data }) {
-    const maxObjArr = data.reduce((prev, value) => {
-        return prev.count >= value.count ? prev : value;
-    });
+    const maxObjArr =
+        data.length === 0
+            ? 0
+            : data.reduce((prev, value) => {
+                  return prev.count >= value.count ? prev : value;
+              });
 
     let ratio = Math.floor(100 / maxObjArr.count).toFixed(2);
 
@@ -18,16 +22,20 @@ function NegativeEmotions({ data }) {
             <UpArrowIcon />
             <GlassmorphismModal height={'70%'}>
                 <TitleBox text={'부정적 감정'} />
-                <PercentWrapper>
-                    {data.map((val, idx) => (
-                        <PercentBar
-                            key={idx}
-                            ratio={ratio}
-                            category={val.type}
-                            count={val.count}
-                        />
-                    ))}
-                </PercentWrapper>
+                {maxObjArr === 0 ? (
+                    <PrevNoneData />
+                ) : (
+                    <PercentWrapper>
+                        {data.map((val, idx) => (
+                            <PercentBar
+                                key={idx}
+                                ratio={ratio}
+                                category={val.emotions}
+                                count={val.count}
+                            />
+                        ))}
+                    </PercentWrapper>
+                )}
             </GlassmorphismModal>
         </BackImg>
     );
@@ -45,6 +53,7 @@ const PercentWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    min-height: 200px;
     width: 100%;
     & > * {
         margin-top: 15px;

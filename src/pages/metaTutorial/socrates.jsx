@@ -2,20 +2,26 @@ import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
 import Background from '../../assets/Img/backgroundImg/meta_1.png';
 import CustomButton from '../../components/customButton/customButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { socratestQuestionList } from '../../constants/socratesQuestionList';
 import ProgressBar from '../../components/progressBar/progressBar';
 import { useNavigate } from 'react-router-dom';
+import useGetSocrates from '../../query/Get/useGetSocrates';
+import { usePatchMetaQuestion } from '../../query/Patch/usePatchMetaQuestion';
 
 function Socrates() {
     const navigate = useNavigate();
+    const { data: getSocratesData, refetch } = useGetSocrates();
+
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const { mutate } = usePatchMetaQuestion(navigate);
+
     const [answer, setAnswer] = useState({
-        answer1: '',
-        answer2: '',
-        answer3: '',
-        answer4: '',
-        answer5: '',
+        answer1: getSocratesData[0],
+        answer2: getSocratesData[1],
+        answer3: getSocratesData[2],
+        answer4: getSocratesData[3],
+        answer5: getSocratesData[4],
     });
 
     const handleUpDownQuestion = (upDown) => {
@@ -27,6 +33,15 @@ function Socrates() {
             setCurrentQuestion((prev) => prev - 1);
         }
     };
+    const handlePatchSocrates = () => {
+        let data = { answers: [] };
+        for (let i = 1; i <= 5; i++) {
+            data.answers.push(answer['answer' + i]);
+        }
+        setAnswer(data);
+        mutate(data);
+    };
+
     return (
         <BackImg>
             <MainQuestion>
@@ -65,7 +80,7 @@ function Socrates() {
                     </CustomButton>
                 )}
                 {currentQuestion === 4 ? (
-                    <CustomButton icon={'right'} onClick={() => navigate('/')}>
+                    <CustomButton icon={'right'} onClick={handlePatchSocrates}>
                         홈으로
                     </CustomButton>
                 ) : (
@@ -85,6 +100,10 @@ export default Socrates;
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
     padding: 50% 30px 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40%;
 `;
 
 const MainQuestion = styled.div`
@@ -108,12 +127,15 @@ const MainAnswer = styled.div`
         resize: none;
         outline: none;
         border-radius: 10px;
+        border: none;
         width: 100%;
         background-color: #00000046;
         color: white;
+        font-weight: 700;
+
         padding: 10px;
         ::placeholder {
-            color: #b3aeae;
+            color: white;
             font-size: 14px;
             font-weight: 700;
         }

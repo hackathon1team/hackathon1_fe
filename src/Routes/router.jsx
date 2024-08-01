@@ -10,6 +10,7 @@ import SignUpPage from '../pages/signUp/signUpPage';
 import StatisticsPage from '../pages/statistics/statisticsPage';
 import TimeCalendarPage from '../pages/timeCalendar/timeCalendarPage';
 import QuestionSum from '../pages/question/components/QuestionSum';
+import PrivateRoute from './private';
 
 const router = [
     {
@@ -21,43 +22,48 @@ const router = [
         element: <SignUpPage />,
     },
     {
-        path: '/',
-        element: <Header />,
+        element: <PrivateRoute />,
         children: [
             {
                 path: '/',
-                element: <TimeCalendarPage />,
-            },
+                element: <Header />,
+                children: [
+                    {
+                        path: '/',
+                        element: <TimeCalendarPage />,
+                    },
 
-            {
-                path: '/metaAbout',
-                element: <MetaAbout />,
-            },
-            ,
-            {
-                path: '/socrates',
-                element: <Socrates />,
-            },
-            {
-                path: '/statistics',
-                element: <StatisticsPage />,
-            },
-            {
-                path: '/question',
-                element: <QuestionPage />,
-            },
-            {
-                path: '/question/:contents',
-                element: <MecoQuestion />,
-            },
-            {
-                path: '/questionSum/:today',
-                element: <QuestionSum />,
-            },
+                    {
+                        path: '/metaAbout',
+                        element: <MetaAbout />,
+                    },
+                    ,
+                    {
+                        path: '/socrates',
+                        element: <Socrates />,
+                    },
+                    {
+                        path: '/statistics',
+                        element: <StatisticsPage />,
+                    },
+                    {
+                        path: '/question',
+                        element: <QuestionPage />,
+                    },
+                    {
+                        path: '/question/:contents',
+                        element: <MecoQuestion />,
+                    },
+                    {
+                        path: '/questionSum/:today',
+                        element: <QuestionSum />,
+                    },
 
-            {
-                path: '/myPage',
-                element: <MyPagePage />,
+                    {
+                        path: '/myPage',
+                        element: <MyPagePage />,
+                    },
+                ],
             },
         ],
     },

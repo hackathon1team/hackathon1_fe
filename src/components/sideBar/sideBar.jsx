@@ -9,13 +9,17 @@ import {
     PersonIcon,
     QuestionIcon,
 } from '../icons/icons';
+import UserNickNameService from '../../utils/userNickNameService';
+import TokenService from '../../utils/tokenService';
 
 function SideBar({ handleCancel, setIsView }) {
     const location = useLocation();
     const navigate = useNavigate();
 
     const handleLogOut = () => {
-        alert('로그아웃은 기능은 준비중입니다 :');
+        TokenService.removeAccessToken();
+        UserNickNameService.removeNickName();
+        navigate('/logIn');
     };
 
     const handleUrl = (url) => {
@@ -56,7 +60,7 @@ function SideBar({ handleCancel, setIsView }) {
                 <CancelIcon onClick={handleCancel} />
             </CancelBox>
             <NameBox>
-                <Name>이승훈님</Name>
+                <Name>{UserNickNameService.getNickName()}</Name>
                 <LogOut onClick={handleLogOut}>
                     <LogoutIcon />
                     로그아웃

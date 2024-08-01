@@ -1,49 +1,71 @@
 import styled, { keyframes } from 'styled-components';
 import ChattingMecoBox from './components/chattingMecoBox';
 import ChattingUserBox from './components/chattingUserBox';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Background from '../../assets/Img/backgroundImg/calendar&question.png';
 import { BackGroundImg } from '../../styles/common';
 import { useNavigate, useParams } from 'react-router-dom';
 import CustomButton from '../../components/customButton/customButton';
 import { useGetToday } from '../../hooks/useGetToday';
+import { useRandomQuestion } from '../../hooks/useRandomQuestion';
+import { usePostMecoQuestion } from '../../query/Post/usePostMecoQuestion';
 
 function MecoQuestion() {
     const { contents } = useParams();
     const navigate = useNavigate();
     const today = useGetToday();
 
-    const mecoQuestionList = [
-        '이 사건에 대해 어떤 감정은 무엇이고 원인은 무엇인가요구르트?',
-        '이건 테스트 질문 (2번째 질문)',
-        '이것도 세번째 테스트 질문입니다!',
-    ];
     const [userAnswerList, setUserAnswerList] = useState({
         firstAnswer: '',
         secondAnswer: '',
         thirdAnswer: '',
     });
-
+    const [mecoQuestionList, setMecoQuestionList] = useState([]);
     const [inputVal, setInputVal] = useState('');
+
+    const { mutate: postQuestion } = usePostMecoQuestion();
 
     const handleAnswer = () => {
         setInputVal('');
+        setTimeout(function () {
+            document.getElementById('top').scrollTop =
+                document.getElementById('top').scrollHeight;
+        }, 10);
+
         if (userAnswerList.firstAnswer.length === 0)
             return setUserAnswerList((prev) => ({
                 ...prev,
-                firstAnswer: inputVal ? inputVal : '(생략)',
+                firstAnswer: inputVal.trim() ? inputVal : '(생략)',
             }));
+
         if (userAnswerList.secondAnswer.length === 0)
             return setUserAnswerList((prev) => ({
                 ...prev,
-                secondAnswer: inputVal ? inputVal : '(생략)',
+                secondAnswer: inputVal.trim() ? inputVal : '(생략)',
             }));
-        if (userAnswerList.thirdAnswer.length === 0)
-            return setUserAnswerList((prev) => ({
+        if (userAnswerList.thirdAnswer.length === 0) {
+            setUserAnswerList((prev) => ({
                 ...prev,
-                thirdAnswer: inputVal ? inputVal : '(생략)',
+                thirdAnswer: inputVal.trim() ? inputVal : '(생략)',
             }));
+            let postData = {
+                mecoDate: useGetToday(),
+                contents: contents,
+                questions: mecoQuestionList,
+                answers: [
+                    userAnswerList.firstAnswer,
+                    userAnswerList.secondAnswer,
+                    inputVal.trim() ? inputVal : '(생략)',
+                ],
+            };
+            postQuestion(postData);
+        }
     };
+
+    useEffect(() => {
+        setMecoQuestionList(useRandomQuestion());
+    }, []);
+
     return (
         <BackImg>
             <Wrapper>
@@ -54,7 +76,10 @@ function MecoQuestion() {
                     <br />
                     궁금한게 많아요.
                 </Title>
-                <ChattingTotalBox>
+                <ChattingTotalBox
+                    id="top"
+                    isEnd={userAnswerList.thirdAnswer.length !== 0}
+                >
                     <ChattingMecoBox
                         text={'오늘의 인상깊은 사건은 무엇인가요?'}
                         isFix={true}
@@ -132,8 +157,11 @@ const Title = styled.div`
     color: #ffffff;
 `;
 const ChattingTotalBox = styled.div`
-    height: 50vh;
+    /* height: ${({ isEnd }) => (isEnd ? '100vh' : '50vh')}; */
+    height: 100%;
     overflow: auto;
+    display: flex;
+    flex-direction: column;
 `;
 const InputWrapper = styled.div`
     position: relative;
@@ -161,6 +189,10 @@ const AddChatting = styled.textarea`
         color: #edececc6;
     }
     font-size: 16px;
+    color: white;
+    :focus {
+        outline: none;
+    }
 `;
 const fadeIn = keyframes`
   0%{
@@ -178,6 +210,6 @@ const EndBox = styled.div`
     height: 20vh;
     display: flex;
     align-items: end;
-    animation: ${fadeIn} 1s ease-in-out;
     justify-content: end;
+    animation: ${fadeIn} 2.5s ease-in-out;
 `;

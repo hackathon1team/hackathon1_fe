@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import meco from '../../../assets/Img/meco.png';
+import TokenService from '../../../utils/tokenService';
+import UserNickNameService from '../../../utils/userNickNameService';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import DeleteAccoutModal from '../components/DeleteAccoutModal';
+
 const myPageItem = () => {
+    const [isModalView, setIsModalView] = useState(false);
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        TokenService.removeAccessToken();
+        UserNickNameService.removeNickName();
+        navigate('/logIn');
+    };
     return (
         <Wrapper>
             <MyPageBox>
-                <GlassmorphismModal>
+                <GlassmorphismModal isBlur={true}>
                     <LogoutBox>
                         <img src={meco} alt="hamsterlogo" />
                         <LogoutBoxDetail>
@@ -15,7 +28,9 @@ const myPageItem = () => {
                                 <br /> 함께하는,
                                 <br /> 하루하루
                             </LogDetail>
-                            <LogoutButton>로그아웃</LogoutButton>
+                            <LogoutButton onClick={handleLogout}>
+                                로그아웃
+                            </LogoutButton>
                         </LogoutBoxDetail>
                     </LogoutBox>
 
@@ -26,7 +41,13 @@ const myPageItem = () => {
                                 <br />
                                 -소크라테스
                             </DelDetail>
-                            <DeleteAccountButton>회원탈퇴</DeleteAccountButton>
+                            <DeleteAccountButton
+                                onClick={() => {
+                                    setIsModalView(true);
+                                }}
+                            >
+                                회원탈퇴
+                            </DeleteAccountButton>
                         </DeleteAccountBoxDetail>
                         <img
                             src="src\assets\Img\myPageImg\starcloud.png"
@@ -35,6 +56,9 @@ const myPageItem = () => {
                     </DeleteAccountBox>
                 </GlassmorphismModal>
             </MyPageBox>
+            {isModalView && (
+                <DeleteAccoutModal setIsModalView={setIsModalView} />
+            )}
         </Wrapper>
     );
 };
@@ -72,14 +96,21 @@ const LogoutBoxDetail = styled.div`
 `;
 
 const Name = styled.div`
-    font-size: 20px;
+    font-size: 27px;
+    @media screen and (max-width: 500px) {
+        font-size: 23px;
+    }
+
     font-weight: 900;
     color: #5a639c;
     margin-bottom: 5px;
 `;
 
 const LogDetail = styled.div`
-    font-size: 14px;
+    font-size: 20px;
+    @media screen and (max-width: 500px) {
+        font-size: 17px;
+    }
     font-weight: 600;
     color: #5a639cb2;
     margin-bottom: 10px;
@@ -95,7 +126,7 @@ const LogoutButton = styled.button`
     font-weight: 700;
 
     &:hover {
-        background-color: #4b578e;
+        opacity: 0.7;
     }
 `;
 
@@ -121,6 +152,10 @@ const DelDetail = styled.div`
     color: #5a639cb2;
     margin-bottom: 10px;
     text-align: right;
+    font-size: 27px;
+    @media screen and (max-width: 500px) {
+        font-size: 23px;
+    }
 `;
 
 const DeleteAccountButton = styled.button`
@@ -131,8 +166,7 @@ const DeleteAccountButton = styled.button`
     font-size: 9px;
     color: #5f6bbacb;
     font-weight: 700;
-
     &:hover {
-        background-color: #4b578e;
+        opacity: 0.7;
     }
 `;
