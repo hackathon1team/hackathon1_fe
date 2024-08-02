@@ -8,6 +8,7 @@ import { usePostLogIn } from '../../query/Post/usePostLogIn';
 import TokenService from '../../utils/tokenService';
 import Cloud1 from '../../assets/Img/LogInImg/Cloud1.png';
 import Cloud2 from '../../assets/Img/LogInImg/Cloud2.png';
+import Logo from '../../assets/Img/logo.png';
 
 // import TokenService from '../../utils/tokenService';
 
@@ -35,8 +36,10 @@ function LogInPage() {
                     <Cloud2Img src={Cloud2} alt="" />
 
                     <TopBox>
-                        <LogoBox>로고</LogoBox>
-                        <MecoImg src={Meco} alt="" />
+                        <LogoBox>
+                            <img src={Logo} alt="" />
+                        </LogoBox>
+                        {/* <MecoImg src={Meco} alt="" /> */}
                     </TopBox>
                     <MiddleBox>
                         <LogInInput
@@ -131,6 +134,10 @@ const LogoBox = styled.div`
     font-size: 30px;
     color: white;
     font-weight: bold;
+    /* background-color: red; */
+    & > img {
+        width: 200px;
+    }
 `;
 const MiddleBox = styled.div`
     width: 75%;
