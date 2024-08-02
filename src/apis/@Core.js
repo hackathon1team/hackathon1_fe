@@ -47,8 +47,8 @@ axiosInstance.interceptors.response.use(
         console.log(error);
 
         // AccessToken 재발급
-        if (error.response.status === 401) {
-            console.log(error.response.status);
+        if (error.response.message === 'token is invalid') {
+            console.log(error.response.message);
             originalRequest._retry = true;
             TokenService.setAccessToken('');
             const res = await UserApi.getToken();
