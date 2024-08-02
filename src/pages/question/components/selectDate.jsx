@@ -11,6 +11,7 @@ import { useGetToday } from '../../../hooks/useGetToday';
 import ReactCalendar from '../../../components/datePicker/datePicker';
 import useGetMecoQuestions from '../../../query/Get/useGetMecoQuestions';
 import useStrAddDots from '../../../hooks/useStrAddDot';
+import customToast from '../../../components/toast/toast';
 
 function SelectDate({ getContents }) {
     const navigate = useNavigate();
@@ -29,7 +30,8 @@ function SelectDate({ getContents }) {
         setIsView(false);
     };
     const handleGoChatting = () => {
-        if (val === '') alert('사건을 선택해주세요');
+        if (val === '') return customToast('사건을 선택해주세요', 'warning');
+
         navigate(`/question/${val}`);
     };
 

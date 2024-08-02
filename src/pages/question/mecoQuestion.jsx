@@ -8,6 +8,7 @@ import CustomButton from '../../components/customButton/customButton';
 import { useGetToday } from '../../hooks/useGetToday';
 import { useRandomQuestion } from '../../hooks/useRandomQuestion';
 import { usePostMecoQuestion } from '../../query/Post/usePostMecoQuestion';
+import UserNickNameService from '../../utils/userNickNameService';
 
 function MecoQuestion() {
     const { contents } = useParams();
@@ -71,7 +72,7 @@ function MecoQuestion() {
                 <Title>
                     오늘도 고생했어요.
                     <br />
-                    메코는 김태기님한테
+                    메코는 {UserNickNameService.getNickName()}님한테
                     <br />
                     궁금한게 많아요.
                 </Title>

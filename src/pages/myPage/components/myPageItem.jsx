@@ -6,6 +6,7 @@ import UserNickNameService from '../../../utils/userNickNameService';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import DeleteAccoutModal from '../components/DeleteAccoutModal';
+import StarImg from '../../../assets/Img/myPageImg/starcloud.png';
 
 const myPageItem = () => {
     const [isModalView, setIsModalView] = useState(false);
@@ -49,10 +50,7 @@ const myPageItem = () => {
                                 회원탈퇴
                             </DeleteAccountButton>
                         </DeleteAccountBoxDetail>
-                        <img
-                            src="src\assets\Img\myPageImg\starcloud.png"
-                            alt="starcloud"
-                        />
+                        <img src={StarImg} alt="starcloud" />
                     </DeleteAccountBox>
                 </GlassmorphismModal>
             </MyPageBox>

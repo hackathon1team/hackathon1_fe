@@ -12,7 +12,6 @@ function SignUpMadal({ setIsModalView, user }) {
             userPw: user.userPw,
         });
         setIsModalView(false);
-        alert('임시로 회원가입 성공! 튜토리얼 시작합니다');
     };
     return (
         <CustomModal>
