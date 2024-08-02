@@ -48,10 +48,11 @@ axiosInstance.interceptors.response.use(
 
         // AccessToken 재발급
         if (error.response.status === 401) {
-            console.log(res);
+            console.log(error.response.status);
             originalRequest._retry = true;
             TokenService.setAccessToken('');
             const res = await UserApi.getToken();
+            console.log(res);
             if (res.status === 200) {
                 TokenService.setAccessToken(res?.data?.response?.accessToken);
                 return axiosInstance(originalRequest);

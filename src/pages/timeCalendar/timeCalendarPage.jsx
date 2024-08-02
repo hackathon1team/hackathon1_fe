@@ -9,15 +9,13 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useGetToday } from '../../hooks/useGetToday';
 import useGetScheduleDate from '../../query/Get/useGetScheduleDate';
 import ScheduleModal from './components/modal/scheduleModal';
-import useGetToken from '../../query/Get/useGetAccessToken';
 
 function TimeCalendarPage() {
     const [searchParams, setSearchParams] = useSearchParams();
     let currentDate = searchParams.get('date')
         ? searchParams.get('date')
         : useGetToday();
-    const { data: dd } = useGetToken();
-    console.log(dd);
+
     const { data, refetch } = useGetScheduleDate(currentDate);
 
     const [isView, setIsView] = useState({
