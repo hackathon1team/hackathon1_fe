@@ -26,14 +26,10 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
     (response) => {
-        console.log(response);
-
         return response;
     },
 
     async (error) => {
-        console.log(error);
-
         if (error.message === 'Network Error') {
             return Promise.reject(error);
         }
@@ -47,19 +43,14 @@ axiosInstance.interceptors.response.use(
             // window.location.href = '/logIn';
             return Promise.reject(error);
         }
-        console.log(error.response.status);
-        console.log(error);
-        const res = await UserApi.getToken();
-        console.log(res);
+
         // AccessToken 재발급
-        if (error.response.message === 'token is invalid') {
-            console.log(error.response.message);
+        if (error.response.status === 401) {
             originalRequest._retry = true;
             TokenService.setAccessToken('');
             const res = await UserApi.getToken();
-            console.log(res);
             if (res.status === 200) {
-                TokenService.setAccessToken(res?.data?.response?.accessToken);
+                TokenService.setAccessToken(res?.data?.accessToken);
                 return axiosInstance(originalRequest);
             } else {
                 return axiosInstance(originalRequest);
