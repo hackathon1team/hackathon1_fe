@@ -86,6 +86,7 @@ function TimeCalendarPage() {
                     setIsView={setIsView}
                     isView={isView}
                     refetch={refetch}
+                    currentDate={currentDate}
                 />
             )}
         </BackImg>

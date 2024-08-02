@@ -11,9 +11,11 @@ import Cloud1 from '../../assets/Img/signUpImg/socrates.png';
 
 function Socrates() {
     const navigate = useNavigate();
+
     const { data: getSocratesData, refetch } = useGetSocrates();
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
+
     const { mutate } = usePatchMetaQuestion(navigate);
 
     const [answer, setAnswer] = useState({
@@ -137,9 +139,10 @@ const MainAnswer = styled.div`
 
         padding: 10px;
         ::placeholder {
-            color: white;
+            color: #ffffffdd;
             font-size: 14px;
             font-weight: 700;
+            line-height: 150%;
         }
     }
 `;

@@ -9,7 +9,7 @@ import { useFindEmotions } from '../../../../hooks/useFindEmotions';
 import { usePostSchedule } from '../../../../query/Post/usePostSchedule.js.js';
 import TimeModal from './timeModal';
 
-function ScheduleModal({ setIsView, isView, refetch }) {
+function ScheduleModal({ setIsView, isView, refetch, currentDate }) {
     const today = useGetToday();
 
     const [addDate, setAddDate] = useState({
@@ -39,7 +39,10 @@ function ScheduleModal({ setIsView, isView, refetch }) {
     return (
         <Wrapper>
             <Data>
-                <div>7월 12일 일정 추가</div>
+                <div>
+                    {currentDate && currentDate.split('-')[1]}월
+                    {currentDate && currentDate.split('-')[2]}일 일정 추가
+                </div>
                 <CancelIcon
                     onClick={() =>
                         setIsView(() => ({
@@ -58,7 +61,7 @@ function ScheduleModal({ setIsView, isView, refetch }) {
                     onClick={() =>
                         setIsView((prev) => ({ ...prev, emotionModal: true }))
                     }
-                    isVal={isView.emotion === ''}
+                    isVal={addDate.emotion === ''}
                 >
                     {addDate.emotion
                         ? useFindEmotions(addDate.emotion)
@@ -71,7 +74,7 @@ function ScheduleModal({ setIsView, isView, refetch }) {
                     onClick={() =>
                         setIsView((prev) => ({ ...prev, categoryModal: true }))
                     }
-                    isVal={isView.category === ''}
+                    isVal={addDate.category === ''}
                 >
                     {addDate.category
                         ? addDate.category
@@ -84,6 +87,7 @@ function ScheduleModal({ setIsView, isView, refetch }) {
                     placeholder="내용을 작성해주세요"
                     value={addDate.contents}
                     onChange={(e) => handleChangeVal(e, 'contents')}
+                    isVal={addDate.contents === ''}
                 />
             </ContentsList>
             <ContentsList>
@@ -92,7 +96,7 @@ function ScheduleModal({ setIsView, isView, refetch }) {
                     onClick={() =>
                         setIsView((prev) => ({ ...prev, timeModal: true }))
                     }
-                    isVal={isView.category === ''}
+                    isVal={addDate.takedTime === ''}
                 >
                     {addDate.takedTime
                         ? addDate.takedTime + '시간'
@@ -159,28 +163,29 @@ const ContentsList = styled.div`
     align-items: center;
 `;
 const Category = styled.div`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-right: 10px;
 `;
 const CategoryVal = styled.div`
     font-size: 18px;
     cursor: pointer;
-    color: #797fab;
-    font-weight: ${({ isVal }) => (isVal ? 'bold' : '')};
+    color: ${({ isVal }) => (isVal ? '#9397ba' : '#797fab')};
+    font-weight: ${({ isVal }) => (isVal ? '' : '600')};
 `;
 const CategoryValInput = styled.input`
     background-color: transparent;
     border: none;
-    color: #5d659e;
+    color: #797fab;
+    font-weight: ${({ isVal }) => (isVal ? '' : '600')};
     :focus {
         outline: none;
     }
     ::placeholder {
-        color: #797fab;
+        color: #9397ba;
     }
 
-    font-size: 16px;
+    font-size: 18px;
     width: 80%;
 `;
 const ButtonWrapper = styled.div`

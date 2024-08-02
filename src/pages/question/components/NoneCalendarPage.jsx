@@ -29,7 +29,7 @@ const NoneCalendarPage = () => {
 
 export default NoneCalendarPage;
 
-const Title = styled.div`
+const Title = styled.h2`
     padding-top: 40%;
     color: #c7c5cd;
     font-size: 18px;
@@ -47,7 +47,7 @@ const GotoWrapper = styled.div`
 
 const GotoTimeCalendar = styled.div`
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
     color: #5a639c;
     text-align: center;
     margin-top: 50%;
