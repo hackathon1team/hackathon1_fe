@@ -40,7 +40,7 @@ axiosInstance.interceptors.response.use(
             //refrest 만료시 로그아웃 및  /logInPage로 Router
             TokenService.removeAccessToken();
             UserNickNameService.removeNickName();
-            // window.location.href = '/logIn';
+            window.location.href = '/logIn';
             return Promise.reject(error);
         }
 
