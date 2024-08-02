@@ -47,9 +47,10 @@ axiosInstance.interceptors.response.use(
             // window.location.href = '/logIn';
             return Promise.reject(error);
         }
-
+        console.log(error.response.status);
         console.log(error);
-
+        const res = await UserApi.getToken();
+        console.log(res);
         // AccessToken 재발급
         if (error.response.message === 'token is invalid') {
             console.log(error.response.message);
