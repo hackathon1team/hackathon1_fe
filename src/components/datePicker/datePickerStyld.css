@@ -19,6 +19,7 @@
 .react-calendar__navigation button {
     font-weight: 800;
     font-size: 1rem;
+    color: black;
 }
 
 /* 년 월 네비게이션 간격 줄이기 */
