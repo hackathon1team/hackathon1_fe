@@ -26,10 +26,14 @@ axiosInstance.interceptors.request.use(
 
 axiosInstance.interceptors.response.use(
     (response) => {
+        console.log(response);
+
         return response;
     },
 
     async (error) => {
+        console.log(error);
+
         if (error.message === 'Network Error') {
             return Promise.reject(error);
         }
