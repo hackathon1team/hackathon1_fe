@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useMountObsever } from '../../../hooks/useMountObsever';
+import { useFindEmotions } from '../../../hooks/useFindEmotions';
 function PercentBar(props) {
     const { ratio, heigth = 'regular', category, count, unit = '회' } = props;
 
@@ -9,7 +10,9 @@ function PercentBar(props) {
 
     return (
         <Wrapper>
-            <Title>{category === '' ? '저번달' : category}</Title>
+            <Title>
+                {category === '' ? '저번달' : useFindEmotions(category)}
+            </Title>
             <BarWrapper>
                 <Bar
                     width={ratio * count}

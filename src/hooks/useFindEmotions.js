@@ -7,5 +7,5 @@ export const useFindEmotions = (emotion) => {
         ...emotions.neutralEmotions,
     ];
     const totalEmotion = emotionList.find((el) => el.type === emotion);
-    return totalEmotion.emotions + totalEmotion.type;
+    return totalEmotion ? totalEmotion.emotions + totalEmotion.type : emotion;
 };

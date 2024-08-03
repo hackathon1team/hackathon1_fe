@@ -19,7 +19,7 @@ function EmotionModal({ setIsView, setAddDate }) {
         },
     ];
     const [clickCategory, setClickCategory] = useState({
-        kor: '긍정적',
+        kor: '긍정',
         en: 'positiveEmotions',
     });
 

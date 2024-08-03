@@ -7,7 +7,11 @@ import PieChartComponent from './pieChartComponent';
 import PrevNoneData from './prevNoneData';
 import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
-function TimeSpent({ data }) {
+function TimeSpent({ data, scrollRef }) {
+    const scrollToItem = () => {
+        console.log('dd');
+        scrollRef.current[3].scrollRef({ behavior: 'smooth' });
+    };
     return (
         <BackImg>
             <GlassmorphismModal height={'70%'}>
@@ -21,7 +25,7 @@ function TimeSpent({ data }) {
                     <PieChartComponent apiData={data} />
                 )}
             </GlassmorphismModal>
-            <ArrowIcon />
+            <ArrowIcon onClick={scrollToItem} />
         </BackImg>
     );
 }
