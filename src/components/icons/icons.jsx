@@ -24,11 +24,12 @@ export const HamburgerIcon = ({ onClick }) => (
         onClick={onClick}
     />
 );
-export const ArrowIcon = () => (
+export const ArrowIcon = ({ onClick }) => (
     <MdKeyboardDoubleArrowDown
         size={40}
         color="white"
         style={{ marginTop: 15, cursor: 'pointer' }}
+        onClick={onClick}
     />
 );
 export const ArrowDowIcon = ({ rotate }) => (
@@ -40,11 +41,12 @@ export const ArrowDowIcon = ({ rotate }) => (
 );
 export const ArrowRightIcon = () => <IoIosArrowForward size={15} />;
 export const ArrowLeftIcon = () => <IoIosArrowBack size={15} />;
-export const UpArrowIcon = () => (
+export const UpArrowIcon = ({ onClick }) => (
     <MdKeyboardDoubleArrowUp
         size={40}
         color="white"
         style={{ marginBottom: 15, cursor: 'pointer' }}
+        onClick={onClick}
     />
 );
 export const CancelIcon = ({ onClick, color }) => (

@@ -6,7 +6,7 @@ import NeutralEmotions from './components/neutralEmotions';
 import EmotionsSummary from './components/emotionsSummary';
 import styled from 'styled-components';
 import useGetStatisticDate from '../../query/Get/useGetStatisticData';
-import { useRef } from 'react';
+import useMoveScroll from '../../hooks/useMoveScroll';
 // import useScrollFullPage from '../../hooks/useScrollFullPage';
 
 function StatisticsPage() {
@@ -21,23 +21,27 @@ function StatisticsPage() {
     } = statisticsData;
     // scroll event hook fn
     // useScrollFullPage();
-    const scrollRef = useRef([]);
+
+    const tabsList = {
+        0: useMoveScroll(),
+        1: useMoveScroll(),
+        2: useMoveScroll(),
+        3: useMoveScroll(),
+        4: useMoveScroll(),
+        5: useMoveScroll(),
+    };
 
     return (
         <Wrapper>
-            <TimeSpent
-                data={timeSpent}
-                ref={(el) => (scrollRef.current[0] = el)}
-                scrollRef={scrollRef}
-            />
+            <TimeSpent data={timeSpent} tabsList={tabsList} />
             <ComparisonWithLastMonth
                 data={comparisonWithLastMonth}
-                ref={(el) => (scrollRef.current[1] = el)}
+                tabsList={tabsList}
             />
-            <EmotionsSummary data={emotionsSummary} />
-            <PositiveEmotions data={positiveEmotions} />
-            <NeutralEmotions data={neutralEmotions} />
-            <NegativeEmotions data={negativeEmotions} />
+            <EmotionsSummary data={emotionsSummary} tabsList={tabsList} />
+            <PositiveEmotions data={positiveEmotions} tabsList={tabsList} />
+            <NeutralEmotions data={neutralEmotions} tabsList={tabsList} />
+            <NegativeEmotions data={negativeEmotions} tabsList={tabsList} />
         </Wrapper>
     );
 }
@@ -46,8 +50,4 @@ export default StatisticsPage;
 const Wrapper = styled.div`
     height: 100vh;
     width: 100%;
-    overflow-y: auto;
-    ::-webkit-scrollbar {
-        display: none;
-    }
 `;

@@ -7,7 +7,7 @@ import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 import PrevNoneData from './prevNoneData';
 import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
-function PositiveEmotions({ data }) {
+function PositiveEmotions({ data, tabsList }) {
     const maxObjArr =
         data.length === 0
             ? 0
@@ -18,8 +18,8 @@ function PositiveEmotions({ data }) {
     let ratio = Math.floor(100 / maxObjArr.count).toFixed(2);
 
     return (
-        <BackImg>
-            <UpArrowIcon />
+        <BackImg ref={tabsList[3].element}>
+            <UpArrowIcon onClick={tabsList[2].onMoveToElement} />
             <GlassmorphismModal height={'70%'}>
                 <Cloud1Img src={Cloud1} alt="" />
 
@@ -39,7 +39,7 @@ function PositiveEmotions({ data }) {
                     </PercentWrapper>
                 )}
             </GlassmorphismModal>
-            <ArrowIcon />
+            <ArrowIcon onClick={tabsList[4].onMoveToElement} />
         </BackImg>
     );
 }

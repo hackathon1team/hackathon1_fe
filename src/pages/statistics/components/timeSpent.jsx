@@ -7,13 +7,9 @@ import PieChartComponent from './pieChartComponent';
 import PrevNoneData from './prevNoneData';
 import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
-function TimeSpent({ data, scrollRef }) {
-    const scrollToItem = () => {
-        console.log('dd');
-        scrollRef.current[3].scrollRef({ behavior: 'smooth' });
-    };
+function TimeSpent({ data, tabsList }) {
     return (
-        <BackImg>
+        <BackImg ref={tabsList[0].element}>
             <GlassmorphismModal height={'70%'}>
                 <Cloud1Img src={Cloud1} alt="" />
                 <TitleBox
@@ -25,7 +21,7 @@ function TimeSpent({ data, scrollRef }) {
                     <PieChartComponent apiData={data} />
                 )}
             </GlassmorphismModal>
-            <ArrowIcon onClick={scrollToItem} />
+            <ArrowIcon onClick={tabsList[1].onMoveToElement} />
         </BackImg>
     );
 }

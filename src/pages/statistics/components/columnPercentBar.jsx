@@ -2,13 +2,18 @@ import { useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useMountObsever } from '../../../hooks/useMountObsever';
 function ColumnPercentBar(props) {
-    const { ratio, category, count, unit = '회' } = props;
+    const { ratio, category, count, unit = '회', tabsList } = props;
 
     const ref = useRef(null);
     const isInViewport = useMountObsever(ref);
 
     return (
-        <Wrapper>
+        <Wrapper
+            onClick={
+                tabsList[category === '긍정' ? 3 : category === '중립' ? 4 : 5]
+                    .onMoveToElement
+            }
+        >
             <BarWrapper>
                 <Bar
                     height={ratio * count}
@@ -37,6 +42,11 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: end;
+    :hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        transition-duration: 0.5s;
+    }
 `;
 const Title = styled.div`
     font-size: 15px;

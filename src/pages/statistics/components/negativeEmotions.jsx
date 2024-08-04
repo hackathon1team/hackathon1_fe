@@ -7,7 +7,7 @@ import { UpArrowIcon } from '../../../components/icons/icons';
 import PrevNoneData from './prevNoneData';
 import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
-function NegativeEmotions({ data }) {
+function NegativeEmotions({ data, tabsList }) {
     const maxObjArr =
         data.length === 0
             ? 0
@@ -18,8 +18,8 @@ function NegativeEmotions({ data }) {
     let ratio = Math.floor(100 / maxObjArr.count).toFixed(2);
 
     return (
-        <BackImg>
-            <UpArrowIcon />
+        <BackImg ref={tabsList[5].element}>
+            <UpArrowIcon onClick={tabsList[4].onMoveToElement} />
             <GlassmorphismModal height={'70%'}>
                 <Cloud1Img src={Cloud1} alt="" />
 

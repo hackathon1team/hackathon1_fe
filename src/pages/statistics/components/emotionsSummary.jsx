@@ -7,7 +7,7 @@ import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 import PrevNoneData from './prevNoneData';
 import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
-function EmotionsSummary({ data }) {
+function EmotionsSummary({ data, tabsList }) {
     const maxObjArr =
         data.length === 0
             ? 0
@@ -20,8 +20,8 @@ function EmotionsSummary({ data }) {
     let ratio = Math.floor(100 / maxObjArr.count).toFixed(2);
 
     return (
-        <BackImg>
-            <UpArrowIcon />
+        <BackImg ref={tabsList[2].element}>
+            <UpArrowIcon onClick={tabsList[1].onMoveToElement} />
             <GlassmorphismModal height={'70%'}>
                 <Cloud1Img src={Cloud1} alt="" />
 
@@ -38,12 +38,13 @@ function EmotionsSummary({ data }) {
                                 ratio={ratio}
                                 category={val.type}
                                 count={val.count}
+                                tabsList={tabsList}
                             />
                         ))}
                     </PercentWrapper>
                 )}
             </GlassmorphismModal>
-            <ArrowIcon />
+            <ArrowIcon onClick={tabsList[3].onMoveToElement} />
         </BackImg>
     );
 }

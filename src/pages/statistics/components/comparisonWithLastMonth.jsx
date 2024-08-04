@@ -7,7 +7,7 @@ import { ArrowIcon, UpArrowIcon } from '../../../components/icons/icons';
 import PrevNoneData from './prevNoneData';
 import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
-function ComparisonWithLastMonth({ data }) {
+function ComparisonWithLastMonth({ data, tabsList }) {
     let ratio = (
         100 /
         (data.currentHours >= data.previousHours
@@ -16,8 +16,8 @@ function ComparisonWithLastMonth({ data }) {
     ).toFixed(2);
 
     return (
-        <BackImg>
-            <UpArrowIcon />
+        <BackImg ref={tabsList[1].element}>
+            <UpArrowIcon onClick={tabsList[0].onMoveToElement} />
             <GlassmorphismModal height={'70%'}>
                 <Cloud1Img src={Cloud1} alt="" />
 
@@ -45,7 +45,7 @@ function ComparisonWithLastMonth({ data }) {
                     </PercentWrapper>
                 )}
             </GlassmorphismModal>
-            <ArrowIcon />
+            <ArrowIcon onClick={tabsList[2].onMoveToElement} />
         </BackImg>
     );
 }
