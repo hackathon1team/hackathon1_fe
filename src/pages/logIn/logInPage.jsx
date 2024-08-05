@@ -9,6 +9,7 @@ import TokenService from '../../utils/tokenService';
 import Cloud1 from '../../assets/Img/LogInImg/Cloud1.png';
 import Cloud2 from '../../assets/Img/LogInImg/Cloud2.png';
 import Logo from '../../assets/Img/logo.png';
+import customToast from '../../components/toast/toast';
 
 // import TokenService from '../../utils/tokenService';
 
@@ -24,6 +25,21 @@ function LogInPage() {
     const handleLogIn = () => {
         mutate(idAndPw);
     };
+    const activeEnter = (e) => {
+        if (e.key === 'Enter') {
+            if (
+                idAndPw.userId.trim().length === 0 ||
+                idAndPw.userPw.trim().length === 0
+            )
+                return customToast(
+                    '아이디와 비밀번호를 입력해주세요.',
+                    'error',
+                );
+
+            mutate(idAndPw);
+        }
+    };
+
     useEffect(() => {
         if (!TokenService.getAccessToken()) return navigate('/login');
     }, []);
@@ -63,6 +79,7 @@ function LogInPage() {
                                     userPw: e.target.value,
                                 }))
                             }
+                            onKeyDown={(e) => activeEnter(e)}
                         />
                     </MiddleBox>
                     <BottomBox>
@@ -128,15 +145,15 @@ const TopBox = styled.div`
     align-items: center;
 `;
 const MecoImg = styled.img`
-    height: 103px;
+    width: 20%;
 `;
 const LogoBox = styled.div`
-    font-size: 30px;
+    font-size: 24px;
     color: white;
     font-weight: bold;
-    /* background-color: red; */
+    line-height: 150%;
     & > img {
-        width: 200px;
+        width: 60%;
     }
 `;
 const MiddleBox = styled.div`
