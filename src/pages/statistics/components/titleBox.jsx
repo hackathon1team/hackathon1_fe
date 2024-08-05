@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     background-color: #ffffff;
     min-width: 250px;
     max-width: fit-conten;
-    min-height: 30px;
+    min-height: 40px;
     padding: 12px 30px;
     border-radius: 30px;
     white-space: pre-line;

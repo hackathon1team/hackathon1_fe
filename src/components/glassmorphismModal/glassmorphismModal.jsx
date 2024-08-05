@@ -3,7 +3,7 @@ import styled from 'styled-components';
 //glassmorphism 공통 css (height를 주면 그걸로 설정되고 아니면 기본 500px)
 function GlassmorphismModal(props) {
     const { height = '100%', margin = '0px', isBlur = false, children } = props;
-    console.log(isBlur);
+
     return (
         <Box height={height} margin={margin} isBlur={isBlur}>
             {children}
