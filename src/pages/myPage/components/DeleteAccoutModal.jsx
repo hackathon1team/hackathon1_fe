@@ -11,7 +11,7 @@ function DeleteAccoutModal({ setIsModalView }) {
     const { mutate: deleteAccout } = useDeleteAccount(navigate);
     return (
         <CustomModal>
-            <GlassmorphismModal isBlur={true}>
+            <GlassmorphismModal isBlur={false}>
                 <Top>
                     <CancelIcon
                         onClick={() => {
@@ -30,6 +30,7 @@ function DeleteAccoutModal({ setIsModalView }) {
     );
 }
 export default DeleteAccoutModal;
+
 const Top = styled.div`
     width: 100%;
     text-align: end;
