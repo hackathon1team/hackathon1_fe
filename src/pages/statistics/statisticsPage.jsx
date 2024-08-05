@@ -7,7 +7,7 @@ import EmotionsSummary from './components/emotionsSummary';
 import styled from 'styled-components';
 import useGetStatisticDate from '../../query/Get/useGetStatisticData';
 import useMoveScroll from '../../hooks/useMoveScroll';
-// import useScrollFullPage from '../../hooks/useScrollFullPage';
+import useScrollFullPage from '../../hooks/useScrollFullPage';
 
 function StatisticsPage() {
     const { data: statisticsData } = useGetStatisticDate();
@@ -19,8 +19,6 @@ function StatisticsPage() {
         neutralEmotions,
         negativeEmotions,
     } = statisticsData;
-    // scroll event hook fn
-    // useScrollFullPage();
 
     const tabsList = {
         0: useMoveScroll(),
@@ -31,6 +29,7 @@ function StatisticsPage() {
         5: useMoveScroll(),
     };
 
+    useScrollFullPage();
     return (
         <Wrapper>
             <TimeSpent data={timeSpent} tabsList={tabsList} />
@@ -50,4 +49,6 @@ export default StatisticsPage;
 const Wrapper = styled.div`
     height: 100vh;
     width: 100%;
+    position: relative;
+    top: 0;
 `;

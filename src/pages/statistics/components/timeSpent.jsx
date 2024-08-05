@@ -3,7 +3,6 @@ import { BackGroundImg } from '../../../styles/common';
 import TitleBox from './titleBox';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 import { ArrowIcon } from '../../../components/icons/icons';
-import PieChartComponent from './pieChartComponent';
 import PrevNoneData from './prevNoneData';
 import Cloud1 from '../../../assets/Img/LogInImg/Cloud1.png';
 
@@ -15,11 +14,7 @@ function TimeSpent({ data, tabsList }) {
                 <TitleBox
                     text={'이번 달 내가 가장 많이\n쓴 시간을 살펴볼까요?'}
                 />
-                {data.length === 0 ? (
-                    <PrevNoneData />
-                ) : (
-                    <PieChartComponent apiData={data} />
-                )}
+                {data.length === 0 ? <PrevNoneData /> : <></>}
             </GlassmorphismModal>
             <ArrowIcon onClick={tabsList[1].onMoveToElement} />
         </BackImg>
