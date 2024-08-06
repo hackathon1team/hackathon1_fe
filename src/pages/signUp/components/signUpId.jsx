@@ -3,7 +3,7 @@ import UserApi from '../../../apis/UserApi';
 
 function SignUpId({ setUser, id, setIsCheckAndError }) {
     const handleCheckId = async () => {
-        if (id.trim().length < 4)
+        if (id.trim().length < 4 || id.trim().length > 12)
             return setIsCheckAndError(() => ({
                 isCheckIdMs: '최소 4글자 최대 12글자 입력해주세요.',
                 isError: true,

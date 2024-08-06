@@ -11,6 +11,7 @@ import {
 } from '../icons/icons';
 import UserNickNameService from '../../utils/userNickNameService';
 import TokenService from '../../utils/tokenService';
+import useStrAddDots from '../../hooks/useStrAddDot';
 
 function SideBar({ handleCancel, setIsView }) {
     const location = useLocation();
@@ -60,7 +61,9 @@ function SideBar({ handleCancel, setIsView }) {
                 <CancelIcon onClick={handleCancel} />
             </CancelBox>
             <NameBox>
-                <Name>{UserNickNameService.getNickName()}</Name>
+                <Name>
+                    {useStrAddDots(UserNickNameService.getNickName(), 5)}
+                </Name>
                 <LogOut onClick={handleLogOut}>
                     <LogoutIcon />
                     로그아웃

@@ -12,7 +12,7 @@ const MetaAbout = () => {
         <BackImg>
             <AboutMetaCog>
                 <AboutMetaWord>
-                    <h1>메타인지란?</h1>
+                    <MetaTitle>메타인지란?</MetaTitle>
                     <MetaWord1>자기인식</MetaWord1>
                     <MetaWord2>자기평가</MetaWord2>
                     <MetaWord3>계획</MetaWord3>
@@ -55,7 +55,7 @@ const aniMation = keyframes`
 `;
 
 const AboutMetaCog = styled.div`
-    padding-top: 18%;
+    /* padding-top: 18%; */
 `;
 
 const AboutMetaWord = styled.div`
@@ -68,10 +68,13 @@ const AboutMetaWord = styled.div`
 `;
 
 const MetaWord1 = styled.div`
+    @media screen and (max-width: 400px) {
+        padding-top: 15%;
+    }
     font-size: 24px;
     font-weight: 700;
     color: #ffffffc7;
-    padding-top: 25%;
+    padding-top: 20%;
     padding-left: 15%;
     animation: ${aniMation} 2s ease 0s;
 `;
@@ -115,4 +118,18 @@ const BtnWrapper = styled.div`
     display: flex;
     justify-content: end;
     animation: ${aniMation} 6s ease 0s;
+`;
+const MetaTitle = styled.h1`
+    margin: 0px auto;
+    height: 350px;
+    @media screen and (max-width: 500px) {
+        height: 300px;
+    }
+    @media screen and (max-width: 375px) {
+        height: 150px;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(#fefbd878 1%, #fefbd85a 10px, transparent 50%);
 `;

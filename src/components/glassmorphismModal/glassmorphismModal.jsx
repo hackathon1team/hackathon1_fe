@@ -19,7 +19,6 @@ const Box = styled.div`
     background: ${({ isBlur }) =>
         !isBlur &&
         'linear-gradient(to bottom right,#928ac45c,#9c95c593,#9892c3b0,#8e87b6d5)'};
-
     border-radius: 40px;
 
     box-shadow:

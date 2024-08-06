@@ -24,12 +24,14 @@ const Wrapper = styled.div`
 const Box = styled.div`
     max-width: 520px;
     width: 100%;
-    padding: 15px;
+    margin: 15px 0;
+    padding: 0 15px;
     text-align: center;
     backdrop-filter: blur(2rem);
     animation: fadeIn 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
     position: fixed;
     top: 20%;
+
     @keyframes fadeIn {
         0% {
             top: -20rem;

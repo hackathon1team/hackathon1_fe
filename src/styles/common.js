@@ -11,5 +11,4 @@ export const BackGroundImg = () => css`
     @media screen and (max-width: 500px) {
         padding: 72px 15px 0px 15px;
     }
-    overflow: hidden;
 `;

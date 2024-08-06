@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import DeleteAccoutModal from '../components/DeleteAccoutModal';
 import StarImg from '../../../assets/Img/myPageImg/starcloud.png';
+import useStrAddDots from '../../../hooks/useStrAddDot';
 
 const myPageItem = () => {
     const [isModalView, setIsModalView] = useState(false);
@@ -23,7 +24,12 @@ const myPageItem = () => {
                     <LogoutBox>
                         <img src={meco} alt="hamsterlogo" />
                         <LogoutBoxDetail>
-                            <Name>메코메코</Name>
+                            <Name>
+                                {useStrAddDots(
+                                    UserNickNameService.getNickName(),
+                                    4,
+                                )}
+                            </Name>
                             <LogDetail>
                                 메코와 메일을
                                 <br /> 함께하는,

@@ -28,7 +28,11 @@ function SignUpPage() {
     const { mutate: postSignUp } = usePostSignUp(setIsModalView);
 
     const upCount = () => {
-        if (currentPageNum === 1 && user.userName.trim().length < 2)
+        if (
+            currentPageNum === 1 &&
+            (user.userName.trim().length < 2 ||
+                user.userName.trim().length > 12)
+        )
             return setIsCheckAndError(() => ({
                 isCheckIdMs: '최소 2글자 최대 12글자 입력해주세요.',
                 isError: true,
@@ -57,7 +61,7 @@ function SignUpPage() {
         setIsCheckAndError((prev) => ({ ...prev, isError: false }));
     };
     const handleSignUp = () => {
-        if (currentPageNum === 3 && user.userPw === '')
+        if (currentPageNum === 3 && user.userPw.trim() === '')
             return setIsCheckAndError((prev) => ({ ...prev, isError: true }));
         postSignUp(user);
         if (currentPageNum === 3 && user.userPw === '') return;

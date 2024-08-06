@@ -102,6 +102,7 @@ const Answer = styled.div`
     border-radius: 10px;
     background-color: #0000002b;
     padding: 3%;
+    overflow-wrap: break-word;
 `;
 const BtnWrapper = styled.div`
     display: flex;

@@ -62,7 +62,8 @@ function SelectDate({ getContents }) {
                     {isGetQuestionSumData ? (
                         <CategoryBox>
                             <Category val={val}>
-                                {'오늘의 사건 : ' + getQuestionSum.contents}
+                                {'오늘의 사건 : ' +
+                                    useStrAddDots(getQuestionSum.contents, 25)}
                             </Category>
                         </CategoryBox>
                     ) : (
