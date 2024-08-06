@@ -2,9 +2,16 @@
 <img width="100" alt="image" src="https://github.com/user-attachments/assets/07302534-3d52-4054-b26e-b21425663447">
 </p>
 
-<div align="middle">
+<h2 align="middle">
 나를 메모하다. 메모리
-</div>
+</h2>
+ <br/>
+<h3 align="middle">
+메타인지는 자기 자신의 사고 과정에 대해 
+<br/>
+생각하는 능력을 의미합니다. <br/>즉, 자신의 생각, 학습, 이해, 기억 등을 <br/>인식하고 조절하는 능력입니다.'
+</h3>
+
 <br/>
 
 ---
