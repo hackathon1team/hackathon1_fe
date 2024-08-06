@@ -1,8 +1,19 @@
-# React + Vite
+<p align="middle" >
+<img width="100" alt="image" src="https://github.com/user-attachments/assets/07302534-3d52-4054-b26e-b21425663447">
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="middle">
+나를 메모하다. 메모리
+</div>
+<br/>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/a8cffe7b-a402-4b1b-9ace-335429ae36f4">
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/06074ac0-3203-4601-8afb-0d95a741203a">
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/faa8159f-36a2-465a-93e2-997e7eba76b0">
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/da3f6e10-5064-4175-9d89-d1efb781ca60">
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/8c3b96b7-4aef-4ae5-83e3-0117676c3e06">
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/e397d69a-51e4-4fcc-acb9-6bab36e3d58a">
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/17d8f94d-6f2c-4fa2-ac7a-a5454c489d4a">
+<img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/67170c72-434d-4824-a6f9-931641a1f1ed">
