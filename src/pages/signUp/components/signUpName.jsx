@@ -11,7 +11,7 @@ function SignUpName({ setUser, name, setIsCheckAndError }) {
             <NameInput
                 type="text"
                 value={name}
-                placeholder="이름을 작성해주세요 (한글만)"
+                placeholder="이름을 작성해주세요."
                 onChange={(e) => handleOnChangeInput(e.target.value)}
             />
         </NameBox0>
