@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { BackGroundImg } from '../../styles/common';
-import Meco from '../../assets/Img/meco.png';
 import GlassmorphismModal from '../../components/glassmorphismModal/glassmorphismModal';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -55,7 +54,6 @@ function LogInPage() {
                         <LogoBox>
                             <img src={Logo} alt="" />
                         </LogoBox>
-                        {/* <MecoImg src={Meco} alt="" /> */}
                     </TopBox>
                     <MiddleBox>
                         <LogInInput
@@ -144,16 +142,15 @@ const TopBox = styled.div`
     justify-content: space-between;
     align-items: center;
 `;
-const MecoImg = styled.img`
-    width: 20%;
-`;
+
 const LogoBox = styled.div`
     font-size: 24px;
     color: white;
     font-weight: bold;
     line-height: 150%;
+    text-align: center;
     & > img {
-        width: 60%;
+        width: 80%;
     }
 `;
 const MiddleBox = styled.div`
