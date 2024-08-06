@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 function SignUpName({ setUser, name, setIsCheckAndError }) {
-    let pattern = /[a-z0-9]|[ \[\]{}()<>?|`~!@#$%^&*-_+=,.;:\"'\\]/g;
-
     const handleOnChangeInput = (val) => {
-        setUser((prev) => ({ ...prev, userName: val.replace(pattern, '') }));
+        setUser((prev) => ({ ...prev, userName: val }));
         setIsCheckAndError((prev) => ({ ...prev, isError: false }));
     };
     return (
