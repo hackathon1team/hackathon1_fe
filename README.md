@@ -5,7 +5,9 @@
 <h2 align="middle">
 나를 메모하다. 메모리
 </h2>
+
  <br/>
+
 <h3 align="middle">
 메타인지는 자기 자신의 사고 과정에 대해 
 <br/>
@@ -13,8 +15,6 @@
 </h3>
 
 <br/>
-
----
 
 <img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/a8cffe7b-a402-4b1b-9ace-335429ae36f4">
 <img width="1728" alt="스크린샷 2023-12-29 오후 4 26 14" src="https://github.com/user-attachments/assets/06074ac0-3203-4601-8afb-0d95a741203a">
